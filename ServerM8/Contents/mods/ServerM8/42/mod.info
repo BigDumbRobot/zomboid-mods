@@ -1,0 +1,6 @@
+name=ServerM8
+poster=poster.png
+description=A cleaner server browser card, in-game Discord through the Steam overlay, and a server dashboard for players after they join. Adds its own panels and leaves every vanilla file untouched.
+author=lilBubby
+id=ServerM8
+versionMin=42.0

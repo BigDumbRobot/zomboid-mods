@@ -1,0 +1,37 @@
+VERSION = 1,
+
+/* Bass Masters sandbox options. All on the "BassMasters" page. */
+
+option BassMasters.TrophyOdds
+{
+    type = integer,
+    default = 100,
+    min = 0,
+    max = 10000,
+    page = BassMasters,
+    translation = BassMasters_TrophyOdds,
+}
+
+option BassMasters.AnnounceTrophies
+{
+    type = boolean,
+    default = true,
+    page = BassMasters,
+    translation = BassMasters_AnnounceTrophies,
+}
+
+option BassMasters.AnnounceRecords
+{
+    type = boolean,
+    default = true,
+    page = BassMasters,
+    translation = BassMasters_AnnounceRecords,
+}
+
+option BassMasters.BassMasterCanGain
+{
+    type = boolean,
+    default = true,
+    page = BassMasters,
+    translation = BassMasters_BassMasterCanGain,
+}

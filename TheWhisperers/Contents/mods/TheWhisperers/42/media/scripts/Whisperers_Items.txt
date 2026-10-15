@@ -1,0 +1,173 @@
+/************************************************************
+ * The Whisperers: items.
+ *
+ * Head, face and suit names are set per item when they are made
+ * ("Zombie Head", "<Player>'s Head", ...). Heads, the mask, the suit
+ * and the stake have their own icons; heads lie on the ground as flat
+ * images (media/inventory/world). Guts and the face still use vanilla art.
+ ************************************************************/
+
+module Whisperers
+{
+    item Guts
+    {
+        DisplayName = Guts,
+        DisplayCategory = AnimalPart,
+        ItemType = base:normal,
+        Weight = 2.5,
+        Icon = Fish_Guts,
+        WorldStaticModel = FishGuts,
+        Tooltip = Tooltip_Whisp_Guts,
+    }
+
+    item CorpseHead
+    {
+        DisplayName = Zombie Head,
+        DisplayCategory = AnimalPart,
+        ItemType = base:normal,
+        Weight = 4.5,
+        Icon = Whisp_Head,
+        UseWorldItem = TRUE,
+        ScaleWorldIcon = 0.4,
+        Tooltip = Tooltip_Whisp_CorpseHead,
+    }
+
+    /* A head once its face is cut off (Whisp_CutFaceAction swaps it in). */
+    item CorpseHeadFaceless
+    {
+        DisplayName = Zombie Head (Faceless),
+        DisplayCategory = AnimalPart,
+        ItemType = base:normal,
+        Weight = 4.3,
+        Icon = Whisp_HeadFaceless,
+        UseWorldItem = TRUE,
+        ScaleWorldIcon = 0.4,
+        Tooltip = Tooltip_Whisp_CorpseHeadFaceless,
+    }
+
+    /* Taken from either head (Whisp_RemoveBrain). Tagged like an animal
+       brain so it works in vanilla Brain Tan. Eating it runs
+       Whisperers.OnEatBrain: a zombie's infects, a player's teaches. */
+    item CorpseBrain
+    {
+        DisplayName = Zombie Brain,
+        DisplayCategory = AnimalPart,
+        ItemType = base:food,
+        Weight = 0.3,
+        Icon = BrainLarge,
+        HungerChange = -10,
+        UnhappyChange = 20,
+        OnEat = Whisperers.OnEatBrain,
+        Tags = base:animalbrain,
+        WorldStaticModel = AnimalBrain,
+        Tooltip = Tooltip_Whisp_CorpseBrain,
+    }
+
+    item CorpseFace
+    {
+        DisplayName = Zombie Face,
+        DisplayCategory = Tailoring,
+        ItemType = base:normal,
+        Weight = 0.2,
+        Icon = Mask_Hide,
+        WorldStaticModel = HockeyMask_Metal,
+        Tooltip = Tooltip_Whisp_CorpseFace,
+    }
+
+    item FaceMask
+    {
+        DisplayName = Zombie Face Mask,
+        DisplayCategory = Clothing,
+        ItemType = base:clothing,
+        Weight = 0.3,
+        Icon = Whisp_FaceMask,
+        BloodLocation = Head,
+        BodyLocation = base:maskeyes,
+        CanHaveHoles = false,
+        ClothingItem = Whisp_FaceMask,
+        FabricType = Leather,
+        Insulation = 0.2,
+        WindResistance = 0.3,
+        VisionModifier = 0.85,
+        DiscomfortModifier = 0.2,
+        ConditionMax = 100,
+        ChanceToFall = 0,
+        WorldStaticModel = HockeyMask_Metal,
+        Tooltip = Tooltip_Whisp_FaceMask,
+    }
+
+    item SkinSuit
+    {
+        DisplayName = Zombie Skin Suit,
+        DisplayCategory = Clothing,
+        ItemType = base:clothing,
+        Weight = 3.0,
+        Icon = Whisp_SkinSuit,
+        BloodLocation = Trousers;Jumper;Hands;Shoes,
+        BodyLocation = base:fullsuit,
+        CanHaveHoles = false,
+        ClothingItem = Whisp_SkinSuit,
+        FabricType = Leather,
+        Insulation = 0.35,
+        WindResistance = 0.3,
+        DiscomfortModifier = 0.4,
+        ConditionMax = 100,
+        WorldStaticModel = BoilerSuit_Ground,
+        Tooltip = Tooltip_Whisp_SkinSuit,
+    }
+
+    /* Visual only: worn by beheaded corpses to hide the head, like vanilla's
+       ZedDmg wound items. Hidden from every inventory window, never drawn
+       on the ground, and can't be moved or worn (Whisperers_Stump.lua). */
+    item NeckStump
+    {
+        DisplayName = Neck Stump,
+        DisplayCategory = ZedDmg,
+        ItemType = base:clothing,
+        Weight = 0,
+        BodyLocation = base:zeddmg,
+        ClothingItem = Whisp_NeckStump,
+        WorldRender = false,
+        hidden = true,
+    }
+
+    /* Visual only, like NeckStump: worn by head stake mannequins. The stick
+       hides the body below the neck; the faceless overlay flays the face. */
+    item StakeStick
+    {
+        DisplayName = Stake,
+        DisplayCategory = ZedDmg,
+        ItemType = base:clothing,
+        Weight = 0,
+        BodyLocation = base:zeddmg,
+        ClothingItem = Whisp_StakeStick,
+        WorldRender = false,
+        hidden = true,
+    }
+
+    item StakeFaceless
+    {
+        DisplayName = Flayed Face,
+        DisplayCategory = ZedDmg,
+        ItemType = base:clothing,
+        Weight = 0,
+        BodyLocation = base:zeddmg,
+        ClothingItem = Whisp_StakeFaceless,
+        WorldRender = false,
+        hidden = true,
+    }
+
+    /* Placed, it is a mannequin (whisperers_headstake_01_0) showing only the
+       head, on a stick. The mannequin's look travels in the item's byte data,
+       like vanilla's scarecrow (Whisperers_Stake.lua). */
+    item HeadStake
+    {
+        DisplayName = Head Stake,
+        DisplayCategory = Furniture,
+        ItemType = base:moveable,
+        WorldObjectSprite = whisperers_headstake_01_0,
+        Weight = 6.5,
+        Icon = Whisp_HeadStake,
+        Tooltip = Tooltip_Whisp_HeadStake,
+    }
+}

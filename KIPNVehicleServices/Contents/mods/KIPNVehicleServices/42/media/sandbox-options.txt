@@ -1,0 +1,101 @@
+VERSION = 1,
+
+/* KIPN: Vehicle Services -- KIPN sandbox options. All live on the shared "KIPN" page. */
+
+option KIPN.VehicleClaimsEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_VehicleClaimsEnabled,
+}
+
+option KIPN.VehicleMaxClaimsPerPlayer
+{
+    type = integer,
+    default = 5,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_VehicleMaxClaimsPerPlayer,
+}
+
+option KIPN.VehicleRegistrationExpiryDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_VehicleRegistrationExpiryDays,
+}
+
+option KIPN.VehicleClaimTokenExpiryDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_VehicleClaimTokenExpiryDays,
+}
+
+option KIPN.VehicleOwnershipExpiryDays
+{
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 3650,
+    page = KIPN,
+    translation = KIPN_VehicleOwnershipExpiryDays,
+}
+
+option KIPN.VehicleClaimCraftSeconds
+{
+    type = integer,
+    default = 10,
+    min = 0,
+    max = 300,
+    page = KIPN,
+    translation = KIPN_VehicleClaimCraftSeconds,
+}
+
+option KIPN.VehicleNonOwnerNoAccess
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_VehicleNonOwnerNoAccess,
+}
+
+option KIPN.VehicleAllowNonOwnerOpenUnlockedDoors
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_VehicleAllowNonOwnerOpenUnlockedDoors,
+}
+
+option KIPN.VehicleAllowNonOwnerTow
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_VehicleAllowNonOwnerTow,
+}
+
+option KIPN.VehicleAllowNonOwnerMechanics
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_VehicleAllowNonOwnerMechanics,
+}
+
+option KIPN.VehicleRegistrationEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_VehicleRegistrationEnabled,
+}

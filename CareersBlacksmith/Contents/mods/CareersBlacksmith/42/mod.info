@@ -1,0 +1,7 @@
+name=Careers: Blacksmith
+id=CareersBlacksmith
+description=A Blacksmith career built on the Careers Framework. Private/Public/For Sale business containers, self-perpetuating public Forge Order forms, free-text item + quality forge orders with Fast/Regular/Slow pricing, shop-to-customer messaging, escrow, reputation, and dynamic flyers.
+require=CareersFramework
+modversion=1.3.0
+versionMin=42.0.0
+author=lilBubby

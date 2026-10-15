@@ -1,0 +1,69 @@
+VERSION = 1,
+
+/* KIPN: Legend of the Red Dragon -- options live on the shared "KIPN" sandbox page. */
+
+option KIPN.LORDEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_LORDEnabled,
+}
+
+option KIPN.LORDForestFightsPerDay
+{
+    type = integer,
+    default = 20,
+    min = 1,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_LORDForestFightsPerDay,
+}
+
+option KIPN.LORDExpMultiplier
+{
+    type = double,
+    default = 1.5,
+    min = 0.1,
+    max = 20.0,
+    page = KIPN,
+    translation = KIPN_LORDExpMultiplier,
+}
+
+option KIPN.LORDGoldMultiplier
+{
+    type = double,
+    default = 2.0,
+    min = 0.1,
+    max = 20.0,
+    page = KIPN,
+    translation = KIPN_LORDGoldMultiplier,
+}
+
+option KIPN.LORDDeathGoldPenalty
+{
+    type = integer,
+    default = 25,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_LORDDeathGoldPenalty,
+}
+
+option KIPN.LORDRestCooldownMinutes
+{
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 720,
+    page = KIPN,
+    translation = KIPN_LORDRestCooldownMinutes,
+}
+
+option KIPN.LORDPvPEnabled
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_LORDPvPEnabled,
+}

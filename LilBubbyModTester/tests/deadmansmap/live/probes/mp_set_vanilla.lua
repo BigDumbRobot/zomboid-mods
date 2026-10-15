@@ -1,0 +1,2 @@
+DMMMPTakeWhat = "vanilla"
+DMMMPProbeResult = "vanilla"

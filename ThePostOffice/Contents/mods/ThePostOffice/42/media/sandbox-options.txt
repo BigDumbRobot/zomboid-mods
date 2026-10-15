@@ -1,0 +1,137 @@
+VERSION = 1,
+
+/* The Post Office -- KIPN sandbox options. All live on the shared "KIPN" page. */
+
+option KIPN.PoBoxSmallCapacity
+{
+    type = integer,
+    default = 10,
+    min = 1,
+    max = 1000,
+    page = KIPN,
+    translation = KIPN_PoBoxSmallCapacity,
+}
+
+option KIPN.PoBoxMediumCapacity
+{
+    type = integer,
+    default = 25,
+    min = 1,
+    max = 1000,
+    page = KIPN,
+    translation = KIPN_PoBoxMediumCapacity,
+}
+
+option KIPN.PoBoxLargeCapacity
+{
+    type = integer,
+    default = 50,
+    min = 1,
+    max = 1000,
+    page = KIPN,
+    translation = KIPN_PoBoxLargeCapacity,
+}
+
+option KIPN.PoBoxSmallPrice
+{
+    type = integer,
+    default = 250,
+    min = 1,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_PoBoxSmallPrice,
+}
+
+option KIPN.PoBoxMediumPrice
+{
+    type = integer,
+    default = 500,
+    min = 1,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_PoBoxMediumPrice,
+}
+
+option KIPN.PoBoxLargePrice
+{
+    type = integer,
+    default = 1000,
+    min = 1,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_PoBoxLargePrice,
+}
+
+option KIPN.PoBoxKeyCopyPrice
+{
+    type = integer,
+    default = 100,
+    min = 1,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_PoBoxKeyCopyPrice,
+}
+
+option KIPN.PoBoxMaxClaimsPerPlayer
+{
+    type = integer,
+    default = 2,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_PoBoxMaxClaimsPerPlayer,
+}
+
+option KIPN.PoBoxOwnershipExpiryDays
+{
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 3650,
+    page = KIPN,
+    translation = KIPN_PoBoxOwnershipExpiryDays,
+}
+
+option KIPN.MarketplaceProvider
+{
+    type = enum,
+    numValues = 7,
+    default = 1,
+    page = KIPN,
+    translation = KIPN_MarketplaceProvider,
+}
+
+option KIPN.MarketplaceZoneRequired
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_MarketplaceZoneRequired,
+}
+
+option KIPN.MarketplaceVehicleSalesEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_MarketplaceVehicleSalesEnabled,
+}
+
+option KIPN.MarketplaceCurrencyItemType
+{
+    type = string,
+    default = "Base.Money",
+    page = KIPN,
+    translation = KIPN_MarketplaceCurrencyItemType,
+}
+
+option KIPN.MarketplaceCurrencyItemValue
+{
+    type = integer,
+    default = 1,
+    min = 1,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_MarketplaceCurrencyItemValue,
+}
+

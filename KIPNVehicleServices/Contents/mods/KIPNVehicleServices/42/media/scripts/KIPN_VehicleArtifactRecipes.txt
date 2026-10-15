@@ -1,0 +1,32 @@
+/************************************************************
+ * KIPN: Vehicle Services -- Registration Form Recipe
+ *
+ * Crafted by players and presented at an authorized Vehicle
+ * Services KIPN computer, where the server consumes it and
+ * issues a Vehicle Title.
+ ************************************************************/
+
+module Base
+{
+    craftRecipe KIPN.CreateVehicleRegistration
+    {
+        timedAction = Making,
+        time = 30,
+        Tags = InHandCraft,
+        category = Miscellaneous,
+
+        inputs
+        {
+            item 3 [Base.SheetPaper2] flags[ItemCount],
+            item 1 tags[base:pen;base:bluepen;base:redpen;base:greenpen] mode:keep flags[Prop1;MayDegradeLight],
+            item 1 [Base.Stapler] mode:keep,
+            item 2 [Base.Staples],
+            item 1 [Base.Paperclip] flags[ItemCount],
+        }
+
+        outputs
+        {
+            item 1 Base.KIPNVehicleRegistration,
+        }
+    }
+}

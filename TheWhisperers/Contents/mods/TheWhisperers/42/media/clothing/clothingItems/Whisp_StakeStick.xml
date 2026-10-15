@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<clothingItem>
+	<!-- Worn by head stake mannequins only: masks out everything below the neck
+	     and puts a stick in its place. The stick mesh is weighted to the pelvis
+	     below the waist and to the neck at the top, so it runs up the spine of
+	     whatever pose the mannequin holds. Textured with the vanilla long stick. -->
+	<m_GUID>fa740a54-205c-4221-856e-df7e52b09d93</m_GUID>
+	<m_MaleModel>skinned\clothes\Whisp_StakeStick_M</m_MaleModel>
+	<m_FemaleModel>skinned\clothes\Whisp_StakeStick_F</m_FemaleModel>
+	<m_AltMaleModel></m_AltMaleModel>
+	<m_AltFemaleModel></m_AltFemaleModel>
+	<m_Static>false</m_Static>
+	<m_AllowRandomHue>false</m_AllowRandomHue>
+	<m_AllowRandomTint>false</m_AllowRandomTint>
+	<m_AttachBone></m_AttachBone>
+	<m_Masks>1</m_Masks>
+	<m_Masks>2</m_Masks>
+	<m_Masks>3</m_Masks>
+	<m_Masks>4</m_Masks>
+	<m_Masks>5</m_Masks>
+	<m_Masks>6</m_Masks>
+	<m_Masks>7</m_Masks>
+	<m_Masks>8</m_Masks>
+	<m_Masks>9</m_Masks>
+	<m_Masks>10</m_Masks>
+	<textureChoices>weapons\2handed\Shaft</textureChoices>
+</clothingItem>

@@ -1,0 +1,14 @@
+UI_EN = {
+    IGUI_BonkZone_Mode = "Bonk Zones",
+    IGUI_BonkZone_Add = "Add Bonk Zone",
+    IGUI_BonkZone_Rename = "Rename Zone",
+    IGUI_BonkZone_Remove = "Remove Zone",
+    IGUI_BonkZone_NamePrompt = "Name this Bonk Zone",
+    IGUI_BonkZone_RemoveConfirm = "Remove %1?",
+    IGUI_BonkZone_RangedBlocked = "Ranged PvP is prohibited in the Bonk Zone.",
+    IGUI_BonkZone_Entered = "BONK ZONE - MELEE PVP ONLY",
+    IGUI_BonkZone_Exited = "You have left the Bonk Zone.",
+    IGUI_BonkZone_OperationDenied = "Bonk Zone change denied by the server.",
+    IGUI_BonkZone_OperationFailed = "Bonk Zone change failed: %1",
+}
+

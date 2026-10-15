@@ -1,0 +1,4 @@
+name=DMM MP Live Start
+id=DMMMPStart
+description=Throwaway: connects to the local test server and makes a character, for an unattended multiplayer tester run. Isolated test folders only.
+versionMin=42.15.0

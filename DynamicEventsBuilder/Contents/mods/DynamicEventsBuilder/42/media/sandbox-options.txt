@@ -1,0 +1,71 @@
+VERSION = 1,
+
+/* Who besides admins may use the Event Studio (build, run, announce,
+   cancel and simulate events). */
+
+option DynamicEvents.StudioModerator
+{
+    type = boolean,
+    default = false,
+    page = DynamicEvents,
+    translation = DynamicEvents_StudioModerator,
+}
+
+option DynamicEvents.StudioStaff
+{
+    type = boolean,
+    default = false,
+    page = DynamicEvents,
+    translation = DynamicEvents_StudioStaff,
+}
+
+option DynamicEvents.StudioGM
+{
+    type = boolean,
+    default = false,
+    page = DynamicEvents,
+    translation = DynamicEvents_StudioGM,
+}
+
+option DynamicEvents.StudioObserver
+{
+    type = boolean,
+    default = false,
+    page = DynamicEvents,
+    translation = DynamicEvents_StudioObserver,
+}
+
+/* Who besides admins may be invited to join a simulation. Joining is
+   always their choice. */
+
+option DynamicEvents.SimulationModerator
+{
+    type = boolean,
+    default = true,
+    page = DynamicEvents,
+    translation = DynamicEvents_SimulationModerator,
+}
+
+option DynamicEvents.SimulationStaff
+{
+    type = boolean,
+    default = true,
+    page = DynamicEvents,
+    translation = DynamicEvents_SimulationStaff,
+}
+
+option DynamicEvents.SimulationGM
+{
+    type = boolean,
+    default = true,
+    page = DynamicEvents,
+    translation = DynamicEvents_SimulationGM,
+}
+
+option DynamicEvents.SimulationObserver
+{
+    type = boolean,
+    default = false,
+    page = DynamicEvents,
+    translation = DynamicEvents_SimulationObserver,
+}

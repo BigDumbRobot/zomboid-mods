@@ -1,0 +1,2 @@
+DMMMPTakeWhat = "death"
+DMMMPProbeResult = "death"

@@ -1,0 +1,11 @@
+{
+  "Sandbox_BassMasters": "Bass Masters",
+  "Sandbox_BassMasters_TrophyOdds": "Trophy fish: one in how many catches",
+  "Sandbox_BassMasters_TrophyOdds_tooltip": "Any fish anyone lands has this chance of being a trophy, whatever their Fishing level. 0 leaves only vanilla's Legendary fish (Fishing 8 and up).",
+  "Sandbox_BassMasters_AnnounceTrophies": "Announce trophy fish to the server",
+  "Sandbox_BassMasters_AnnounceTrophies_tooltip": "Everyone hears when someone lands a trophy fish.",
+  "Sandbox_BassMasters_AnnounceRecords": "Announce new server records",
+  "Sandbox_BassMasters_AnnounceRecords_tooltip": "Everyone hears when someone beats the server's heaviest catch of a species.",
+  "Sandbox_BassMasters_BassMasterCanGain": "Bass Master trait can be earned",
+  "Sandbox_BassMasters_BassMasterCanGain_tooltip": "Only with the Adaptive Traits mod. Meet every requirement on the logbook's Bass Master page to earn the trait."
+}

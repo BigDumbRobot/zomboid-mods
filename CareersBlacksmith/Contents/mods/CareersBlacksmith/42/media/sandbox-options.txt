@@ -1,0 +1,209 @@
+VERSION = 1,
+
+option KIPNCareers.BlacksmithEnabled
+{
+    type = boolean,
+    default = true,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithEnabled,
+}
+
+option KIPNCareers.BlacksmithLicensePrice
+{
+    type = integer,
+    min = 0,
+    max = 1000000,
+    default = 900,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithLicensePrice,
+}
+
+option KIPNCareers.BlacksmithStartingReputation
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 50,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithStartingReputation,
+}
+
+option KIPNCareers.BlacksmithFailureRepLoss
+{
+    type = integer,
+    min = 0,
+    max = 50,
+    default = 4,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithFailureRepLoss,
+}
+
+option KIPNCareers.BlacksmithSuccessRepGain
+{
+    type = integer,
+    min = 0,
+    max = 25,
+    default = 2,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithSuccessRepGain,
+}
+
+option KIPNCareers.BlacksmithMaxActiveClientOrders
+{
+    type = integer,
+    min = 1,
+    max = 20,
+    default = 3,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithMaxActiveClientOrders,
+}
+
+option KIPNCareers.BlacksmithMaxActiveShopOrders
+{
+    type = integer,
+    min = 1,
+    max = 40,
+    default = 6,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithMaxActiveShopOrders,
+}
+
+option KIPNCareers.BlacksmithOrderListingHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 120,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithOrderListingHours,
+}
+
+option KIPNCareers.BlacksmithSystemOrderIntervalHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 6,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithSystemOrderIntervalHours,
+}
+
+option KIPNCareers.BlacksmithMaxSystemOrdersPerShop
+{
+    type = integer,
+    min = 0,
+    max = 20,
+    default = 2,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithMaxSystemOrdersPerShop,
+}
+
+option KIPNCareers.BlacksmithBaseItemPrice
+{
+    type = integer,
+    min = 1,
+    max = 100000,
+    default = 60,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithBaseItemPrice,
+}
+
+option KIPNCareers.BlacksmithQualityPremiumPercent
+{
+    type = integer,
+    min = 0,
+    max = 200,
+    default = 40,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithQualityPremiumPercent,
+}
+
+option KIPNCareers.BlacksmithFastPriceMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 1.6,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithFastPriceMultiplier,
+}
+
+option KIPNCareers.BlacksmithRegularPriceMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 1.0,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithRegularPriceMultiplier,
+}
+
+option KIPNCareers.BlacksmithSlowPriceMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 0.7,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithSlowPriceMultiplier,
+}
+
+option KIPNCareers.BlacksmithFastCompletionHours
+{
+    type = integer,
+    min = 1,
+    max = 240,
+    default = 12,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithFastCompletionHours,
+}
+
+option KIPNCareers.BlacksmithRegularCompletionHours
+{
+    type = integer,
+    min = 1,
+    max = 480,
+    default = 36,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithRegularCompletionHours,
+}
+
+option KIPNCareers.BlacksmithSlowCompletionHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 72,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithSlowCompletionHours,
+}
+
+option KIPNCareers.BlacksmithMaxItemsPerOrder
+{
+    type = integer,
+    min = 1,
+    max = 30,
+    default = 8,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithMaxItemsPerOrder,
+}
+
+option KIPNCareers.BlacksmithPublicFormRefillMinutes
+{
+    type = integer,
+    min = 1,
+    max = 240,
+    default = 10,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithPublicFormRefillMinutes,
+}
+
+option KIPNCareers.BlacksmithContainerInteractionDistance
+{
+    type = integer,
+    min = 1,
+    max = 10,
+    default = 2,
+    page = CareersBlacksmith,
+    translation = KIPNCareers_BlacksmithContainerInteractionDistance,
+}

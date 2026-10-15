@@ -1,0 +1,7 @@
+name=SVSBoobyTraps
+id=SVSBoobyTraps
+author=lilBubby
+description=Server-authoritative traps, counter-trap inspection, and vehicle sabotage for Project Zomboid Build 42.
+poster=poster.png
+versionMin=42.20
+modversion=1.0.0

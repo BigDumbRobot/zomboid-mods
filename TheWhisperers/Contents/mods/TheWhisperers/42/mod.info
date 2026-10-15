@@ -1,0 +1,9 @@
+name=The Whisperers
+id=TheWhisperers
+author=lilBubby
+description=Wear the dead to walk among them. Blood and gore mask you from zombies, if you stay low and quiet. Build 42.
+poster=poster.png
+versionMin=42.20
+modversion=1.1.0
+pack=whisperers_headstake
+tiledef=whisperers_headstake 4127

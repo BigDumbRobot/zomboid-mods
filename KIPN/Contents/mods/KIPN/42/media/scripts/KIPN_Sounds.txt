@@ -1,0 +1,265 @@
+/************************************************************
+ * KIPN Sounds
+ *
+ * Sound effect definitions for the KIPN terminal UI.
+ *
+ * KIPN_NewMessage:
+ *   Played client-side (KIPN_MainMenu.lua) when the player opens
+ *   the KIPN Main Menu and has an unread announcement (Discord
+ *   bridge feed or admin post -- see KIPN_AnnouncementService.lua).
+ *   A UI cue only; it carries no game-world/positional meaning
+ *   (is3D = false).
+ *
+ * KIPN_gotMail:
+ *   Rare easter-egg substitute for KIPN_NewMessage -- same trigger,
+ *   same UI-cue treatment. KIPN_MainMenu.lua:playNewMessageSound()
+ *   swaps it in roughly 1 time in GOT_MAIL_ONE_IN.
+ *
+ * KIPN_Beep:
+ *   Short UI confirmation blip. Played client-side
+ *   (KIPN_PropertyRecords.lua) once the server confirms a
+ *   self-service claim release (RELEASE_CLAIM -> MY_CLAIMS_DATA).
+ *   A UI cue only; no game-world/positional meaning (is3D = false).
+ ************************************************************/
+
+module Base
+{
+    sound KIPN_NewMessage
+    {
+        category = UI,
+        is3D = false,
+
+        clip
+        {
+            file = media/sound/KIPN_NewMessage.ogg,
+            volume = 1.0,
+        }
+    }
+
+    sound KIPN_gotMail
+    {
+        category = UI,
+        is3D = false,
+
+        clip
+        {
+            file = media/sound/KIPN_gotMail.ogg,
+            volume = 1.0,
+        }
+    }
+
+    sound KIPN_Beep
+    {
+        category = UI,
+        is3D = false,
+
+        clip
+        {
+            file = media/sound/KIPN_Beep.ogg,
+            volume = 1.0,
+        }
+    }
+
+    /*
+     * KIPN_DialUp:
+     *   Server-broadcast (KIPN_Server.lua's COMPUTER_SOUND_ON,
+     *   handled client-side in KIPN_Interaction.lua) and played
+     *   from the computer's square the moment the server confirms
+     *   it powered on, so every nearby player hears it -- not just
+     *   whoever flipped the switch. Positional (is3D = true) so it
+     *   is only audible near the computer, like vanilla appliance
+     *   sounds.
+     */
+    sound KIPN_DialUp
+    {
+        category = Ambient,
+        is3D = true,
+
+        clip
+        {
+            file = media/sound/KIPN_DialUp.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 20,
+        }
+    }
+
+    /*
+     * KIPN_computerOff:
+     *   Server-broadcast (KIPN_Server.lua's COMPUTER_SOUND_OFF,
+     *   handled client-side in KIPN_Interaction.lua) and played
+     *   from the computer's square the moment the server confirms
+     *   it powered off -- whether from an explicit "Power Off
+     *   Computer" or an automatic loss of electricity -- so every
+     *   nearby player hears it. One-shot, positional, same shape as
+     *   KIPN_DialUp.
+     */
+    sound KIPN_computerOff
+    {
+        category = Ambient,
+        is3D = true,
+
+        clip
+        {
+            file = media/sound/KIPN_computerOff.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 20,
+        }
+    }
+
+    /*
+     * KIPN_computerOn1 / KIPN_computerOn2 / KIPN_computerOnDamage2:
+     *   One is picked per listener (KIPN_Interaction.lua) and looped
+     *   from the computer's square for as long as the server reports
+     *   it BOOTING/ON -- see KIPN_Server.lua's COMPUTER_SOUND_ON/OFF/
+     *   SYNC broadcasts, which drive this for every nearby player
+     *   independently of who actually powered the computer on, and
+     *   keep it playing across logins/reconnects for the life of the
+     *   server. loop = true keeps it playing continuously rather than
+     *   firing once.
+     *
+     *   KIPN_computerOnDamage2 is the degraded "struggling hardware"
+     *   variant: the client swaps to it whenever the computer's
+     *   server-reported Hardware Condition drops below 50% (carried in
+     *   the COMPUTER_SOUND_ON / COMPUTER_SOUND_SYNC payloads), and back
+     *   to the clean On1/On2 loop if it is repaired above 50%.
+     */
+    sound KIPN_computerOn1
+    {
+        category = Ambient,
+        is3D = true,
+        loop = true,
+
+        clip
+        {
+            file = media/sound/KIPN_computerOn1.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 20,
+        }
+    }
+
+    sound KIPN_computerOn2
+    {
+        category = Ambient,
+        is3D = true,
+        loop = true,
+
+        clip
+        {
+            file = media/sound/KIPN_computerOn2.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 20,
+        }
+    }
+
+    sound KIPN_computerOnDamage2
+    {
+        category = Ambient,
+        is3D = true,
+        loop = true,
+
+        clip
+        {
+            file = media/sound/KIPN_computerOnDamage2.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 20,
+        }
+    }
+
+    /*
+     * KIPN_ClaimStart / KIPN_ClaimLOOP / KIPN_ClaimEnd:
+     *   The "KIPN is crafting your claim artifact" cue, driven by
+     *   KIPN_ClaimCraftSound.lua for the claim-artifact crafting
+     *   flows (Safehouse Deed, Excavation Permit, Vehicle Title,
+     *   PO Box Key).
+     *
+     *   All three are positional (is3D = true) and play from the
+     *   square the player started the operation on, so anyone at the
+     *   terminal hears the whole sequence:
+     *
+     *     KIPN_ClaimStart  -- one-shot, fires the instant the player
+     *                         starts a claim craft.
+     *     KIPN_ClaimLOOP   -- loop = true, runs underneath for the
+     *                         entire craft wait (the client-side
+     *                         flavor-text wait plus the server round
+     *                         trip), however long that lasts.
+     *     KIPN_ClaimEnd    -- one-shot, plays once when the craft
+     *                         wait finishes and the loop is stopped.
+     *
+     *   The loop is cut with no KIPN_ClaimEnd tail if the craft is
+     *   abandoned, the player dies, the terminal computer is picked
+     *   up, or the square loses power -- see the .lua for the exact
+     *   watchdog rules.
+     */
+    sound KIPN_ClaimStart
+    {
+        category = Ambient,
+        is3D = true,
+
+        clip
+        {
+            file = media/sound/KIPN_ClaimStart.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 15,
+        }
+    }
+
+    sound KIPN_ClaimLOOP
+    {
+        category = Ambient,
+        is3D = true,
+        loop = true,
+
+        clip
+        {
+            file = media/sound/KIPN_ClaimLOOP.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 15,
+        }
+    }
+
+    sound KIPN_ClaimEnd
+    {
+        category = Ambient,
+        is3D = true,
+
+        clip
+        {
+            file = media/sound/KIPN_ClaimEnd.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 15,
+        }
+    }
+
+    /*
+     * KIPN_Error:
+     *   One-shot positional failure cue. Played by
+     *   KIPN_ClaimCraftSound.lua in place of the
+     *   KIPN_ClaimEnd tail when a claim-issuance request is declined
+     *   by the server (an ERROR / unsuccessful PURCHASE_RESULT
+     *   response).
+     *
+     *   NOTE: media/sound/KIPN_Error.ogg must be supplied -- the
+     *   sound definition is inert until the file exists.
+     */
+    sound KIPN_Error
+    {
+        category = Ambient,
+        is3D = true,
+
+        clip
+        {
+            file = media/sound/KIPN_Error.ogg,
+            volume = 1.0,
+            distanceMin = 0,
+            distanceMax = 15,
+        }
+    }
+}

@@ -1,0 +1,84 @@
+/************************************************************
+ * COMPUTER Safehouse and Land Claims -- Artifact Items
+ *
+ * Physical bearer artifacts for the property (safehouse) and
+ * excavation claim systems. NOT authoritative -- the server-side
+ * KIPN Artifact Service decides validity, scope, and consumption.
+ ************************************************************/
+
+module Base
+{
+    /* PROPERTY REGISTRATION -- crafted, presented at a Government desk */
+    item KIPNPropertyRegistration
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Safehouse Registration Form,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNRegistrationForm,
+        Tags = kipn:property_registration,
+    }
+
+    /* PROPERTY CLAIM ARTIFACT -- issued by the server (Safehouse Deed) */
+    item KIPNPropertyClaimArtifact
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Safehouse Deed,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNshDeed,
+        Tags = kipn:property_claim,
+    }
+
+    /* EXCAVATION REGISTRATION -- crafted, presented at a Government desk */
+    item KIPNExcavationRegistration
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Excavation Registration Form,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNRegistrationForm,
+        Tags = kipn:excavation_registration,
+    }
+
+    /* EXCAVATION CLAIM ARTIFACT -- issued by the server (Excavation Permit) */
+    item KIPNExcavationClaimArtifact
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Excavation Permit,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNExcavationPermit,
+        Tags = kipn:excavation_claim,
+    }
+
+    item KIPNExcavationClaimArtifactSmall
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Excavation Permit - Small,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNExcavationPermit,
+        Tags = kipn:excavation_claim,
+    }
+
+    item KIPNExcavationClaimArtifactMedium
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Excavation Permit - Medium,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNExcavationPermit,
+        Tags = kipn:excavation_claim,
+    }
+
+    item KIPNExcavationClaimArtifactLarge
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Excavation Permit - Large,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNExcavationPermit,
+        Tags = kipn:excavation_claim,
+    }
+}

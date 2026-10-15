@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<!-- Two-handed blade or axe chopping straight down at a corpse's neck. -->
+	<m_Name>Whisp_ChopFloor2H</m_Name>
+	<m_AnimName>Bob_AttackFloor2H_Heavy</m_AnimName>
+	<m_BlendTime>0.30</m_BlendTime>
+	<m_SpeedScale>1.00</m_SpeedScale>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+	<m_Conditions>
+		<m_Name>PerformingAction</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_Value>Whisp_ChopFloor2H</m_Value>
+	</m_Conditions>
+	<m_Events>
+		<m_EventName>WhispBlow</m_EventName>
+		<m_TimePc>0.30</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+	<m_SubStateBoneWeights>
+		<boneName>Dummy01</boneName>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Translation_Data</boneName>
+	</m_SubStateBoneWeights>
+</animNode>

@@ -1,0 +1,6 @@
+name=KIP Network Terminal
+poster=poster.png
+description=The KIP Network host / lilBBS. Turns in-world computers into a terminal for a connected suite of server-authoritative service add-ons. Install COMPUTER Safehouse and Land Claims and KIPN: Vehicle Services for property, excavation, and vehicle ownership claims.
+author=lilBubby
+id=KIPN
+versionMin=42.0

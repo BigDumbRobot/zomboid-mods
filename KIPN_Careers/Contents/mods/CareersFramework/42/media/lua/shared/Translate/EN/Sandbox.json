@@ -1,0 +1,23 @@
+{
+  "Sandbox_CareersFramework": "Careers Framework",
+  "Sandbox_KIPNCareers_CurrencyItemType": "Business currency item type",
+  "Sandbox_KIPNCareers_CurrencyItemType_tooltip": "Full item type used for every Careers Framework transaction across all careers (licenses, escrow, payouts). Falls back to Base.Money if the type is missing.",
+  "Sandbox_KIPNCareers_CurrencyItemValue": "Business currency item value",
+  "Sandbox_KIPNCareers_CurrencyItemValue_tooltip": "Monetary value of one currency item. License prices are rounded up to the next multiple of this; a player's own offer must be an exact multiple.",
+  "Sandbox_KIPNCareers_FlyersPerRestart": "Flyers distributed per business after restart",
+  "Sandbox_KIPNCareers_FlyerSpawnChancePercent": "Flyer chance per eligible container",
+  "Sandbox_KIPNCareers_BlockAnySafehouseStorefront": "Block storefronts in every safehouse",
+  "Sandbox_KIPNCareers_ThreatsEnabled": "Business threats (thieves, raiders, difficult customers)",
+  "Sandbox_KIPNCareers_ThreatsEnabled_tooltip": "Server-controlled thieves, raiders, difficult customers and ambushes for every installed career. Incidents only start while the business owner is online and nearby.",
+  "Sandbox_KIPNCareers_ThreatFrequencyPercent": "Threat frequency (%)",
+  "Sandbox_KIPNCareers_ThreatFrequencyPercent_tooltip": "Scales how often incidents start. 100 = normal, 0 = never, 300 = three times as often.",
+  "Sandbox_KIPNCareers_ThreatMinCalmHours": "Minimum calm hours after an incident",
+  "Sandbox_KIPNCareers_ThreatMinCalmHours_tooltip": "After an incident a business stays quiet for a random time between the minimum and maximum (shorter at higher reputation tiers).",
+  "Sandbox_KIPNCareers_ThreatMaxCalmHours": "Maximum calm hours after an incident",
+  "Sandbox_KIPNCareers_ThreatNewBusinessGraceHours": "Grace period for a new business (hours)",
+  "Sandbox_KIPNCareers_ThreatNewBusinessGraceHours_tooltip": "No unscripted incidents for this many in-game hours after a business opens.",
+  "Sandbox_KIPNCareers_ThreatMaxLossPercent": "Maximum share of stock stolen per incident (%)",
+  "Sandbox_KIPNCareers_ThreatMaxLossPercent_tooltip": "Caps how much of a building's stock thieves can take in one incident. Stolen goods drop where a thief dies.",
+  "Sandbox_KIPNCareers_ThreatOwnerRadius": "Owner distance for incidents (tiles)",
+  "Sandbox_KIPNCareers_ThreatOwnerRadius_tooltip": "Incidents at a business only start while its owner is within this many tiles of it."
+}

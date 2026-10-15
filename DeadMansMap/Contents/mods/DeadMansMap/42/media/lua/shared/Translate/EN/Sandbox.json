@@ -1,0 +1,5 @@
+{
+    "Sandbox_DeadMansMap": "Dead Man's Map",
+    "Sandbox_DeadMansMap_DebugLogging": "Enable verbose console logging",
+    "Sandbox_DeadMansMap_DebugLogging_tooltip": "Prints DEBUG-level function traces to the game console. Every death transaction still produces a compiled Meta Time Run Log regardless of this setting. Enable only while troubleshooting."
+}

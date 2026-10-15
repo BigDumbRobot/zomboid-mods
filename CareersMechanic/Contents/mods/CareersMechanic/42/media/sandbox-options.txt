@@ -1,0 +1,209 @@
+VERSION = 1,
+
+option KIPNCareers.MechanicEnabled
+{
+    type = boolean,
+    default = true,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicEnabled,
+}
+
+option KIPNCareers.MechanicLicensePrice
+{
+    type = integer,
+    min = 0,
+    max = 1000000,
+    default = 750,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicLicensePrice,
+}
+
+option KIPNCareers.MechanicStartingReputation
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 50,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicStartingReputation,
+}
+
+option KIPNCareers.MechanicFailureRepLoss
+{
+    type = integer,
+    min = 0,
+    max = 50,
+    default = 4,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicFailureRepLoss,
+}
+
+option KIPNCareers.MechanicSuccessRepGain
+{
+    type = integer,
+    min = 0,
+    max = 25,
+    default = 2,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicSuccessRepGain,
+}
+
+option KIPNCareers.MechanicMaxActiveClientOrders
+{
+    type = integer,
+    min = 1,
+    max = 20,
+    default = 3,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicMaxActiveClientOrders,
+}
+
+option KIPNCareers.MechanicMaxActiveShopOrders
+{
+    type = integer,
+    min = 1,
+    max = 40,
+    default = 6,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicMaxActiveShopOrders,
+}
+
+option KIPNCareers.MechanicOrderListingHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 120,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicOrderListingHours,
+}
+
+option KIPNCareers.MechanicSystemOrderIntervalHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 6,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicSystemOrderIntervalHours,
+}
+
+option KIPNCareers.MechanicMaxSystemOrdersPerShop
+{
+    type = integer,
+    min = 0,
+    max = 20,
+    default = 2,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicMaxSystemOrdersPerShop,
+}
+
+option KIPNCareers.MechanicBasePartPrice
+{
+    type = integer,
+    min = 1,
+    max = 100000,
+    default = 40,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicBasePartPrice,
+}
+
+option KIPNCareers.MechanicLowQualityDiscountPercent
+{
+    type = integer,
+    min = 0,
+    max = 60,
+    default = 20,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicLowQualityDiscountPercent,
+}
+
+option KIPNCareers.MechanicFastPriceMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 1.6,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicFastPriceMultiplier,
+}
+
+option KIPNCareers.MechanicRegularPriceMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 1.0,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicRegularPriceMultiplier,
+}
+
+option KIPNCareers.MechanicSlowPriceMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 0.7,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicSlowPriceMultiplier,
+}
+
+option KIPNCareers.MechanicFastCompletionHours
+{
+    type = integer,
+    min = 1,
+    max = 240,
+    default = 12,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicFastCompletionHours,
+}
+
+option KIPNCareers.MechanicRegularCompletionHours
+{
+    type = integer,
+    min = 1,
+    max = 480,
+    default = 36,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicRegularCompletionHours,
+}
+
+option KIPNCareers.MechanicSlowCompletionHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 72,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicSlowCompletionHours,
+}
+
+option KIPNCareers.MechanicMaxRepairsPerOrder
+{
+    type = integer,
+    min = 1,
+    max = 30,
+    default = 12,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicMaxRepairsPerOrder,
+}
+
+option KIPNCareers.MechanicPublicFormRefillMinutes
+{
+    type = integer,
+    min = 1,
+    max = 240,
+    default = 10,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicPublicFormRefillMinutes,
+}
+
+option KIPNCareers.MechanicContainerInteractionDistance
+{
+    type = integer,
+    min = 1,
+    max = 10,
+    default = 2,
+    page = CareersMechanic,
+    translation = KIPNCareers_MechanicContainerInteractionDistance,
+}

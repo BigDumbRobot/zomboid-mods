@@ -1,0 +1,7 @@
+name=Skylights
+id=SkylightsProbe
+author=lilBubby
+description=Build a skylight into your roof to bring daylight into the room below. It keeps the rain out, but the glass only takes a few footsteps before it breaks.
+poster=poster.png
+versionMin=42.20
+tiledef=skylights 7613

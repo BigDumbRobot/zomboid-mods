@@ -1,0 +1,141 @@
+/************************************************************
+ * Spy vs Spy: Booby Traps — Build 42 items
+ *
+ * Every spawnable item has a modern ItemName.json entry. The
+ * legacy DisplayName field is retained only as a compatibility
+ * fallback for older 42.x builds and third-party item browsers.
+ ************************************************************/
+
+module SVSBoobyTraps
+{
+    item SealedBiologicalSample
+    {
+        DisplayName = Sealed Biological Sample,
+        DisplayCategory = Medical,
+        ItemType = base:normal,
+        Weight = 0.10,
+        Icon = SVSBT_SealedBiologicalSample,
+        Tooltip = Tooltip_SVSBT_SealedBiologicalSample,
+    }
+
+    item ShotgunDoorTrap
+    {
+        DisplayName = Rigged Shotgun Trap,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 4.5,
+        Icon = SVSBT_ShotgunDoorTrap,
+        Tooltip = Tooltip_SVSBT_ShotgunDoorTrap,
+    }
+
+    item TripWireKit
+    {
+        DisplayName = Trip Wire Kit,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 2.0,
+        Icon = SVSBT_Tripwire,
+        Tooltip = Tooltip_SVSBT_TripWireKit,
+    }
+
+    item WaterBucketTrap
+    {
+        DisplayName = Rigged Water Bucket,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 12.0,
+        Icon = SVSBT_WaterBucketTrap,
+        Tooltip = Tooltip_SVSBT_WaterBucketTrap,
+    }
+
+    item NailBoard
+    {
+        DisplayName = Nail Board,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 3.2,
+        Icon = SVSBT_NailBoard,
+        Tooltip = Tooltip_SVSBT_NailBoard,
+    }
+
+    item BearTrap
+    {
+        DisplayName = Bear Trap,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 12.5,
+        Icon = SVSBT_BearTrapOpen,
+        Tooltip = Tooltip_SVSBT_BearTrap,
+    }
+
+    item ExplosiveParcel
+    {
+        DisplayName = Explosive Parcel,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 2.0,
+        Icon = SVSBT_ExplosiveParcel,
+        Tooltip = Tooltip_SVSBT_ExplosiveParcel,
+    }
+
+    item AnthraxAgent
+    {
+        DisplayName = Anthrax,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 0.15,
+        Icon = SVSBT_AnthraxAgent,
+        Tooltip = Tooltip_SVSBT_AnthraxAgent,
+    }
+
+    item IgnitionCharge
+    {
+        DisplayName = Ignition Charge,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 2.2,
+        Icon = SVSBT_IgnitionCharge,
+        Tooltip = Tooltip_SVSBT_IgnitionCharge,
+    }
+
+    item DriverSeatDyeTrap
+    {
+        DisplayName = Rectal Reorganizer,
+        DisplayCategory = Trapping,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = SVSBT_DriverSeatDyeTrap,
+        Tooltip = Tooltip_SVSBT_DriverSeatDyeTrap,
+    }
+
+    item VehicleTamperAlarm
+    {
+        DisplayName = Vehicle Tamper Alarm,
+        DisplayCategory = Electronics,
+        ItemType = base:normal,
+        Weight = 1.1,
+        Icon = SVSBT_VehicleTamperAlarm,
+        Tooltip = Tooltip_SVSBT_VehicleTamperAlarm,
+    }
+
+    item RemoteImmobilizer
+    {
+        DisplayName = Remote Immobilizer,
+        DisplayCategory = Electronics,
+        ItemType = base:normal,
+        Weight = 1.2,
+        Icon = SVSBT_RemoteImmobilizer,
+        Tooltip = Tooltip_SVSBT_RemoteImmobilizer,
+    }
+
+    item BoobyTrapController
+    {
+        DisplayName = Covert Device Controller,
+        DisplayCategory = Electronics,
+        ItemType = base:normal,
+        Weight = 0.25,
+        Icon = SVSBT_BoobyTrapController,
+        Tooltip = Tooltip_SVSBT_BoobyTrapController,
+    }
+}
+

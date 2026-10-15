@@ -1,0 +1,32 @@
+/************************************************************
+ * KIPN: Vehicle Services -- Artifact Items
+ *
+ * Physical bearer artifacts for the vehicle registration / title
+ * system. NOT authoritative -- the server-side KIPN Artifact
+ * Service decides validity, scope, and consumption.
+ ************************************************************/
+
+module Base
+{
+    /* VEHICLE REGISTRATION -- crafted, presented at a Dealership desk */
+    item KIPNVehicleRegistration
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Vehicle Registration Form,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNRegistrationForm,
+        Tags = kipn:vehicle_registration,
+    }
+
+    /* VEHICLE CLAIM ARTIFACT -- issued by the server (Vehicle Title) */
+    item KIPNVehicleClaimArtifact
+    {
+        DisplayCategory = KIPN,
+        DisplayName = Vehicle Title,
+        Weight = 0.1,
+        ItemType = base:normal,
+        Icon = KIPNVehicleTitle,
+        Tags = kipn:vehicle_claim,
+    }
+}

@@ -1,0 +1,203 @@
+VERSION = 1,
+
+option KIPNCareers.DrugDealerEnabled
+{
+    type = boolean,
+    default = true,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerEnabled,
+}
+
+option KIPNCareers.DrugDealerRequireNarcoticsMod
+{
+    type = boolean,
+    default = true,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerRequireNarcoticsMod,
+}
+
+option KIPNCareers.DrugDealerLicensePrice
+{
+    type = integer,
+    min = 0,
+    max = 1000000,
+    default = 500,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerLicensePrice,
+}
+
+option KIPNCareers.DrugDealerStartingReputation
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 50,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerStartingReputation,
+}
+
+option KIPNCareers.DrugDealerSystemDeclineRepLoss
+{
+    type = integer,
+    min = 0,
+    max = 25,
+    default = 1,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerSystemDeclineRepLoss,
+}
+
+option KIPNCareers.DrugDealerFailureRepLoss
+{
+    type = integer,
+    min = 0,
+    max = 50,
+    default = 5,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerFailureRepLoss,
+}
+
+option KIPNCareers.DrugDealerSuccessRepGain
+{
+    type = integer,
+    min = 0,
+    max = 25,
+    default = 2,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerSuccessRepGain,
+}
+
+option KIPNCareers.DrugDealerMaxActiveBuyerOrders
+{
+    type = integer,
+    min = 1,
+    max = 20,
+    default = 3,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerMaxActiveBuyerOrders,
+}
+
+option KIPNCareers.DrugDealerMaxActiveDealerOrders
+{
+    type = integer,
+    min = 1,
+    max = 20,
+    default = 3,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerMaxActiveDealerOrders,
+}
+
+option KIPNCareers.DrugDealerPlayerOrderListingHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 72,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerPlayerOrderListingHours,
+}
+
+option KIPNCareers.DrugDealerStandardDeadlineMinHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 24,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerStandardDeadlineMinHours,
+}
+
+option KIPNCareers.DrugDealerStandardDeadlineMaxHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 72,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerStandardDeadlineMaxHours,
+}
+
+option KIPNCareers.DrugDealerUrgentDeadlineMinHours
+{
+    type = integer,
+    min = 1,
+    max = 168,
+    default = 6,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerUrgentDeadlineMinHours,
+}
+
+option KIPNCareers.DrugDealerUrgentDeadlineMaxHours
+{
+    type = integer,
+    min = 1,
+    max = 168,
+    default = 24,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerUrgentDeadlineMaxHours,
+}
+
+option KIPNCareers.DrugDealerSystemOfferIntervalHours
+{
+    type = integer,
+    min = 1,
+    max = 168,
+    default = 12,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerSystemOfferIntervalHours,
+}
+
+option KIPNCareers.DrugDealerMaxSystemOffersPerBusiness
+{
+    type = integer,
+    min = 0,
+    max = 10,
+    default = 2,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerMaxSystemOffersPerBusiness,
+}
+
+option KIPNCareers.DrugDealerPayoutMultiplier
+{
+    type = double,
+    min = 0.1,
+    max = 10.0,
+    default = 1.0,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerPayoutMultiplier,
+}
+
+option KIPNCareers.DrugDealerMailboxInteractionDistance
+{
+    type = integer,
+    min = 1,
+    max = 10,
+    default = 3,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerMailboxInteractionDistance,
+}
+
+option KIPNCareers.DrugDealerRerouteCooldownHours
+{
+    type = integer,
+    min = 0,
+    max = 72,
+    default = 1,
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerRerouteCooldownHours,
+}
+
+option KIPNCareers.DrugDealerAdditionalDrugItemTypes
+{
+    type = string,
+    default = "",
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerAdditionalDrugItemTypes,
+}
+
+option KIPNCareers.DrugDealerDisabledDrugItemTypes
+{
+    type = string,
+    default = "",
+    page = CareersDrugDealer,
+    translation = KIPNCareers_DrugDealerDisabledDrugItemTypes,
+}

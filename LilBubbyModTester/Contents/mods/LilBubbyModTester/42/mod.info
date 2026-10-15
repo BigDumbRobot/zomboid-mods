@@ -1,0 +1,7 @@
+name=lilBubby's Big ol Mod Tester
+id=LilBubbyModTester
+versionMin=42.20
+description=Standalone Mod Showcase and interactive test harnesses for development servers. No other mods are required to load the tester; enable the mods whose features you want to test.
+author=lilBubby
+poster=poster.png
+icon=icon.png

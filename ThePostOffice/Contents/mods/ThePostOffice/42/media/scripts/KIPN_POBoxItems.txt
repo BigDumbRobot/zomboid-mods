@@ -1,0 +1,26 @@
+module Base
+{
+    /********************************************************
+     * PO BOX KEY
+     *
+     * Extracted from KIPN's media/scripts/KIPN_ArtifactItems.txt
+     * when The Post Office was split out of KIPN.
+     *
+     * Issued by the server after a successful PO Box purchase.
+     * The persistent ownership token for a specific PO Box
+     * container -- never crafted, only issued -- carrying the
+     * owned box's id in its own ModData (KIPNPOBoxId).
+     ********************************************************/
+
+    item KIPNPOBoxKey
+    {
+        DisplayCategory = Security,
+        DisplayName = PO Box Key,
+        Weight = 0.05,
+        ItemType = base:key,
+        Icon = Key_Blank,
+        WorldStaticModel = Key_Blank,
+        MetalValue = 5.0,
+        Tags = kipn:pobox_key;base:fitswallet;base:hasmetal,
+    }
+}

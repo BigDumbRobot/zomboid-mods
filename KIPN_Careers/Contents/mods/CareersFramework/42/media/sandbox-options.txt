@@ -1,0 +1,115 @@
+VERSION = 1,
+
+option KIPNCareers.CurrencyItemType
+{
+    type = string,
+    default = "Base.Money",
+    page = CareersFramework,
+    translation = KIPNCareers_CurrencyItemType,
+}
+
+option KIPNCareers.CurrencyItemValue
+{
+    type = integer,
+    min = 1,
+    max = 100000,
+    default = 1,
+    page = CareersFramework,
+    translation = KIPNCareers_CurrencyItemValue,
+}
+
+option KIPNCareers.FlyersPerRestart
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 4,
+    page = CareersFramework,
+    translation = KIPNCareers_FlyersPerRestart,
+}
+
+option KIPNCareers.FlyerSpawnChancePercent
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 12,
+    page = CareersFramework,
+    translation = KIPNCareers_FlyerSpawnChancePercent,
+}
+
+option KIPNCareers.BlockAnySafehouseStorefront
+{
+    type = boolean,
+    default = false,
+    page = CareersFramework,
+    translation = KIPNCareers_BlockAnySafehouseStorefront,
+}
+
+option KIPNCareers.ThreatsEnabled
+{
+    type = boolean,
+    default = true,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatsEnabled,
+}
+
+option KIPNCareers.ThreatFrequencyPercent
+{
+    type = integer,
+    min = 0,
+    max = 300,
+    default = 100,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatFrequencyPercent,
+}
+
+option KIPNCareers.ThreatMinCalmHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 18,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatMinCalmHours,
+}
+
+option KIPNCareers.ThreatMaxCalmHours
+{
+    type = integer,
+    min = 1,
+    max = 720,
+    default = 60,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatMaxCalmHours,
+}
+
+option KIPNCareers.ThreatNewBusinessGraceHours
+{
+    type = integer,
+    min = 0,
+    max = 720,
+    default = 24,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatNewBusinessGraceHours,
+}
+
+option KIPNCareers.ThreatMaxLossPercent
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatMaxLossPercent,
+}
+
+option KIPNCareers.ThreatOwnerRadius
+{
+    type = integer,
+    min = 10,
+    max = 300,
+    default = 60,
+    page = CareersFramework,
+    translation = KIPNCareers_ThreatOwnerRadius,
+}

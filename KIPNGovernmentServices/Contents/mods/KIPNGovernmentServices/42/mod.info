@@ -1,0 +1,6 @@
+name=COMPUTER Safehouse and Land Claims
+id=KIPNGovernmentServices
+description=Safehouse (property) and excavation ownership claims for the KIP Network. Adds Government zones, the Government Services BBS desk, Property Records, and the deed/permit crafting chain. Requires KIP Network Terminal.
+author=lilBubby
+require=KIPN
+versionMin=42.0

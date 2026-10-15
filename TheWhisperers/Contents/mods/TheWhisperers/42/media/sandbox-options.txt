@@ -1,0 +1,82 @@
+VERSION = 1,
+
+/* Camouflage */
+option TheWhisperers.Enabled { type = boolean, default = true, page = TheWhisperers, translation = TheWhisperers_Enabled, }
+option TheWhisperers.MinGorePercent { type = integer, default = 25, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_MinGorePercent, }
+option TheWhisperers.FullGorePercent { type = integer, default = 70, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_FullGorePercent, }
+
+/* Noise meter */
+option TheWhisperers.MeterRiseRate { type = double, default = 5.0, min = 0.5, max = 50.0, page = TheWhisperers, translation = TheWhisperers_MeterRiseRate, }
+option TheWhisperers.MeterFallRate { type = double, default = 4.0, min = 0.1, max = 50.0, page = TheWhisperers, translation = TheWhisperers_MeterFallRate, }
+option TheWhisperers.MeterZombieRadius { type = integer, default = 8, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_MeterZombieRadius, }
+option TheWhisperers.MeterFallDelay { type = integer, default = 2, min = 0, max = 60, page = TheWhisperers, translation = TheWhisperers_MeterFallDelay, }
+option TheWhisperers.UprightStillLevel { type = integer, default = 55, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_UprightStillLevel, }
+option TheWhisperers.UprightWalkLevel { type = integer, default = 70, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_UprightWalkLevel, }
+option TheWhisperers.DisguisedStillLevel { type = integer, default = 10, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_DisguisedStillLevel, }
+option TheWhisperers.DisguisedWalkLevel { type = integer, default = 30, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_DisguisedWalkLevel, }
+option TheWhisperers.DisguisedRunLevel { type = integer, default = 35, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_DisguisedRunLevel, }
+option TheWhisperers.DisguisedSprintLevel { type = integer, default = 60, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_DisguisedSprintLevel, }
+option TheWhisperers.RunLevel { type = integer, default = 85, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_RunLevel, }
+option TheWhisperers.SprintLevel { type = integer, default = 100, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_SprintLevel, }
+option TheWhisperers.SneakMoveLevel { type = integer, default = 10, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_SneakMoveLevel, }
+option TheWhisperers.MeleeNoise { type = integer, default = 25, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_MeleeNoise, }
+option TheWhisperers.NoiseMultiplier { type = double, default = 1.0, min = 0.0, max = 10.0, page = TheWhisperers, translation = TheWhisperers_NoiseMultiplier, }
+
+/* Zombie awareness */
+option TheWhisperers.AttractRadiusMin { type = integer, default = 5, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_AttractRadiusMin, }
+option TheWhisperers.AttractRadiusMax { type = integer, default = 18, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_AttractRadiusMax, }
+option TheWhisperers.FullAlertRadius { type = integer, default = 35, min = 1, max = 150, page = TheWhisperers, translation = TheWhisperers_FullAlertRadius, }
+option TheWhisperers.InterestHalfLife { type = double, default = 10.0, min = 0.5, max = 300.0, page = TheWhisperers, translation = TheWhisperers_InterestHalfLife, }
+
+/* Misery */
+option TheWhisperers.UnhappinessPerHour { type = double, default = 30.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_UnhappinessPerHour, }
+option TheWhisperers.UnhappinessCap { type = integer, default = 85, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_UnhappinessCap, }
+option TheWhisperers.StressPerHour { type = double, default = 20.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_StressPerHour, }
+option TheWhisperers.StressCap { type = integer, default = 60, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_StressCap, }
+option TheWhisperers.DiscomfortLevel { type = integer, default = 80, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_DiscomfortLevel, }
+
+/* Guts */
+option TheWhisperers.GutsWeight { type = double, default = 2.5, min = 0.1, max = 20.0, page = TheWhisperers, translation = TheWhisperers_GutsWeight, }
+option TheWhisperers.GutsHalfLifeHours { type = integer, default = 72, min = 1, max = 2000, page = TheWhisperers, translation = TheWhisperers_GutsHalfLifeHours, }
+option TheWhisperers.GutsBaseYield { type = integer, default = 2, min = 1, max = 20, page = TheWhisperers, translation = TheWhisperers_GutsBaseYield, }
+option TheWhisperers.GutsYieldPerLevel { type = double, default = 0.5, min = 0.0, max = 5.0, page = TheWhisperers, translation = TheWhisperers_GutsYieldPerLevel, }
+option TheWhisperers.GutsCoveragePerItem { type = integer, default = 50, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_GutsCoveragePerItem, }
+option TheWhisperers.GutsSmearEfficiency { type = integer, default = 75, min = 1, max = 100, page = TheWhisperers, translation = TheWhisperers_GutsSmearEfficiency, }
+option TheWhisperers.GutsCarryThresholdKg { type = double, default = 5.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_GutsCarryThresholdKg, }
+option TheWhisperers.GutsCarrySicknessPerHour { type = double, default = 10.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_GutsCarrySicknessPerHour, }
+option TheWhisperers.GutsCarryDiscomfort { type = integer, default = 60, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_GutsCarryDiscomfort, }
+option TheWhisperers.CorpseSicknessPerHour { type = double, default = 12.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_CorpseSicknessPerHour, }
+option TheWhisperers.CorpseSicknessCap { type = integer, default = 80, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_CorpseSicknessCap, }
+
+/* Heads and faces */
+option TheWhisperers.HeadBlowsLongBlade { type = integer, default = 6, min = 1, max = 50, page = TheWhisperers, translation = TheWhisperers_HeadBlowsLongBlade, }
+option TheWhisperers.HeadBlowsAxe { type = integer, default = 5, min = 1, max = 50, page = TheWhisperers, translation = TheWhisperers_HeadBlowsAxe, }
+option TheWhisperers.HeadStabsShortBlade { type = integer, default = 24, min = 8, max = 200, page = TheWhisperers, translation = TheWhisperers_HeadStabsShortBlade, }
+option TheWhisperers.ShortBladeEndurancePerStab { type = double, default = 0.02, min = 0.0, max = 0.2, page = TheWhisperers, translation = TheWhisperers_ShortBladeEndurancePerStab, }
+option TheWhisperers.FaceCutBaseTime { type = integer, default = 600, min = 60, max = 5000, page = TheWhisperers, translation = TheWhisperers_FaceCutBaseTime, }
+option TheWhisperers.HeadStakeBreakChance { type = integer, default = 75, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_HeadStakeBreakChance, }
+
+/* Masks and suits */
+option TheWhisperers.MaskStealthMultiplier { type = double, default = 5.0, min = 1.0, max = 50.0, page = TheWhisperers, translation = TheWhisperers_MaskStealthMultiplier, }
+option TheWhisperers.SuitStealthMultiplier { type = double, default = 10.0, min = 1.0, max = 50.0, page = TheWhisperers, translation = TheWhisperers_SuitStealthMultiplier, }
+option TheWhisperers.MaskCover { type = integer, default = 35, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_MaskCover, }
+option TheWhisperers.SuitCover { type = integer, default = 65, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_SuitCover, }
+option TheWhisperers.CoverFallBoost { type = double, default = 50.0, min = 1.0, max = 200.0, page = TheWhisperers, translation = TheWhisperers_CoverFallBoost, }
+option TheWhisperers.CoverNoticeBonus { type = integer, default = 40, min = 0, max = 49, page = TheWhisperers, translation = TheWhisperers_CoverNoticeBonus, }
+option TheWhisperers.MaskVisionBlur { type = integer, default = 100, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_MaskVisionBlur, }
+option TheWhisperers.MaskClearRadius { type = double, default = 3.0, min = 0.0, max = 20.0, page = TheWhisperers, translation = TheWhisperers_MaskClearRadius, }
+option TheWhisperers.ZombieMannerisms { type = boolean, default = true, page = TheWhisperers, translation = TheWhisperers_ZombieMannerisms, }
+option TheWhisperers.WearToggleDamage { type = integer, default = 10, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_WearToggleDamage, }
+option TheWhisperers.WearDamagePerHour { type = double, default = 1.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_WearDamagePerHour, }
+option TheWhisperers.BreakChancePerHour { type = double, default = 3.0, min = 0.0, max = 100.0, page = TheWhisperers, translation = TheWhisperers_BreakChancePerHour, }
+option TheWhisperers.GearDryHalfLifeHours { type = integer, default = 168, min = 1, max = 5000, page = TheWhisperers, translation = TheWhisperers_GearDryHalfLifeHours, }
+option TheWhisperers.GearTreatHours { type = integer, default = 336, min = 1, max = 5000, page = TheWhisperers, translation = TheWhisperers_GearTreatHours, }
+option TheWhisperers.ZombieBrainSickness { type = integer, default = 40, min = 0, max = 100, page = TheWhisperers, translation = TheWhisperers_ZombieBrainSickness, }
+option TheWhisperers.PlayerBrainMinSkill { type = integer, default = 6, min = 1, max = 10, page = TheWhisperers, translation = TheWhisperers_PlayerBrainMinSkill, }
+option TheWhisperers.PlayerBrainLevels { type = integer, default = 1, min = 0, max = 10, page = TheWhisperers, translation = TheWhisperers_PlayerBrainLevels, }
+option TheWhisperers.NailDamage { type = integer, default = 30, min = 0, max = 95, page = TheWhisperers, translation = TheWhisperers_NailDamage, }
+option TheWhisperers.MaskRepairTailoring { type = integer, default = 5, min = 0, max = 10, page = TheWhisperers, translation = TheWhisperers_MaskRepairTailoring, }
+option TheWhisperers.SuitTailoring { type = integer, default = 4, min = 0, max = 10, page = TheWhisperers, translation = TheWhisperers_SuitTailoring, }
+option TheWhisperers.SuitButchering { type = integer, default = 3, min = 0, max = 10, page = TheWhisperers, translation = TheWhisperers_SuitButchering, }
+option TheWhisperers.SuitHitDestroyDamage { type = double, default = 20.0, min = 1.0, max = 200.0, page = TheWhisperers, translation = TheWhisperers_SuitHitDestroyDamage, }
+option TheWhisperers.SuitHitConditionLoss { type = double, default = 2.0, min = 0.0, max = 20.0, page = TheWhisperers, translation = TheWhisperers_SuitHitConditionLoss, }

@@ -1,0 +1,17 @@
+version=1
+id=3806124670
+title=Careers: Mechanic
+description=[h1]Careers: Mechanic[/h1]
+description=A licensed Mechanic career built on the [b]Careers Framework[/b].
+description=
+description=[list]
+description=[*]Buy a license at a Career Services terminal and claim a shop building
+description=[*]Private / Public / For Sale business containers
+description=[*]Self-refilling public work-order forms
+description=[*]Part + quality repair orders with Fast / Regular / Slow pricing
+description=[*]Escrow, reputation, shop-to-customer messaging and dynamic flyers
+description=[/list]
+description=
+description=Requires KIPN and Careers Framework.
+tags=Build 42;Balance;Interface;Items;Multiplayer;Realistic;Vehicles;QoL;WIP
+visibility=unlisted

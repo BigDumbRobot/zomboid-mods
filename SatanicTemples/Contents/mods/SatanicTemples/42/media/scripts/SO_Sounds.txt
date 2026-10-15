@@ -1,0 +1,47 @@
+// Unqualified playSound() names are resolved from Base in Build 42.
+module Base
+{
+	sound STemple_SatanThinks
+	{
+		category = UI,
+		is3D = false,
+		clip
+		{
+			file = media/sound/STemple_SatanThinks.ogg,
+			volume = 1.0,
+		}
+	}
+
+	sound STemple_SacrificeAccepted
+	{
+		category = UI,
+		is3D = false,
+		clip
+		{
+			file = media/sound/STemple_SacrificeAccepted.ogg,
+			volume = 1.0,
+		}
+	}
+
+	sound STemple_SacrificeDenied
+	{
+		category = UI,
+		is3D = false,
+		clip
+		{
+			file = media/sound/STemple_SacrificeDenied.ogg,
+			volume = 1.0,
+		}
+	}
+
+	sound STemple_PlayerCorpse
+	{
+		category = UI,
+		is3D = false,
+		clip
+		{
+			file = media/sound/STemple_PlayerCorpse.ogg,
+			volume = 1.0,
+		}
+	}
+}

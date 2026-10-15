@@ -1,0 +1,27 @@
+# Workshop mod dashboard, served at https://theblb.zapto.org/lilPZmods/ through the Caddy container.
+#   docker compose up -d --build     start or update
+#   docker compose logs -f           watch it
+# Settings (Steam key, sign-in key) live in .env next to this file.
+name: lilpzmods
+services:
+  dash:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      SERVER_TZ: America/Toronto  # the timezone the test server writes its logs in
+    volumes:
+      - ./data:/data              # history, comments and scan results; back this folder up
+      - ..:/workshop:ro           # the mod folders, read only, so new uploads are picked up automatically
+      - /Users/leggeaudio/kipn-docker-dev-server/server-data/Logs:/server/Logs:ro   # the test server's logs, read only
+    ports:
+      - "127.0.0.1:8642:8642"     # this Mac only; everyone else comes in through Caddy over HTTPS
+    networks:
+      default:
+      caddy:
+        aliases: [lilpzmods-dash]
+
+networks:
+  caddy:
+    name: good-n8than_demo        # the network the Caddy container is on
+    external: true

@@ -1,0 +1,528 @@
+/************************************************************
+ * The Whisperers: head stake mannequins, one per vanilla skin.
+ *
+ * A mannequin takes its skin from its script, so each skin a
+ * stake can show needs its own entry. Poses keep the neck over
+ * the pelvis so the stick stands straight. Generated: keep the
+ * list in step with Whisperers_Stake.lua.
+ ************************************************************/
+
+module Base
+{
+    mannequin Whisp_Stake_MaleBody01
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody01,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody02
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody02,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody03
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody03,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody04
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody04,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody05
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody05,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody01a
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody01a,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody02a
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody02a,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody03a
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody03a,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody04a
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody04a,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_MaleBody05a
+    {
+        female = false,
+        model = MaleBody,
+        texture = MaleBody05a,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody01
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody01,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody01_level1
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody01_level1,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody01_level2
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody01_level2,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody01_level3
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody01_level3,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody02
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody02,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody02_level1
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody02_level1,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody02_level2
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody02_level2,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody02_level3
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody02_level3,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody03
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody03,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody03_level1
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody03_level1,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody03_level2
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody03_level2,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody03_level3
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody03_level3,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody04
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody04,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody04_level1
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody04_level1,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody04_level2
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody04_level2,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_M_ZedBody04_level3
+    {
+        female = false,
+        model = MaleBody,
+        texture = M_ZedBody04_level3,
+        animSet = mannequin,
+        animState = male,
+        pose = pose03,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_FemaleBody01
+    {
+        female = true,
+        model = FemaleBody,
+        texture = FemaleBody01,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_FemaleBody02
+    {
+        female = true,
+        model = FemaleBody,
+        texture = FemaleBody02,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_FemaleBody03
+    {
+        female = true,
+        model = FemaleBody,
+        texture = FemaleBody03,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_FemaleBody04
+    {
+        female = true,
+        model = FemaleBody,
+        texture = FemaleBody04,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_FemaleBody05
+    {
+        female = true,
+        model = FemaleBody,
+        texture = FemaleBody05,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody01
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody01,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody01_level1
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody01_level1,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody01_level2
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody01_level2,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody01_level3
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody01_level3,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody02
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody02,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody02_level1
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody02_level1,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody02_level2
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody02_level2,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody02_level3
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody02_level3,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody03
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody03,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody03_level1
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody03_level1,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody03_level2
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody03_level2,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody03_level3
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody03_level3,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody04
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody04,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody04_level1
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody04_level1,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody04_level2
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody04_level2,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+
+    mannequin Whisp_Stake_F_ZedBody04_level3
+    {
+        female = true,
+        model = FemaleBody,
+        texture = F_ZedBody04_level3,
+        animSet = mannequin,
+        animState = female,
+        pose = pose01,
+        outfit = none,
+    }
+}

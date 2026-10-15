@@ -1,0 +1,7 @@
+name=Careers Framework
+id=CareersFramework
+description=A framework for building player-run careers. Provides the shared currency, the Career Services zone type that authorizes license purchases, the shared business-flyer item, and a storefront registry so every career's shops respect each other. Adds no playable career by itself -- install one or more career mods (Careers: Drug Dealer, Careers: Mechanic, Careers: Blacksmith, or your own).
+require=KIPN
+modversion=3.2.0
+versionMin=42.0.0
+author=lilBubby

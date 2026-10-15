@@ -1,0 +1,201 @@
+/************************************************************
+ * Spy vs Spy: Booby Traps — MAD Magazine recipe series
+ *
+ * Most issues teach exactly one NeedToBeLearn craftRecipe; a few teach two
+ * related ones. Reading is a permanent character unlock; the matching
+ * skill, feature, and ingredient requirements still apply afterward.
+ *
+ * Cover-source mapping:
+ *   No. 1 svsBasic.PNG    -> Water Bucket Trap, Trip Wire
+ *   No. 2 svsTumble.PNG   -> Nail Board, Bear Trap
+ *   No. 3 svsGen1.PNG     -> Bear Trap (also taught by No. 2)
+ *   No. 4 svsBoom.PNG     -> Explosive Parcel
+ *   No. 5 svsFinal.PNG    -> Biological Agent
+ *   No. 6 svsExplode.PNG  -> Ignition Charge
+ *   No. 7 svsGen2.PNG     -> Rectal Reorganizer
+ *   No. 8 svsGen3.PNG     -> Vehicle Tamper Alarm
+ *   No. 9 svsGen4.PNG     -> Remote Immobilizer
+ *   No. 10                -> Shotgun Door Trap
+ *
+ * The items share the SVSBoobyTraps module with the recipes so
+ * their bare LearnedRecipes identifiers resolve unambiguously.
+ ************************************************************/
+
+module SVSBoobyTraps
+{
+    item MadMagazine1
+    {
+        DisplayName = MAD Magazine No. 1 - Improvised Door Pranks,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine1,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine1,
+        /* Also teaches the trip wire (semicolon-separated LearnedRecipes is
+           real vanilla syntax, confirmed in literature.txt); the client-side
+           force-learn hook is the authoritative path regardless. */
+        LearnedRecipes = SVSBT_CraftWaterBucketTrap;SVSBT_CraftTripWire,
+    }
+
+    item MadMagazine2
+    {
+        DisplayName = MAD Magazine No. 2 - Boards That Bite,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine2,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine2,
+        /* Also teaches the bear trap -- same entry-level Woodwork/Trapping
+           pairing as Magazine 1's water bucket + trip wire, and gives a
+           second path to the recipe alongside Magazine 3. */
+        LearnedRecipes = SVSBT_CraftNailBoard;SVSBT_ForgeBearTrap,
+    }
+
+    item MadMagazine3
+    {
+        DisplayName = MAD Magazine No. 3 - Spring-Jaw Surprise,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine3,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine3,
+        LearnedRecipes = SVSBT_ForgeBearTrap,
+    }
+
+    item MadMagazine4
+    {
+        DisplayName = MAD Magazine No. 4 - Special Delivery,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine4,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine4,
+        LearnedRecipes = SVSBT_AssembleExplosiveParcel,
+    }
+
+    item MadMagazine5
+    {
+        DisplayName = MAD Magazine No. 5 - Contaminated Correspondence,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine5,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine5,
+        LearnedRecipes = SVSBT_PrepareBiologicalAgent;SVSBT_CultureBiologicalSample,
+    }
+
+    item MadMagazine6
+    {
+        DisplayName = MAD Magazine No. 6 - Starting with a Bang,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine6,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine6,
+        LearnedRecipes = SVSBT_AssembleIgnitionCharge,
+    }
+
+    item MadMagazine7
+    {
+        DisplayName = MAD Magazine No. 7 - The Scarlet Driver,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine7,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine7,
+        LearnedRecipes = SVSBT_AssembleDriverSeatDyeTrap,
+    }
+
+    item MadMagazine8
+    {
+        DisplayName = MAD Magazine No. 8 - Sounding the Alarm,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine8,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine8,
+        LearnedRecipes = SVSBT_AssembleVehicleTamperAlarm,
+    }
+
+    item MadMagazine9
+    {
+        DisplayName = MAD Magazine No. 9 - Remote Roadblocks,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine9,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine9,
+        LearnedRecipes = SVSBT_AssembleRemoteImmobilizer,
+    }
+
+    item MadMagazine10
+    {
+        DisplayName = MAD Magazine No. 10 - Both Barrels,
+        DisplayCategory = RecipeResource,
+        ItemType = base:literature,
+        Weight = 0.3,
+        Icon = SVSBT_MadMagazine10,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineGround,
+        BoredomChange = -18,
+        StressChange = -12,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+        Tooltip = Tooltip_SVSBT_MadMagazine10,
+        LearnedRecipes = SVSBT_RigShotgunTrap,
+    }
+}

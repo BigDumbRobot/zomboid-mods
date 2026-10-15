@@ -1,0 +1,6 @@
+version=1
+id=3795172684
+title=Bonk Zones
+description=Melee-only PVP zones
+tags=Build 42;Balance;Misc;Multiplayer;WIP;Weapons
+visibility=unlisted

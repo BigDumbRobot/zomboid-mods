@@ -1,0 +1,7 @@
+name=COMPUTER Vehicle Claims
+id=KIPNVehicleServices
+description=Vehicle registration and ownership titles for the KIP Network. Adds Car Dealership zones, the Vehicle Services BBS desk, Vehicle Records, and the registration/title crafting chain. Requires KIP Network Terminal.
+author=lilBubby
+require=KIPN
+versionMin=42.0
+version=1

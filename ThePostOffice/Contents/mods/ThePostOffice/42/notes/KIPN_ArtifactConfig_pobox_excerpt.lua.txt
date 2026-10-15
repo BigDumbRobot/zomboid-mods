@@ -1,0 +1,151 @@
+-- PO Box configuration extracted from KIPN's server/config/KIPN_ArtifactConfig.lua
+-- when The Post Office was split out of KIPN. See ../README.md.
+
+    -- PO Box has no KIPN-crafted claim item -- the player presents
+    -- a vanilla "Blank Key" (found/obtained normally in-world, not
+    -- crafted by KIPN) plus the purchase fee. See the PO BOX
+    -- CONFIGURATION section below.
+    POBox =
+        "Base.Key_Blank",
+
+}
+
+------------------------------------------------------------
+-- PO BOX CONFIGURATION
+------------------------------------------------------------
+--
+-- PO Box does not fit the Registration -> authorized computer ->
+-- Claim artifact pattern the other three services use (see the
+-- module header above): there is no registration step, and the
+-- claim item is a vanilla "Blank Key" (Base.Key_Blank) -- not a
+-- KIPN-crafted item, and not a server-tracked artifact
+-- (KIPN_ClaimService.lua's ClaimPOBox() validates it by presence +
+-- item type only, exactly like a mundane crafting material). The
+-- player only needs to be carrying one and pay the purchase fee.
+--
+-- KeyItemType is the persistent OWNERSHIP token issued after a
+-- successful purchase -- never crafted, only issued. It carries
+-- the physical box registry ID in ModData.KIPNPOBoxId and the
+-- human-facing number in ModData.KIPNPOBoxNumber; its real key ID
+-- is bound to the registered world's container lock.
+-- ArtifactService.FindPlayerPOBoxKeyItems() reads this same
+-- KIPN.Server.POBoxConfig.KeyItemType.
+------------------------------------------------------------
+
+KIPN.Server.POBoxConfig =
+    KIPN.Server.POBoxConfig or {}
+
+KIPN.Server.POBoxConfig.ClaimItemType =
+    ArtifactConfig.ClaimItems.POBox
+
+KIPN.Server.POBoxConfig.KeyItemType =
+    "Base.KIPNPOBoxKey"
+
+KIPN.Server.POBoxConfig.Sizes = {
+
+    small = {
+        Label = "Small",
+        Capacity = 10,
+        Price = 250,
+        Sprite = "street_decoration_01_21",
+    },
+
+    medium = {
+        Label = "Medium",
+        Capacity = 25,
+        Price = 500,
+        Sprite = "street_decoration_01_8",
+    },
+
+    large = {
+        Label = "Large",
+        Capacity = 50,
+        Price = 1000,
+        Sprite = "furniture_storage_02_8",
+    },
+}
+
+KIPN.Server.POBoxConfig.KeyCopyPrice = 100
+
+-- ---- ApplyToConfig sandbox override block (from ArtifactConfig.ApplyToConfig) ----
+    --------------------------------------------------------
+    -- PHYSICAL PO BOX SIZE TIERS
+    --------------------------------------------------------
+
+    local poBoxSizes = KIPN.Server.POBoxConfig.Sizes
+
+    if type(poBoxSizes) == "table" then
+
+        local mappings = {
+            small = {
+                capacity = "PoBoxSmallCapacity",
+                price = "PoBoxSmallPrice",
+            },
+            medium = {
+                capacity = "PoBoxMediumCapacity",
+                price = "PoBoxMediumPrice",
+            },
+            large = {
+                capacity = "PoBoxLargeCapacity",
+                price = "PoBoxLargePrice",
+            },
+        }
+
+        for sizeKey, mapping in pairs(mappings) do
+
+            local sizeConfig = poBoxSizes[sizeKey]
+
+            if type(sizeConfig) == "table" then
+
+                local capacity = tonumber(sv[mapping.capacity])
+                local price = tonumber(sv[mapping.price])
+
+                if capacity and capacity > 0 then
+                    sizeConfig.Capacity = math.floor(capacity)
+                end
+
+                if price and price > 0 then
+                    sizeConfig.Price = math.floor(price)
+                end
+            end
+        end
+    end
+
+    local keyCopyPrice = tonumber(sv.PoBoxKeyCopyPrice)
+    if keyCopyPrice and keyCopyPrice > 0 then
+        KIPN.Server.POBoxConfig.KeyCopyPrice =
+            math.floor(keyCopyPrice)
+    end
+
+-- ---- Validation block (from ArtifactConfig.Validate) ----
+    for _, sizeKey in ipairs({ "small", "medium", "large" }) do
+
+        local sizeConfig =
+            KIPN.Server.POBoxConfig.Sizes[sizeKey]
+
+        if type(sizeConfig) ~= "table"
+            or not tonumber(sizeConfig.Capacity)
+            or tonumber(sizeConfig.Capacity) < 1
+            or not tonumber(sizeConfig.Price)
+            or tonumber(sizeConfig.Price) < 1
+            or type(sizeConfig.Sprite) ~= "string"
+            or sizeConfig.Sprite == ""
+        then
+
+            logError(
+                "[KIPN ARTIFACT CONFIG] PO Box size '" ..
+                tostring(sizeKey) .. "' is invalid."
+            )
+
+            valid = false
+        end
+    end
+
+    if not tonumber(KIPN.Server.POBoxConfig.KeyCopyPrice)
+        or tonumber(KIPN.Server.POBoxConfig.KeyCopyPrice) < 1
+    then
+        logError(
+            "[KIPN ARTIFACT CONFIG] PO Box key copy price is invalid."
+        )
+        valid = false
+    end

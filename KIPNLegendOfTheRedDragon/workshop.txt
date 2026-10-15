@@ -1,0 +1,6 @@
+version=1
+id=3795902277
+title=Legend of the Red Dragon
+description=Classic BBS door game Legend of the Red Dragon. Adapted and abridged for the PZ environment. Playable on any powered computer.
+tags=Build 42;Multiplayer;Pop Culture;Silly/Fun
+visibility=unlisted

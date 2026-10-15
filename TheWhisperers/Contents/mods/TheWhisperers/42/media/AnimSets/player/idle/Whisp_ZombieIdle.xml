@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<!-- Standing in a full skin suit and face mask: the zombie idle sway. -->
+	<m_Name>Whisp_ZombieIdle</m_Name>
+	<m_ConditionPriority>20</m_ConditionPriority>
+	<m_AnimName>Zombie_Idle</m_AnimName>
+	<m_BlendTime>0.35</m_BlendTime>
+	<m_SpeedScale>0.23</m_SpeedScale>
+	<m_Conditions>
+		<m_Name>WhispZombieGait</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>true</m_Value>
+	</m_Conditions>
+	<m_Conditions>
+		<m_Name>isTurning90</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>false</m_Value>
+	</m_Conditions>
+	<m_Conditions>
+		<m_Name>isTurningAround</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>false</m_Value>
+	</m_Conditions>
+	<m_SpeedScaleRandomMultiplierMin>0.20</m_SpeedScaleRandomMultiplierMin>
+	<m_SpeedScaleRandomMultiplierMax>1.25</m_SpeedScaleRandomMultiplierMax>
+	<m_randomAdvanceFraction>0.50</m_randomAdvanceFraction>
+</animNode>

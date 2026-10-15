@@ -1,0 +1,346 @@
+/************************************************************
+ * Spy vs Spy: Booby Traps — Build 42 craft recipes
+ *
+ * Each recipe is learned from its matching MAD Magazine issue
+ * (NeedToBeLearn). Skill gates use the native SkillRequired so
+ * the crafting UI can display them; the OnTest hook only applies
+ * the per-trap Sandbox feature toggles and the "full container"
+ * ingredient checks. All recipes share the SVSBoobyTraps tab.
+ ************************************************************/
+
+module SVSBoobyTraps
+{
+    craftRecipe SVSBT_CraftWaterBucketTrap
+    {
+        timedAction = Making,
+        time = 180,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Woodwork:1,
+        xpAward = Woodwork:8,
+        OnTest = SVSBT.Recipes.TestWaterBucket,
+
+        inputs
+        {
+            item 1 [Base.Bucket] mode:destroy flags[AllowFavorite],
+            -fluid 10.0 [Water],
+            item 1 [Base.Rope;Base.Twine] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Nails] flags[ItemCount;AllowFavorite],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.WaterBucketTrap,
+        }
+    }
+
+    craftRecipe SVSBT_RigShotgunTrap
+    {
+        timedAction = Making,
+        time = 200,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Woodwork:3;Aiming:3,
+        xpAward = Woodwork:10;Aiming:6,
+        OnTest = SVSBT.Recipes.TestShotgunDoorTrap,
+
+        inputs
+        {
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight],
+            item 1 [Base.DoubleBarrelShotgun] mode:destroy flags[AllowFavorite],
+            item 2 [Base.ShotgunShells] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Rope] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Plank] mode:destroy flags[AllowFavorite],
+            item 1 [Base.SheetMetal] mode:destroy flags[AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.ShotgunDoorTrap,
+        }
+    }
+
+    /* Taught by the same issue as the water bucket (MAD Magazine No. 1). */
+    craftRecipe SVSBT_CraftTripWire
+    {
+        timedAction = Making,
+        time = 150,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Woodwork:1,
+        xpAward = Woodwork:6,
+        OnTest = SVSBT.Recipes.TestTripWire,
+
+        inputs
+        {
+            item 2 [Base.ElectricWire] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Wire] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Battery] mode:destroy flags[AllowFavorite],
+            item 2 [Base.Stake] mode:destroy flags[AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.TripWireKit,
+        }
+    }
+
+    craftRecipe SVSBT_CraftNailBoard
+    {
+        timedAction = MakingHammer_Surface,
+        time = 260,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Woodwork:4,
+        xpAward = Woodwork:18,
+        OnTest = SVSBT.Recipes.TestNailBoard,
+
+        inputs
+        {
+            item 1 [Base.Plank] mode:destroy flags[AllowFavorite;Prop2],
+            item 8 [Base.Nails] flags[ItemCount;AllowFavorite],
+            item 1 tags[base:hammer] mode:keep flags[MayDegradeLight;Prop1],
+            item 1 tags[base:saw] mode:keep flags[MayDegradeLight],
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.NailBoard,
+        }
+    }
+
+    craftRecipe SVSBT_ForgeBearTrap
+    {
+        timedAction = Welding,
+        time = 900,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Trapping:3;MetalWelding:5,
+        xpAward = MetalWelding:45;Trapping:20,
+        OnTest = SVSBT.Recipes.TestBearTrap,
+        OnCreate = SVSBT.Recipes.OnCreateBearTrap,
+
+        inputs
+        {
+            item 1 [Base.SteelBar;Base.IronBar] mode:destroy flags[AllowFavorite],
+            item 1 [Base.HeavyChain] mode:destroy flags[AllowFavorite],
+            item 3 [Base.Screws] flags[ItemCount;AllowFavorite],
+            item 1 [Base.Plank] mode:destroy flags[AllowFavorite],
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 3 [Base.WeldingRods] flags[ItemCount;AllowFavorite],
+            item 1 [Base.WeldingMask;Base.Glasses_OldWeldingGoggles] mode:keep,
+            item 1 [Base.BlowTorch] mode:keep,
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.BearTrap,
+        }
+    }
+
+    craftRecipe SVSBT_AssembleExplosiveParcel
+    {
+        timedAction = MakingElectrical,
+        time = 650,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3;Mechanics:3;Maintenance:4,
+        xpAward = Electricity:25;Mechanics:12;Maintenance:12,
+        OnTest = SVSBT.Recipes.TestExplosiveParcel,
+
+        inputs
+        {
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 1 [Base.AlarmClock2] mode:destroy flags[AllowFavorite],
+            item 1 [Base.PaperBag] mode:destroy flags[AllowFavorite],
+            item 1 [Base.MetalPipe] mode:destroy flags[AllowFavorite],
+            item 1 [Base.GunPowder] flags[AllowFavorite],
+            item 2 [Base.ElectricWire] flags[ItemCount;AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.ExplosiveParcel,
+        }
+    }
+
+    craftRecipe SVSBT_PrepareBiologicalAgent
+    {
+        timedAction = Making,
+        time = 750,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3;Mechanics:3;Maintenance:4;Doctor:5,
+        xpAward = Doctor:25;Electricity:15;Maintenance:12,
+        OnTest = SVSBT.Recipes.TestBiological,
+
+        inputs
+        {
+            item 1 [SVSBoobyTraps.SealedBiologicalSample] mode:destroy flags[AllowFavorite],
+            item 1 [Base.EmptyJar] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Gloves_Surgical] mode:destroy flags[AllowFavorite],
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.AnthraxAgent,
+        }
+    }
+
+    /* Taught by the same issue as Prepare Anthrax (MAD Magazine No. 5), so a
+     * sample no longer has to be found as loot before anthrax can be made.
+     * Vanilla has no ammonia; household cleaning liquid stands in for it. */
+    craftRecipe SVSBT_CultureBiologicalSample
+    {
+        timedAction = Making,
+        time = 600,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Doctor:5,
+        xpAward = Doctor:20,
+        OnTest = SVSBT.Recipes.TestBiological,
+
+        inputs
+        {
+            item 1 [Base.EmptyJar] mode:destroy flags[AllowFavorite],
+            item 1 [Base.JarLid] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Gloves_Surgical] mode:destroy flags[AllowFavorite],
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 1 [Base.FishGuts] mode:destroy flags[AllowFavorite],
+            -fluid 0.1 [CleaningLiquid],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.SealedBiologicalSample,
+        }
+    }
+
+    craftRecipe SVSBT_AssembleIgnitionCharge
+    {
+        timedAction = MakingElectrical,
+        time = 720,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3;Mechanics:3;Maintenance:4,
+        xpAward = Electricity:30;Mechanics:20;Maintenance:15,
+        OnTest = SVSBT.Recipes.TestVehicleDevice,
+
+        inputs
+        {
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 1 [Base.MetalPipe] mode:destroy flags[AllowFavorite],
+            item 1 [Base.GunPowder] flags[AllowFavorite],
+            item 2 [Base.ElectricWire] flags[ItemCount;AllowFavorite],
+            item 2 [Base.ElectronicsScrap] mode:destroy flags[AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.IgnitionCharge,
+        }
+    }
+
+    craftRecipe SVSBT_AssembleDriverSeatDyeTrap
+    {
+        timedAction = MakingElectrical,
+        time = 600,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3;Mechanics:3;Maintenance:4,
+        xpAward = Electricity:22;Mechanics:15;Maintenance:15,
+        OnTest = SVSBT.Recipes.TestVehicleDevice,
+
+        inputs
+        {
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 1 [Base.Bullets9mm] mode:destroy flags[AllowFavorite],
+            item 1 [Base.DuctTape] mode:destroy flags[AllowFavorite],
+            item 1 [Base.RubberBand] mode:destroy flags[AllowFavorite],
+            item 1 [Base.MetalPipe] mode:destroy flags[AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.DriverSeatDyeTrap,
+        }
+    }
+
+    craftRecipe SVSBT_AssembleVehicleTamperAlarm
+    {
+        timedAction = MakingElectrical,
+        time = 680,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3;Mechanics:3;Maintenance:4,
+        xpAward = Electricity:28;Mechanics:18;Maintenance:15,
+        OnTest = SVSBT.Recipes.TestVehicleDevice,
+
+        inputs
+        {
+            item 1 [Base.AlarmClock2] mode:destroy flags[AllowFavorite],
+            item 1 [Base.MotionSensor] mode:destroy flags[AllowFavorite],
+            item 1 [Base.RadioReceiver] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Battery] mode:destroy flags[AllowFavorite],
+            item 2 [Base.ElectricWire] flags[ItemCount;AllowFavorite],
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.VehicleTamperAlarm,
+        }
+    }
+
+    craftRecipe SVSBT_AssembleRemoteImmobilizer
+    {
+        timedAction = MakingElectrical,
+        time = 800,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = SVSBoobyTraps,
+        AllowBatchCraft = true,
+        NeedToBeLearn = true,
+        SkillRequired = Electricity:3;Mechanics:3;Maintenance:4,
+        xpAward = Electricity:35;Mechanics:25;Maintenance:18,
+        OnTest = SVSBT.Recipes.TestVehicleDevice,
+
+        inputs
+        {
+            item 1 tags[base:screwdriver] mode:keep flags[MayDegradeLight],
+            item 1 [Base.RadioReceiver] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Remote] mode:destroy flags[AllowFavorite],
+            item 1 [Base.Battery] mode:destroy flags[AllowFavorite],
+            item 4 [Base.ElectricWire] flags[ItemCount;AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 SVSBoobyTraps.RemoteImmobilizer,
+        }
+    }
+}

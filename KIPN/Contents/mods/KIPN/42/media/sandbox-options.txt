@@ -1,0 +1,497 @@
+VERSION = 1,
+
+/* ACCOUNT */
+
+option KIPN.AdminAccounts
+{
+    type = string,
+    default = "",
+    page = KIPN,
+    translation = KIPN_AdminAccounts,
+}
+
+option KIPN.AdminSteamIDs
+{
+    type = string,
+    default = "",
+    page = KIPN,
+    translation = KIPN_AdminSteamIDs,
+}
+
+option KIPN.DoNotClaimZoneBufferTiles
+{
+    type = integer,
+    default = 5,
+    min = 0,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_DoNotClaimZoneBufferTiles,
+}
+
+option KIPN.ArtifactsEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_ArtifactsEnabled,
+}
+
+option KIPN.StatZombieKillsVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatZombieKillsVisible,
+}
+
+option KIPN.StatPvpKillsVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatPvpKillsVisible,
+}
+
+option KIPN.StatHoursSurvivedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatHoursSurvivedVisible,
+}
+
+option KIPN.StatDeathsVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatDeathsVisible,
+}
+
+option KIPN.StatRecipesKnownVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatRecipesKnownVisible,
+}
+
+option KIPN.StatBooksReadVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatBooksReadVisible,
+}
+
+option KIPN.StatMagazinesReadVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatMagazinesReadVisible,
+}
+
+option KIPN.StatHighestSkillVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatHighestSkillVisible,
+}
+
+option KIPN.StatTotalSkillLevelsVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatTotalSkillLevelsVisible,
+}
+
+option KIPN.StatBodyWeightVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatBodyWeightVisible,
+}
+
+option KIPN.StatCarryWeightVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatCarryWeightVisible,
+}
+
+option KIPN.StatDistanceTravelledVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatDistanceTravelledVisible,
+}
+
+option KIPN.StatVehicleDistanceVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatVehicleDistanceVisible,
+}
+
+option KIPN.StatCaloriesConsumedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatCaloriesConsumedVisible,
+}
+
+option KIPN.StatHeaviestWeightVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatHeaviestWeightVisible,
+}
+
+option KIPN.StatMostKillsInDayVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatMostKillsInDayVisible,
+}
+
+option KIPN.StatBulletsFiredVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatBulletsFiredVisible,
+}
+
+option KIPN.StatItemsCraftedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatItemsCraftedVisible,
+}
+
+option KIPN.StatWeaponsRepairedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatWeaponsRepairedVisible,
+}
+
+option KIPN.StatWeaponsDestroyedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatWeaponsDestroyedVisible,
+}
+
+option KIPN.StatTreesChoppedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatTreesChoppedVisible,
+}
+
+option KIPN.StatFiresLitVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatFiresLitVisible,
+}
+
+option KIPN.StatForageFindsVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatForageFindsVisible,
+}
+
+option KIPN.StatPlantsHarvestedVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatPlantsHarvestedVisible,
+}
+
+option KIPN.StatFishCaughtVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatFishCaughtVisible,
+}
+
+option KIPN.StatTrapsCaughtVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatTrapsCaughtVisible,
+}
+
+option KIPN.StatThingsBuiltVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatThingsBuiltVisible,
+}
+
+option KIPN.StatFavoriteWeaponVisible
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_StatFavoriteWeaponVisible,
+}
+
+option KIPN.MinBaudRate
+{
+    type = integer,
+    default = 300,
+    min = 110,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_MinBaudRate,
+}
+
+option KIPN.MaxBaudRate
+{
+    type = integer,
+    default = 1000000,
+    min = 110,
+    max = 5000000,
+    page = KIPN,
+    translation = KIPN_MaxBaudRate,
+}
+
+option KIPN.DefaultBaudRate
+{
+    type = integer,
+    default = 9600,
+    min = 110,
+    max = 5000000,
+    page = KIPN,
+    translation = KIPN_DefaultBaudRate,
+}
+
+option KIPN.ReferenceBaudRate
+{
+    type = integer,
+    default = 9600,
+    min = 110,
+    max = 5000000,
+    page = KIPN,
+    translation = KIPN_ReferenceBaudRate,
+}
+
+option KIPN.MinBootDurationMs
+{
+    type = integer,
+    default = 1000,
+    min = 0,
+    max = 60000,
+    page = KIPN,
+    translation = KIPN_MinBootDurationMs,
+}
+
+option KIPN.MaxBootDurationMs
+{
+    type = integer,
+    default = 60000,
+    min = 0,
+    max = 300000,
+    page = KIPN,
+    translation = KIPN_MaxBootDurationMs,
+}
+
+option KIPN.ReferenceBootDurationMs
+{
+    type = integer,
+    default = 8000,
+    min = 0,
+    max = 300000,
+    page = KIPN,
+    translation = KIPN_ReferenceBootDurationMs,
+}
+
+option KIPN.ComputerConditionInitial
+{
+    type = enum,
+    numValues = 3,
+    default = 2,
+    page = KIPN,
+    translation = KIPN_ComputerConditionInitial,
+}
+
+option KIPN.ComputerConditionPowerOffTier1Multiplier
+{
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 200,
+    page = KIPN,
+    translation = KIPN_ComputerConditionPowerOffTier1Multiplier,
+}
+
+option KIPN.ComputerConditionPowerOffTier2Multiplier
+{
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 200,
+    page = KIPN,
+    translation = KIPN_ComputerConditionPowerOffTier2Multiplier,
+}
+
+option KIPN.ComputerConditionPowerOffTier3Multiplier
+{
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 200,
+    page = KIPN,
+    translation = KIPN_ComputerConditionPowerOffTier3Multiplier,
+}
+
+option KIPN.ComputerConditionNaturalDegradationTimeFrame
+{
+    type = enum,
+    numValues = 3,
+    default = 2,
+    page = KIPN,
+    translation = KIPN_ComputerConditionNaturalDegradationTimeFrame,
+}
+
+option KIPN.ComputerConditionNaturalDegradationMultiplier
+{
+    type = integer,
+    default = 20,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_ComputerConditionNaturalDegradationMultiplier,
+}
+
+option KIPN.ComputerConditionUseDegradationMultiplier
+{
+    type = integer,
+    default = 10,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_ComputerConditionUseDegradationMultiplier,
+}
+
+option KIPN.ComputerConditionElectricalLevelDisassembleMultiplier
+{
+    type = integer,
+    default = 10,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_ComputerConditionElectricalLevelDisassembleMultiplier,
+}
+
+option KIPN.ComputerConditionDismantleTime
+{
+    type = integer,
+    default = 200,
+    min = 20,
+    max = 2000,
+    page = KIPN,
+    translation = KIPN_ComputerConditionDismantleTime,
+}
+
+option KIPN.ComputerConditionRepairPercentage
+{
+    type = integer,
+    default = 10,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_ComputerConditionRepairPercentage,
+}
+
+option KIPN.ComputerConditionRepairElectricalXPMultiplier
+{
+    type = integer,
+    default = 100,
+    min = 0,
+    max = 200,
+    page = KIPN,
+    translation = KIPN_ComputerConditionRepairElectricalXPMultiplier,
+}
+
+option KIPN.ComputerConditionRepairTime
+{
+    type = integer,
+    default = 200,
+    min = 20,
+    max = 2000,
+    page = KIPN,
+    translation = KIPN_ComputerConditionRepairTime,
+}
+
+/* MAINTENANCE / DIAGNOSTICS */
+
+option KIPN.MaintenanceFrequency
+{
+    type = enum,
+    numValues = 4,
+    default = 2,
+    page = KIPN,
+    translation = KIPN_MaintenanceFrequency,
+}
+
+option KIPN.LogLevel
+{
+    type = enum,
+    numValues = 4,
+    default = 2,
+    page = KIPN,
+    translation = KIPN_LogLevel,
+}
+
+option KIPN.DiagnosticJsonExportEnabled
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_DiagnosticJsonExportEnabled,
+}
+
+option KIPN.PlayerStatsRetentionDays
+{
+    type = integer,
+    default = 180,
+    min = 0,
+    max = 3650,
+    page = KIPN,
+    translation = KIPN_PlayerStatsRetentionDays,
+}
+
+option KIPN.OrphanClaimGraceDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_OrphanClaimGraceDays,
+}

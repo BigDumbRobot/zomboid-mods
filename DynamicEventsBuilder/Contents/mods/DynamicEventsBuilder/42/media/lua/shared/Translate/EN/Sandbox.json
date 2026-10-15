@@ -1,0 +1,19 @@
+{
+  "Sandbox_DynamicEvents": "Dynamic Events",
+  "Sandbox_DynamicEvents_StudioModerator": "Event Studio: Moderators",
+  "Sandbox_DynamicEvents_StudioModerator_tooltip": "Let KIPN Moderators open the Event Studio from the right-click menu and build, start, announce, cancel and simulate events. Admins always can.",
+  "Sandbox_DynamicEvents_StudioStaff": "Event Studio: Staff",
+  "Sandbox_DynamicEvents_StudioStaff_tooltip": "Let KIPN Staff open the Event Studio from the right-click menu and build, start, announce, cancel and simulate events. Admins always can.",
+  "Sandbox_DynamicEvents_StudioGM": "Event Studio: Game Masters",
+  "Sandbox_DynamicEvents_StudioGM_tooltip": "Let KIPN Game Masters open the Event Studio from the right-click menu and build, start, announce, cancel and simulate events. Admins always can.",
+  "Sandbox_DynamicEvents_StudioObserver": "Event Studio: Observers",
+  "Sandbox_DynamicEvents_StudioObserver_tooltip": "Let KIPN Observers open the Event Studio from the right-click menu and build, start, announce, cancel and simulate events. Admins always can.",
+  "Sandbox_DynamicEvents_SimulationModerator": "Simulations: invite Moderators",
+  "Sandbox_DynamicEvents_SimulationModerator_tooltip": "Moderators online can be invited to join an event simulation. They choose OK to be taken to it or Cancel to stay out. Admins can always be invited.",
+  "Sandbox_DynamicEvents_SimulationStaff": "Simulations: invite Staff",
+  "Sandbox_DynamicEvents_SimulationStaff_tooltip": "Staff online can be invited to join an event simulation. They choose OK to be taken to it or Cancel to stay out. Admins can always be invited.",
+  "Sandbox_DynamicEvents_SimulationGM": "Simulations: invite Game Masters",
+  "Sandbox_DynamicEvents_SimulationGM_tooltip": "Game Masters online can be invited to join an event simulation. They choose OK to be taken to it or Cancel to stay out. Admins can always be invited.",
+  "Sandbox_DynamicEvents_SimulationObserver": "Simulations: invite Observers",
+  "Sandbox_DynamicEvents_SimulationObserver_tooltip": "Observers online can be invited to join an event simulation. They choose OK to be taken to it or Cancel to stay out. Admins can always be invited."
+}

@@ -1,0 +1,7 @@
+name=Bonk Zone
+id=BonkZone
+author=lilBubby
+description=Admin-defined melee-only PvP zones for Project Zomboid Build 42 multiplayer.
+poster=poster.png
+Icon=icon.png
+versionMin=42.20

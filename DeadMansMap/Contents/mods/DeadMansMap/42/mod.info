@@ -1,0 +1,7 @@
+name=Dead Man's Map
+id=DeadMansMap
+description=Every death converts the survivor's personal map into <Player Name>'s Annotated Map and drops it where they died. Their personal map is always wiped so the new character cannot inherit its markings.
+authors=lilBubby
+versionMin=42.15.0
+modversion=1.5.0
+category=features

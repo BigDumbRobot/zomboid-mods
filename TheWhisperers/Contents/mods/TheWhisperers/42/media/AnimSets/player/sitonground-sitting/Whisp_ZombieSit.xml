@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<!-- Sitting on the ground in a full disguise: slumped like a zombie against a wall. Timed actions and idle fidgets stay human. -->
+	<m_Name>Whisp_ZombieSit</m_Name>
+	<m_ConditionPriority>20</m_ConditionPriority>
+	<m_AnimName>Zombie_IdleAgainstWall</m_AnimName>
+	<m_BlendTime>0.30</m_BlendTime>
+	<m_SpeedScale>0.21</m_SpeedScale>
+	<m_Conditions>
+		<m_Name>WhispZombieGait</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>true</m_Value>
+	</m_Conditions>
+	<m_Conditions>
+		<m_Name>hasTimedActions</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>false</m_Value>
+	</m_Conditions>
+	<m_Conditions>
+		<m_Name>ExtPlaying</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>false</m_Value>
+	</m_Conditions>
+	<m_Events>
+		<m_EventName>FlagWhileAlive</m_EventName>
+		<m_Time>Start</m_Time>
+		<m_ParameterValue>hideEquippedHandL</m_ParameterValue>
+	</m_Events>
+	<m_Events>
+		<m_EventName>FlagWhileAlive</m_EventName>
+		<m_Time>Start</m_Time>
+		<m_ParameterValue>hideEquippedHandR</m_ParameterValue>
+	</m_Events>
+	<m_randomAdvanceFraction>0.50</m_randomAdvanceFraction>
+</animNode>

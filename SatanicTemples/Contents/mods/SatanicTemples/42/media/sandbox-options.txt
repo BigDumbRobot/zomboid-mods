@@ -1,0 +1,90 @@
+VERSION = 1,
+
+option SacrificialOffering.AnimalCorpseRecoveryStrength {
+    type = double,
+    min = 0,
+    max = 100,
+    default = 10,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_AnimalCorpseRecoveryStrength,
+}
+
+option SacrificialOffering.RareItemRecoveryStrength {
+    type = double,
+    min = 0,
+    max = 100,
+    default = 50,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_RareItemRecoveryStrength,
+}
+
+option SacrificialOffering.AcceptableItemRecipes {
+    type = string,
+    default = Base.Sledgehammer;Base.Sledgehammer2;Base.SledgehammerForged;Base.Katana;Base.AssaultRifle+3*Base.556Clip,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_AcceptableItemRecipes,
+}
+
+option SacrificialOffering.PlayerCorpsePrizeEnabled {
+    type = boolean,
+    default = false,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_PlayerCorpsePrizeEnabled,
+}
+
+option SacrificialOffering.PlayerCorpsePrizeItems {
+    type = string,
+    default = Base.GoldBar;Base.AssaultRifle,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_PlayerCorpsePrizeItems,
+}
+
+option SacrificialOffering.WrathMinimumDamagePercent {
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 17,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_WrathMinimumDamagePercent,
+}
+
+option SacrificialOffering.WrathMaximumDamagePercent {
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 65,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_WrathMaximumDamagePercent,
+}
+
+option SacrificialOffering.MinimumTempleSize {
+    type = integer,
+    min = 5,
+    max = 100,
+    default = 7,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_MinimumTempleSize,
+}
+
+option SacrificialOffering.MaximumTempleSize {
+    type = integer,
+    min = 7,
+    max = 500,
+    default = 100,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_MaximumTempleSize,
+}
+
+option SacrificialOffering.TraceLogging {
+    type = boolean,
+    default = false,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_TraceLogging,
+}
+
+option SacrificialOffering.AllowAllPlayersToViewTemples {
+    type = boolean,
+    default = false,
+    page = SacrificialOffering,
+    translation = SacrificialOffering_AllowAllPlayersToViewTemples,
+}

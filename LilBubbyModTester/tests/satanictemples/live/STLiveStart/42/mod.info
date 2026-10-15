@@ -1,0 +1,4 @@
+name=Satanic Temples Live Start
+id=STLiveStart
+description=Throwaway: starts a debug world for a live Satanic Temples test. Isolated test folders only.
+versionMin=42.15.0

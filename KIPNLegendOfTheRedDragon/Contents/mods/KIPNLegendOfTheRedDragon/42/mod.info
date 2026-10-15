@@ -1,0 +1,7 @@
+name=Legend of the Red Dragon
+id=KIPNlord
+description=A classic BBS door game for the KIP Network. Adds a "Play LORD" program to the terminal main menu on any computer. Fight through the forest, train with the Master, bank your gold, and one day slay the Red Dragon. Requires KIP Network Terminal.
+author=lilBubby
+visibility=unlisted
+require=KIPN
+versionMin=42.0

@@ -1,0 +1,8 @@
+{
+    "IGUI_DMM_CopyMarkings_Button": "Copy markings to my map",
+    "IGUI_DMM_CopyMarkings_Success": "Copied %1 marking(s) from %2's map",
+    "IGUI_DMM_CopyMarkings_NoneNew": "No new markings to copy",
+    "IGUI_DMM_CopyMarkings_CapReached": "Your map is full; some markings could not be copied",
+    "IGUI_DMM_CopyMarkings_Failed": "Could not read this map's markings",
+    "IGUI_DMM_UnknownSurvivor": "an unknown survivor"
+}

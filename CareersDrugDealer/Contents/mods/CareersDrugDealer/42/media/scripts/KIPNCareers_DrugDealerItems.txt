@@ -1,0 +1,20 @@
+module KIPNCareers
+{
+    item DrugDealerBusinessLicense
+    {
+        DisplayCategory = Literature,
+        ItemType = base:normal,
+        Icon = Paper,
+        Weight = 0.05,
+        CanBeWrite = false,
+    }
+
+    item SealedDrugParcel
+    {
+        DisplayCategory = Container,
+        ItemType = base:normal,
+        Icon = Paperbag,
+        Weight = 0.10,
+        CanBeWrite = false,
+    }
+}

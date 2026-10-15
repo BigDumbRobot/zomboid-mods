@@ -1,0 +1,19 @@
+{
+  "Sandbox_ServerM8": "ServerM8",
+  "Sandbox_ServerM8_DisplayName": "Server display name",
+  "Sandbox_ServerM8_DisplayName_tooltip": "Name shown at the top of the dashboard. Leave empty to use the server's public name.",
+  "Sandbox_ServerM8_Tagline": "Tagline",
+  "Sandbox_ServerM8_Tagline_tooltip": "One short line shown under the server name.",
+  "Sandbox_ServerM8_Welcome": "Welcome text",
+  "Sandbox_ServerM8_Welcome_tooltip": "Shown on the dashboard's Overview tab. Longer text belongs in Zomboid/Lua/ServerM8_news.txt on the server.",
+  "Sandbox_ServerM8_DiscordInvite": "Discord invite",
+  "Sandbox_ServerM8_DiscordInvite_tooltip": "A permanent invite link or code, for example https://discord.gg/abc123. Players open it inside the game through the Steam overlay.",
+  "Sandbox_ServerM8_DiscordServerID": "Discord server ID (optional)",
+  "Sandbox_ServerM8_DiscordServerID_tooltip": "The numeric server ID. Requires 'Enable Server Widget' in your Discord server settings. Adds a live preview showing who is online without logging in.",
+  "Sandbox_ServerM8_Website": "Website (optional)",
+  "Sandbox_ServerM8_Website_tooltip": "A full https:// address. Adds a Website button to the dashboard.",
+  "Sandbox_ServerM8_ShowOnJoin": "Open the dashboard on join",
+  "Sandbox_ServerM8_ShowOnJoin_tooltip": "Show the dashboard once each time a player connects.",
+  "Sandbox_ServerM8_ShowActivity": "Show the activity feed",
+  "Sandbox_ServerM8_ShowActivity_tooltip": "Show recent joins, leaves and deaths on the dashboard."
+}

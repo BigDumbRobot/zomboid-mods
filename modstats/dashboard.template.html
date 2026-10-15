@@ -1,0 +1,624 @@
+<title>Workshop Mod Desk</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Archivo:wght@400;500;600;700&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: header and stat tiles on top, then one tabbed working area; a mod opens in a slide-over sheet.
+   Look: a Knox County survivor's ledger. Charred paper darks, bone ink, typewriter headings,
+   moodle-style status squares and quarantine tape. Single dark look on purpose. */
+:root {
+  color-scheme: dark;
+  --ink: #e8e0cb; --muted: #9d947d; --line: #3b3528; --bg: #100f0c; --card: #1b1914; --raise: #27231b;
+  --b1: #8db554; --b2: #86a7a3; --b3: #c9573c; --b4: #dba63a; --bad: #e4604b; --bad-bg: #2d1612; --warn-bg: #2c2510; --good-bg: #1c2613;
+  --on-tone: #14130f;
+  --head: "Special Elite", "Courier New", monospace; --body: Archivo, system-ui, sans-serif; --mono: "Share Tech Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg) radial-gradient(ellipse 120% 60% at 50% 0, #1d1a13 0, var(--bg) 70%) fixed; color: var(--ink); font: 15px/1.45 var(--body); }
+h1, h2, h3, .stat strong, .tabs button, .big { font-family: var(--head); }
+h1 { font-size: 1.55rem; letter-spacing: .08em; margin: 0; text-transform: uppercase; color: var(--bad); font-weight: 400; }
+h2, h3, .big, .stat strong, .tabs button { font-weight: 400; }
+h1 span { letter-spacing: 0; color: var(--muted); font-size: 1rem; margin-left: 8px; text-transform: none; font-family: var(--body); }
+button { font: inherit; cursor: pointer; color: var(--ink); background: none; border: 1px solid var(--line); border-radius: 2px; padding: 7px 12px; }
+button:focus-visible, a:focus-visible, select:focus-visible, tr:focus-visible { outline: 2px solid var(--b2); outline-offset: 2px; }
+a { color: var(--b2); text-decoration: none; } a:hover { text-decoration: underline; }
+select { font: inherit; color: var(--ink); background: var(--raise); border: 1px solid var(--line); border-radius: 2px; padding: 6px 10px; max-width: 100%; }
+.muted { color: var(--muted); } .bad { color: var(--bad); } .good { color: var(--b1); }
+.num { font-variant-numeric: tabular-nums; font-family: var(--mono); }
+.link { border: 0; padding: 0; color: var(--ink); font-weight: 700; text-align: left; } .link:hover { color: var(--b1); }
+
+.dash { max-width: 1280px; margin: 0 auto; padding-inline: 20px; padding-block: 0 60px; }
+.dash > header { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 12px; flex-wrap: wrap; gap: 10px; }
+.right { display: flex; align-items: center; gap: 14px; font-size: .9rem; flex-wrap: wrap; }
+.live { color: var(--muted); } .live i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--muted); margin-right: 5px; }
+.live.on i { background: var(--b1); animation: pulse 2s infinite; }
+.live i { border-radius: 0 !important; }
+@keyframes pulse { 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .live.on i { animation: none; } }
+/* Knox exclusion zone tape */
+.stripe { height: 7px; background: repeating-linear-gradient(-45deg, var(--b4) 0 12px, #17150f 12px 24px); opacity: .85; }
+
+.alerts { margin-top: 14px; border: 1px solid var(--b4); background: var(--warn-bg); padding: 10px 14px; }
+.alerts header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 4px; }
+.alerts h2 { font-size: 1rem; margin: 0; color: var(--b4); } .alerts .line:first-of-type { border-top: 0; }
+.tag.alert { background: var(--b4); color: var(--on-tone); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 18px 0; }
+/* each tile carries a moodle: the small square status icon from the game HUD */
+.stat { position: relative; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 2px; padding: 14px 40px 14px 16px; min-width: 0; }
+.stat::after { content: ""; position: absolute; top: 12px; right: 12px; width: 16px; height: 16px; background: var(--tone); border: 2px solid var(--on-tone); outline: 1px solid var(--tone); }
+.stat:hover { background: var(--raise); }
+.stat span { display: block; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; } .stat strong { display: block; font-size: 1.9rem; font-family: var(--mono); margin: 2px 0; } .stat small { color: var(--muted); }
+.stat.b1 { --tone: var(--b1); } .stat.b2 { --tone: var(--b2); } .stat.b3 { --tone: var(--b3); } .stat.b4 { --tone: var(--b4); }
+.stat.alert { --tone: var(--bad); background: var(--bad-bg); border-color: var(--bad); } .stat.alert strong { color: var(--bad); }
+
+.tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 14px; overflow-x: auto; }
+.tabs button { border: 0; border-bottom: 3px solid transparent; border-radius: 0; padding: 10px 16px; color: var(--muted); white-space: nowrap; text-transform: uppercase; letter-spacing: .06em; font-size: .95rem; }
+.tabs button.on { color: var(--ink); border-bottom-color: var(--bad); }
+.tabs button b { font-family: var(--mono); font-weight: 400; color: var(--on-tone); background: var(--bad); padding: 0 6px; margin-left: 6px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 2px; padding: 16px; overflow-x: auto; min-width: 0; }
+.panel + .panel, .cards + .panel, .panel + .cards, .grid2 + .panel { margin-top: 14px; }
+.panel h2 { margin: 0 0 12px; font-size: 1.15rem; } .panel h2 small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .85rem; margin-left: 8px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } .grid2 .panel + .panel { margin-top: 0; }
+@media (max-width: 860px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.bar-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters button { border-radius: 2px; padding: 5px 12px; font-size: .85rem; color: var(--muted); }
+.filters button.on { background: var(--ink); border-color: var(--ink); color: var(--on-tone); font-weight: 700; }
+.filters button.on.warn { background: var(--bad); border-color: var(--bad); color: var(--on-tone); }
+
+.line { display: flex; gap: 12px; align-items: baseline; padding: 10px 6px; border-top: 1px solid var(--line); }
+.line.flag { background: var(--warn-bg); border-left: 4px solid var(--b4); }
+.line .what { flex: 1; min-width: 0; overflow-wrap: anywhere; } .line .what p { margin: 4px 0 0; white-space: pre-wrap; }
+.line time { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+.tag { flex: none; width: 92px; text-align: center; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 3px 0; border-radius: 0; background: var(--raise); color: var(--muted); }
+.tag.subs { background: var(--b1); color: var(--on-tone); } .tag.comment { background: var(--b2); color: var(--on-tone); } .tag.favs { background: var(--b4); color: var(--on-tone); }
+.tag.votes { background: var(--b3); color: var(--on-tone); } .tag.lost { background: var(--bad); color: var(--on-tone); }
+@media (max-width: 560px) { .line { flex-wrap: wrap; } .line .what { flex-basis: 100%; order: 3; } }
+
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; padding: 6px 10px; white-space: nowrap; }
+th button { border: 0; padding: 0; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; } th button.on { color: var(--ink); }
+td { padding: 10px; border-top: 1px solid var(--line); vertical-align: middle; } td small { display: block; color: var(--muted); }
+th.r, td.r { text-align: right; white-space: nowrap; }
+tbody tr.pick { cursor: pointer; } tbody tr.pick:hover { background: var(--raise); }
+.modcell { display: flex; gap: 12px; align-items: center; min-width: 240px; }
+.thumb { flex: none; width: 44px; height: 44px; border-radius: 0; border: 1px solid var(--line); object-fit: cover; background: var(--raise); display: grid; place-content: center; font-family: var(--head); font-weight: 700; color: var(--muted); }
+.status { display: inline-block; font-size: .78rem; font-weight: 700; padding: 2px 8px; border-radius: 0; background: var(--raise); color: var(--muted); white-space: nowrap; text-transform: uppercase; letter-spacing: .05em; }
+.status.public { background: var(--good-bg); color: var(--b1); } .status.warn { background: var(--warn-bg); color: var(--b4); } .status.alert { background: var(--bad-bg); color: var(--bad); }
+.d { font-size: .82rem; margin-left: 6px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--b1); border-radius: 2px; padding: 14px 16px; min-width: 0; }
+.card.alert { border-left-color: var(--bad); background: var(--bad-bg); } .card.warn { border-left-color: var(--b4); } .card.info { border-left-color: var(--b2); }
+.card h3 { margin: 0; font-size: .78rem; color: var(--muted); font-family: var(--body); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; } .big { font-size: 1.6rem; margin: 6px 0 4px; } .card p { margin: 4px 0 0; }
+.card ul { margin: 8px 0 0; padding: 0; list-style: none; } .card li { padding: 5px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; } .card li .num { white-space: nowrap; }
+
+.bar { display: grid; grid-template-columns: minmax(110px, 190px) 1fr 64px minmax(0, 130px); gap: 12px; align-items: center; padding: 6px 0; }
+.bar .track { height: 20px; background: var(--raise); border: 1px solid var(--line); overflow: hidden; } .bar .track i { display: block; height: 100%; min-width: 2px; }
+.bar small { color: var(--muted); } .bar > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+i.b1 { background: var(--b1); } i.b2 { background: var(--b2); } i.b3 { background: var(--b3); } i.b4 { background: var(--b4); }
+@media (max-width: 560px) { .bar { grid-template-columns: minmax(90px, 120px) 1fr 54px; } .bar small { display: none; } }
+.columns { display: flex; align-items: flex-end; gap: 6px; height: 170px; overflow-x: auto; }
+.columns > div { flex: 1; min-width: 34px; max-width: 70px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.columns i { width: 100%; background: var(--b1); min-height: 2px; } .columns i.neg { background: var(--bad); }
+.columns span { font-size: .8rem; order: -1; } .columns small { color: var(--muted); font-size: .7rem; white-space: nowrap; }
+.chart { position: relative; } .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); padding: 4px 8px; border-radius: 0; font-family: var(--mono); font-size: .8rem; white-space: nowrap; transform: translate(-50%, -135%); }
+.empty { color: var(--muted); padding: 18px 6px; margin: 0; }
+
+.signin { min-height: 100vh; display: grid; place-content: center; gap: 16px; text-align: center; padding: 20px; }
+.signin form { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.signin input { padding: 10px 12px; border-radius: 2px; border: 1px solid var(--line); background: var(--raise); color: var(--ink); font: inherit; width: min(260px, 100%); }
+.signin button { background: var(--bad); color: var(--on-tone); border: 0; font-weight: 700; }
+.sheet { position: fixed; inset: 0; background: rgba(0, 0, 0, .6); display: flex; justify-content: flex-end; z-index: 5; }
+.sheet .inner { width: min(640px, 100%); height: 100%; overflow-y: auto; background: var(--card); padding: 20px; border-left: 1px solid var(--line); }
+.sheet header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; } .sheet h2 { margin: 0; font-size: 1.3rem; }
+.sheet h3 { font-size: .78rem; font-family: var(--body); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 22px 0 6px; border-bottom: 1px dashed var(--line); padding-bottom: 4px; } .sheet p { margin: 4px 0; }
+.hero { display: flex; gap: 14px; align-items: center; margin-top: 14px; } .hero .thumb { width: 84px; height: 84px; font-size: 1.6rem; }
+.kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.kv div { background: var(--raise); border: 1px solid var(--line); padding: 9px 11px; } .kv span { display: block; color: var(--muted); font-size: .78rem; } .kv b { font-family: var(--mono); font-size: 1.2rem; font-weight: 400; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; } .chips span { background: var(--raise); border: 1px solid var(--line); padding: 2px 9px; font-size: .82rem; }
+.mono { font-family: var(--mono); font-size: .85rem; }
+</style>
+
+<div class="dash">
+  <header>
+    <h1 id="brand">Workshop <span>mod desk</span></h1>
+    <div class="right">
+      <span class="live" id="live"><i></i><span id="liveText">Snapshot</span></span>
+      <button id="refresh" hidden>Refresh now</button>
+      <button id="signout" hidden>Sign out</button>
+      <a id="profile" target="_blank" rel="noopener" hidden>Steam Workshop ↗</a>
+    </div>
+  </header>
+  <div class="stripe"></div>
+  <section class="alerts" id="alerts" aria-label="New alerts" hidden></section>
+  <section class="stats" id="stats" aria-label="Totals across all mods"></section>
+  <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+  <main id="view"></main>
+</div>
+<div class="sheet" id="sheet" hidden></div>
+<div class="signin" id="signin" hidden>
+  <h1 id="signinBrand">Workshop <span>mod desk</span></h1>
+  <form id="signinForm"><input id="signinKey" type="password" placeholder="Dashboard key" autocomplete="current-password" aria-label="Dashboard key"><button type="submit">Sign in</button></form>
+  <p class="bad" id="signinWrong" hidden>That key is not right.</p>
+</div>
+
+<script>
+let DATA = /*__DATA__*/null;
+const TABS = [["activity", "Activity"], ["mods", "Mods"], ["comments", "Comments"], ["trends", "Trends"], ["marketing", "Marketing"], ["community", "Community"], ["server", "Test server"], ["servers", "In the wild"]];
+const METRICS = { subs: "Subscribers", life_subs: "Lifetime subs", views: "Views", favs: "Favorites", conv: "Conversion %" };
+const S = { tab: "activity", actFilter: "all", modFilter: "all", modSort: "subs", modAsc: false, comFilter: "all", comMod: "all", metric: "subs", trendMod: "all", open: null, openSession: null, live: false };
+
+/* ---------- helpers ---------- */
+function h(tag, attrs, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v; else if (k.startsWith("on")) n[k] = v; else if (k in n && k !== "list") n[k] = v; else n.setAttribute(k, v);
+  }
+  n.append(...kids.flat(Infinity).filter(k => k != null && k !== false && k !== ""));
+  return n;
+}
+const fmt = n => n == null ? "–" : Math.round(n).toLocaleString("en-US");
+const pc = (v, d = 1) => v == null ? "–" : v.toFixed(d) + "%";
+const ratio = (a, b) => b ? a / b * 100 : null;
+const signed = n => (n > 0 ? "+" : n < 0 ? "−" : "") + fmt(Math.abs(n));
+const shortDay = iso => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+const dateOf = ts => new Date(ts * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+function rel(ts) {
+  const s = Math.max(0, Date.now() / 1000 - ts);
+  if (s < 90) return "just now"; if (s < 3600) return Math.round(s / 60) + " min ago"; if (s < 86400) return Math.round(s / 3600) + " h ago";
+  const d = Math.round(s / 86400); return d < 31 ? d + " d ago" : dateOf(ts);
+}
+const url = { item: id => "https://steamcommunity.com/sharedfiles/filedetails/?id=" + id, comments: id => "https://steamcommunity.com/sharedfiles/filedetails/comments/" + id, changes: id => "https://steamcommunity.com/sharedfiles/filedetails/changelog/" + id };
+const ext = (href, text) => h("a", { href, target: "_blank", rel: "noopener" }, text);
+
+/* ---------- derived data ---------- */
+let ids, hist, last, waiting;
+function derive() {
+  ids = Object.keys(DATA.meta); hist = DATA.history; last = hist[hist.length - 1];
+  // A comment is waiting when it is newer than your latest reply on that mod.
+  waiting = new Set();
+  for (const id of ids) for (const c of DATA.comments[id] || []) { if (c.own) break; waiting.add(c.id); }
+}
+const now = id => last.mods[id] || {};
+const isPublic = id => DATA.meta[id].visibility === "public";
+// Under 20 views the ratio is noise (your own visits count), so it is left blank.
+const conv = s => s && s.views >= 20 ? ratio(s.life_subs, s.views) : null;
+const kept = s => s && s.life_subs >= 5 ? ratio(s.subs, s.life_subs) : null;
+function snapAgo(days) {
+  const cut = new Date(new Date(last.date + "T12:00:00").getTime() - days * 864e5).toISOString().slice(0, 10);
+  let hit = null; for (const s of hist) if (s.date <= cut) hit = s; return hit;
+}
+function delta(id, key, days) { const b = snapAgo(days); return b && b.mods[id] ? (now(id)[key] || 0) - (b.mods[id][key] || 0) : null; }
+const total = (snap, key) => snap ? Object.values(snap.mods).reduce((t, s) => t + (s[key] || 0), 0) : null;
+function totalDelta(key, days) { const b = snapAgo(days); return b ? total(last, key) - total(b, key) : null; }
+function metricAt(snap, id, metric) {
+  if (id === "all") return metric === "conv" ? ratio(total(snap, "life_subs"), total(snap, "views")) : total(snap, metric);
+  const s = snap.mods[id]; if (!s) return null; return metric === "conv" ? ratio(s.life_subs, s.views) : s[metric];
+}
+const series = (id, metric) => hist.map(s => ({ date: s.date, v: metricAt(s, id, metric) })).filter(p => p.v != null);
+const show = (metric, v) => metric === "conv" ? pc(v) : fmt(v);
+const median = arr => { const a = [...arr].sort((x, y) => x - y); return a.length ? (a[(a.length - 1) >> 1] + a[a.length >> 1]) / 2 : null; };
+
+/* ---------- small components ---------- */
+function thumb(id) {
+  const m = DATA.meta[id];
+  return m.thumb ? h("img", { class: "thumb", src: m.thumb, alt: "" }) : h("span", { class: "thumb" }, m.title.slice(0, 2).toUpperCase());
+}
+const modLink = id => h("button", { class: "link", onclick: e => { e.stopPropagation(); openSheet(id); } }, DATA.meta[id].title);
+function deltaChip(d) { return d ? h("span", { class: "d " + (d > 0 ? "good" : "bad") }, signed(d)) : null; }
+function pills(options, value, pick) {
+  return h("div", { class: "filters" }, options.map(([k, label, warn]) => h("button", { class: (k === value ? "on" : "") + (warn ? " warn" : ""), onclick: () => pick(k) }, label)));
+}
+function modSelect(value, pick, counts) {
+  const sel = h("select", { "aria-label": "Mod", onchange: e => pick(e.target.value) }, h("option", { value: "all" }, "All mods"),
+    [...ids].sort((a, b) => DATA.meta[a].title.localeCompare(DATA.meta[b].title)).map(id => h("option", { value: id }, DATA.meta[id].title + (counts && counts[id] ? ` (${counts[id]})` : ""))));
+  sel.value = value; return sel;
+}
+function barRow(label, value, max, text, note, tone) {
+  return h("div", { class: "bar" }, h("span", {}, label), h("div", { class: "track" }, h("i", { class: tone || "b1", style: `width:${max ? Math.max(0, value) / max * 100 : 0}%` })), h("b", { class: "num" }, text), h("small", {}, note || ""));
+}
+function columns(points, metric) {
+  if (!points.length) return h("p", { class: "empty" }, "Daily change needs two snapshots. The second one lands tomorrow.");
+  const max = Math.max(1, ...points.map(p => Math.abs(p.v)));
+  return h("div", { class: "columns" }, points.map(p => h("div", { title: `${shortDay(p.date)}: ${signed(p.v)}` },
+    h("span", { class: "num" }, metric === "conv" ? p.v.toFixed(1) : signed(p.v)), h("i", { class: p.v < 0 ? "neg" : "", style: `height:${Math.abs(p.v) / max * 100}%` }), h("small", {}, shortDay(p.date)))));
+}
+const dailyChange = pts => pts.slice(1).map((p, i) => ({ date: p.date, v: p.v - pts[i].v }));
+function lineChart(pts, metric, label) {
+  const box = h("div", { class: "chart" });
+  if (!pts.length) { box.append(h("p", { class: "empty" }, "No data for this mod yet.")); return box; }
+  const W = 640, H = 250, L = 50, R = 18, T = 18, B = 28;
+  const top = Math.max(...pts.map(p => p.v)) * 1.08 || 1, mag = Math.pow(10, Math.floor(Math.log10(top)));
+  const max = [1, 2, 2.5, 5, 10].map(k => k * mag).find(k => k >= top);
+  const x = i => pts.length === 1 ? (L + W - R) / 2 : L + i * (W - L - R) / (pts.length - 1), y = v => T + (1 - v / max) * (H - T - B);
+  let g = "";
+  for (let k = 0; k <= 4; k++) { const v = max * k / 4; g += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${show(metric, v)}</text>`; }
+  const step = Math.max(1, Math.ceil(pts.length / 7));
+  pts.forEach((p, i) => { if (i % step === 0 || i === pts.length - 1) g += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="var(--muted)">${shortDay(p.date)}</text>`; });
+  const path = pts.map((p, i) => `${x(i)},${y(p.v)}`).join(" "), e = pts.length - 1;
+  if (pts.length > 1) g += `<polygon fill="var(--b1)" fill-opacity=".14" points="${x(0)},${y(0)} ${path} ${x(e)},${y(0)}"/><polyline fill="none" stroke="var(--b1)" stroke-width="2" stroke-linejoin="round" points="${path}"/>`;
+  g += `<circle cx="${x(e)}" cy="${y(pts[e].v)}" r="4.5" fill="var(--b1)" stroke="var(--card)" stroke-width="2"/><text x="${x(e)}" y="${y(pts[e].v) - 10}" text-anchor="${pts.length === 1 ? "middle" : "end"}" font-size="12" font-weight="700" fill="var(--ink)">${show(metric, pts[e].v)}</text>`;
+  g += `<line class="cross" y1="${T}" y2="${H - B}" stroke="var(--muted)" visibility="hidden"/><circle class="dot" r="4" fill="var(--b1)" stroke="var(--card)" stroke-width="2" visibility="hidden"/>`;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("role", "img"); svg.setAttribute("aria-label", `${label}: ${pts.length} snapshots, latest ${show(metric, pts[e].v)}`);
+  svg.innerHTML = g;
+  const tip = h("div", { class: "tip", hidden: true }), cross = svg.querySelector(".cross"), dot = svg.querySelector(".dot");
+  svg.onpointermove = ev => {
+    const r = svg.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width * W;
+    let i = 0; pts.forEach((_, k) => { if (Math.abs(x(k) - px) < Math.abs(x(i) - px)) i = k; });
+    cross.setAttribute("x1", x(i)); cross.setAttribute("x2", x(i)); cross.setAttribute("visibility", "visible");
+    dot.setAttribute("cx", x(i)); dot.setAttribute("cy", y(pts[i].v)); dot.setAttribute("visibility", "visible");
+    tip.hidden = false; tip.textContent = `${shortDay(pts[i].date)}: ${show(metric, pts[i].v)}`;
+    tip.style.left = x(i) / W * r.width + "px"; tip.style.top = y(pts[i].v) / H * r.height + "px";
+  };
+  svg.onpointerleave = () => { tip.hidden = true; cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); };
+  box.append(svg, tip);
+  if (pts.length === 1) box.append(h("p", { class: "muted", style: "margin:8px 0 0" }, `Tracking started ${shortDay(pts[0].date)}. There is no earlier history to load, so this line gains a point with each daily snapshot.`));
+  return box;
+}
+
+/* ---------- header and stat tiles ---------- */
+function renderChrome() {
+  const o = DATA.owner || {};
+  $("brand").replaceChildren(o.name || "Workshop", h("span", {}, "mod desk"));
+  if (o.id) { $("profile").hidden = false; $("profile").href = `https://steamcommunity.com/profiles/${o.id}/myworkshopfiles/?appid=108600`; }
+  $("liveText").textContent = (S.live ? "Live · checked Steam " : "Snapshot · ") + rel(DATA.generated);
+  $("live").className = "live" + (S.live ? " on" : ""); $("refresh").hidden = !canWrite(); $("signout").hidden = !(S.live && getKey());
+  const d1 = key => { const d = totalDelta(key, 1), w = totalDelta(key, 7); return d == null ? `${hist.length === 1 ? "tracking started today" : "no change yet"}` : `${signed(d)} today` + (w != null ? ` · ${signed(w)} in 7 d` : ""); };
+  const pub = ids.filter(isPublic).length, c = ratio(total(last, "life_subs"), total(last, "views"));
+  const tiles = [
+    ["Subscribers", fmt(total(last, "subs")), d1("subs"), "b1", "mods"],
+    ["Lifetime subscribers", fmt(total(last, "life_subs")), d1("life_subs"), "b2", "trends"],
+    ["Page views", fmt(total(last, "views")), d1("views"), "b3", "trends"],
+    ["Views that subscribe", pc(c), "lifetime subs per 100 views", "b4", "marketing"],
+    ["Mods", fmt(ids.length), `${pub} public · ${ids.length - pub} not listed`, "b1", "mods"],
+    ["Awaiting your reply", fmt(waiting.size), waiting.size ? "comments newer than your last reply" : "all caught up", waiting.size ? "alert" : "b2", "comments"],
+  ];
+  $("stats").replaceChildren(...tiles.map(([label, value, sub, tone, tab]) => h("button", { class: "stat " + tone, onclick: () => { if (tab === "comments" && waiting.size) S.comFilter = "waiting"; go(tab); } },
+    h("span", {}, label), h("strong", { class: "num" }, value), h("small", {}, sub))));
+  $("tabs").replaceChildren(...TABS.map(([k, label]) => h("button", { class: S.tab === k ? "on" : "", onclick: () => go(k) }, label, k === "comments" && waiting.size ? h("b", {}, waiting.size) : null)));
+}
+
+/* ---------- Alerts ---------- */
+const ALERT_LABEL = { server: "New server", comment: "Comment", visitor: "Visitor", member: "New member" };
+function readMark() { try { return +localStorage.getItem("alertsRead") || 0; } catch (e) { return S.alertsRead || 0; } }
+function alertLine(a) {
+  const jump = a.tab && VIEWS[a.tab] ? h("button", { class: "link", onclick: () => go(a.tab) }, a.title) : a.url ? ext(a.url, a.title) : h("b", {}, a.title);
+  return h("div", { class: "line" }, h("span", { class: "tag alert" }, ALERT_LABEL[a.kind] || "Alert"), h("div", { class: "what" }, jump, h("p", {}, a.text.replace(/\*\*|`/g, ""))),
+    h("time", { title: new Date(a.ts * 1000).toLocaleString() }, rel(a.ts)));
+}
+function renderAlerts() {
+  const fresh = (DATA.alerts || []).filter(a => a.ts > readMark());
+  $("alerts").hidden = !fresh.length;
+  if (!fresh.length) return;
+  $("alerts").replaceChildren(h("header", {}, h("h2", {}, `${fresh.length} new alert${fresh.length === 1 ? "" : "s"}`),
+    h("button", { onclick: () => { S.alertsRead = Math.floor(Date.now() / 1000); try { localStorage.setItem("alertsRead", S.alertsRead); } catch (e) {} renderAlerts(); } }, "Mark as read")), ...fresh.slice(0, 6).map(alertLine),
+    ...(fresh.length > 6 ? [h("p", { class: "muted", style: "margin:6px 0 0" }, `and ${fresh.length - 6} more in the Activity tab`)] : []));
+}
+
+/* ---------- Activity ---------- */
+function describe(e) {
+  const mod = modLink(e.mod);
+  switch (e.kind) {
+    case "subs": return { tag: e.delta > 0 ? "subs" : "lost", label: e.delta > 0 ? "New subs" : "Lost subs", what: [h("b", { class: e.delta > 0 ? "good" : "bad" }, signed(e.delta)), ` subscriber${Math.abs(e.delta) === 1 ? "" : "s"} on `, mod, h("span", { class: "muted" }, ` · now ${fmt(e.value)}`)] };
+    case "favs": return { tag: "favs", label: "Favorite", what: [h("b", {}, signed(e.delta)), ` favorite${Math.abs(e.delta) === 1 ? "" : "s"} on `, mod, h("span", { class: "muted" }, ` · now ${fmt(e.value)}`)] };
+    case "views": return { tag: "", label: "Views", what: [h("b", {}, signed(e.delta)), " page views on ", mod, h("span", { class: "muted" }, ` · now ${fmt(e.value)}`)] };
+    case "votes": return { tag: "votes", label: "Vote", what: [h("b", {}, [e.up ? signed(e.up) + " up" : "", e.down ? signed(e.down) + " down" : ""].filter(Boolean).join(", ")), " on ", mod, h("span", { class: "muted" }, ` · now ${e.value[0]} up / ${e.value[1]} down`)] };
+    case "comment": return { tag: "comment", label: e.own ? "Your reply" : "Comment", what: [h("b", {}, e.author), e.own ? " replied on " : " commented on ", mod, h("p", {}, e.text)] };
+    case "update": return { tag: "", label: "Update", what: ["You pushed an update to ", mod] };
+    case "published": return { tag: "", label: "Published", what: ["You uploaded ", mod] };
+    case "visibility": return { tag: "", label: "Visibility", what: [mod, ` changed from ${e.was} to `, h("b", {}, e.value)] };
+    default: return { tag: "", label: e.kind, what: [mod] };
+  }
+}
+function viewActivity() {
+  const groups = { all: e => e.kind !== "views", comment: e => e.kind === "comment", subs: e => e.kind === "subs", favs: e => e.kind === "favs" || e.kind === "votes", update: e => ["update", "published", "visibility"].includes(e.kind), views: e => e.kind === "views" };
+  groups.visit = e => e.kind === "visit"; groups.alert = e => e.kind === "alert"; groups.discord = e => e.kind === "discord";
+  const all = groups.all; groups.all = e => e.kind !== "alert" && all(e);  // alerts repeat events already in the feed
+  const visits = ((DATA.server || {}).sessions || []).map(s => ({ kind: "visit", ts: s.start, s }));
+  const evs = (DATA.events || []).filter(e => DATA.meta[e.mod]).concat(visits, ((DATA.discord || {}).messages || []).map(m => ({ kind: "discord", ts: m.ts, m })), (DATA.alerts || []).map(a => ({ kind: "alert", ts: a.ts, a }))).filter(groups[S.actFilter]).sort((a, b) => b.ts - a.ts);
+  const panel = h("section", { class: "panel" },
+    h("div", { class: "bar-top" }, pills([["all", "Everything"], ["alert", "Alerts"], ["comment", "Comments"], ["subs", "Subscribers"], ["favs", "Favorites and votes"], ["update", "Your updates"], ["discord", "Discord"], ["visit", "Server visitors"], ["views", "Page views"]], S.actFilter, k => { S.actFilter = k; render(); }),
+      h("span", { class: "muted" }, S.live ? "Checks Steam every 30 minutes" : "Changes are logged each time a snapshot runs")));
+  if (!evs.length) panel.append(h("p", { class: "empty" }, S.actFilter === "all" ? "Nothing yet." : "Nothing of this kind yet. Subscriber, favorite, vote and view changes appear from the second snapshot on."));
+  for (const e of evs.slice(0, 200)) {
+    if (e.kind === "visit") { panel.append(sessionLine(e.s)); continue; }
+    if (e.kind === "alert") { panel.append(alertLine(e.a)); continue; }
+    if (e.kind === "discord") { panel.append(discordLine(e.m)); continue; }
+    const d = describe(e);
+    panel.append(h("div", { class: "line" + (e.kind === "comment" && waiting.has(e.key.slice(2)) ? " flag" : "") }, h("span", { class: "tag " + d.tag }, d.label), h("div", { class: "what" }, d.what), h("time", { title: new Date(e.ts * 1000).toLocaleString() }, rel(e.ts))));
+  }
+  return panel;
+}
+
+/* ---------- Mods ---------- */
+const MOD_COLS = [["title", "Mod"], ["subs", "Subs"], ["week", "7 days"], ["life_subs", "Lifetime"], ["views", "Views"], ["conv", "Convert"], ["kept", "Kept"], ["favs", "Favs"], ["votes", "Votes"], ["comments", "Comments"], ["updated", "Updated"]];
+function modValue(id, key) {
+  const s = now(id);
+  if (key === "title") return DATA.meta[id].title.toLowerCase();
+  if (key === "week") return delta(id, "subs", 7) ?? -1e9;
+  if (key === "conv") return conv(s) ?? -1; if (key === "kept") return kept(s) ?? -1;
+  if (key === "votes") return (s.up || 0) - (s.down || 0); if (key === "updated") return DATA.meta[id].updated;
+  return s[key] ?? 0;
+}
+function viewMods() {
+  const shown = ids.filter(id => S.modFilter === "all" || (S.modFilter === "public") === isPublic(id))
+    .sort((a, b) => { const x = modValue(a, S.modSort), y = modValue(b, S.modSort); return (x < y ? -1 : x > y ? 1 : 0) * (S.modAsc ? 1 : -1); });
+  const head = h("tr", {}, MOD_COLS.map(([k, label], i) => h("th", { class: i ? "r" : "" }, h("button", { class: S.modSort === k ? "on" : "", onclick: () => { S.modAsc = S.modSort === k ? !S.modAsc : k === "title"; S.modSort = k; render(); } }, label + (S.modSort === k ? (S.modAsc ? " ↑" : " ↓") : "")))));
+  const rows = shown.map(id => {
+    const s = now(id), m = DATA.meta[id], wk = delta(id, "subs", 7), day = delta(id, "subs", 1), wait = (DATA.comments[id] || []).filter(c => waiting.has(c.id)).length;
+    const r = (...kids) => h("td", { class: "r num" }, ...kids);
+    return h("tr", { class: "pick", tabIndex: 0, onclick: () => openSheet(id), onkeydown: e => { if (e.key === "Enter") openSheet(id); } },
+      h("td", {}, h("div", { class: "modcell" }, thumb(id), h("div", {}, h("b", {}, m.title), h("small", {}, h("span", { class: "status " + (isPublic(id) ? "public" : "") }, m.visibility), " ", h("span", { class: "mono" }, m.mod_ids.join(", ")))))),
+      r(fmt(s.subs), deltaChip(day)), r(wk == null ? h("span", { class: "muted" }, "–") : h("span", { class: wk > 0 ? "good" : wk < 0 ? "bad" : "muted" }, signed(wk) || "0")),
+      r(fmt(s.life_subs)), r(fmt(s.views)), r(pc(conv(s))), r(pc(kept(s), 0)), r(fmt(s.favs)),
+      r(s.up || s.down ? h("span", { class: s.down > s.up ? "bad" : "" }, `${s.up} ▲ ${s.down} ▼`) : h("span", { class: "muted" }, "–")),
+      r(fmt(s.comments), wait ? h("span", { class: "d bad" }, `${wait} waiting`) : null), r(rel(m.updated)));
+  });
+  return h("section", { class: "panel" },
+    h("div", { class: "bar-top" }, pills([["all", `All ${ids.length}`], ["public", "Public"], ["hidden", "Not listed"]], S.modFilter, k => { S.modFilter = k; render(); }), h("span", { class: "muted" }, "Open a mod for its funnel, history and comments")),
+    h("table", {}, h("thead", {}, head), h("tbody", {}, rows)),
+    h("p", { class: "muted", style: "margin:12px 0 0" }, "Convert is lifetime subscribers per 100 page views, blank under 20 views. Kept is current over lifetime subscribers, blank under 5."));
+}
+
+/* ---------- Comments ---------- */
+function commentLine(c, id) {
+  return h("div", { class: "line" + (waiting.has(c.id) ? " flag" : "") }, h("span", { class: "tag " + (c.own ? "" : "comment") }, c.own ? "You" : waiting.has(c.id) ? "Waiting" : "Comment"),
+    h("div", { class: "what" }, h("b", {}, c.author), " on ", modLink(id), h("p", {}, c.text)), h("div", { style: "text-align:right" }, h("time", { title: new Date(c.ts * 1000).toLocaleString() }, rel(c.ts)), h("div", {}, ext(url.comments(id), c.own ? "Open ↗" : "Reply ↗"))));
+}
+function viewComments() {
+  const all = ids.flatMap(id => (DATA.comments[id] || []).map(c => ({ c, id })));
+  const counts = Object.fromEntries(ids.map(id => [id, (DATA.comments[id] || []).length]));
+  const shown = all.filter(({ c, id }) => (S.comMod === "all" || S.comMod === id) && (S.comFilter === "all" || (S.comFilter === "waiting" ? waiting.has(c.id) : !c.own))).sort((a, b) => b.c.ts - a.c.ts);
+  const panel = h("section", { class: "panel" }, h("div", { class: "bar-top" },
+    pills([["all", `Everything (${all.length})`], ["waiting", `Awaiting reply (${waiting.size})`, waiting.size > 0], ["others", "From players"]], S.comFilter, k => { S.comFilter = k; render(); }),
+    modSelect(S.comMod, v => { S.comMod = v; render(); }, counts)));
+  if (!shown.length) panel.append(h("p", { class: "empty" }, all.length ? "No comments match this filter." : "No comments on any mod yet."));
+  panel.append(...shown.map(({ c, id }) => commentLine(c, id)));
+  return panel;
+}
+
+/* ---------- Trends ---------- */
+function viewTrends() {
+  const name = S.trendMod === "all" ? "all mods" : DATA.meta[S.trendMod].title, pts = series(S.trendMod, S.metric);
+  const pool = ids.filter(id => S.metric !== "conv" || conv(now(id)) != null).map(id => ({ id, v: S.metric === "conv" ? conv(now(id)) : now(id)[S.metric] || 0 })).sort((a, b) => b.v - a.v);
+  const max = Math.max(...pool.map(p => p.v), 0);
+  return h("div", {},
+    h("section", { class: "panel" }, h("div", { class: "bar-top" }, pills(Object.entries(METRICS), S.metric, k => { S.metric = k; render(); }), modSelect(S.trendMod, v => { S.trendMod = v; render(); })),
+      h("h2", {}, METRICS[S.metric], h("small", {}, name)), lineChart(pts, S.metric, `${METRICS[S.metric]} for ${name}`)),
+    h("div", { class: "grid2", style: "margin-top:14px" },
+      h("section", { class: "panel" }, h("h2", {}, "Change per day", h("small", {}, name)), columns(dailyChange(pts).slice(-30), S.metric)),
+      h("section", { class: "panel" }, h("h2", {}, "Mod by mod", h("small", {}, METRICS[S.metric].toLowerCase() + " today")),
+        pool.length ? pool.map(p => barRow(modLink(p.id), p.v, max, show(S.metric, p.v), DATA.meta[p.id].visibility, isPublic(p.id) ? "b1" : "b2")) : h("p", { class: "empty" }, "No mod has enough views yet."))));
+}
+
+/* ---------- Marketing ---------- */
+function viewMarketing() {
+  const pub = ids.filter(isPublic), rated = pub.filter(id => conv(now(id)) != null).map(id => ({ id, v: conv(now(id)) })).sort((a, b) => b.v - a.v);
+  const med = median(rated.map(r => r.v)), cards = [];
+  const list = rows => h("ul", {}, rows.map(([id, text]) => h("li", {}, modLink(id), h("span", { class: "num muted" }, text))));
+
+  if (waiting.size) cards.push(h("div", { class: "card alert" }, h("h3", {}, "Reply queue"), h("div", { class: "big" }, `${waiting.size} waiting`), h("p", {}, "Players who wrote after your last reply. Answered threads are the only social proof a new page has."),
+    list(ids.filter(id => (DATA.comments[id] || []).some(c => waiting.has(c.id))).map(id => [id, rel(DATA.comments[id][0].ts)]))));
+
+  const downs = pub.filter(id => now(id).down > now(id).up);
+  if (downs.length) cards.push(h("div", { class: "card warn" }, h("h3", {}, "More thumbs down than up"), h("div", { class: "big" }, `${downs.length} mod${downs.length === 1 ? "" : "s"}`), h("p", {}, "With this few votes each one moves the rating a lot. Check the comments for what went wrong before promoting these."),
+    list(downs.map(id => [id, `${now(id).up} ▲ ${now(id).down} ▼`]))));
+
+  if (rated.length >= 3) {
+    const leaky = rated.filter(r => r.v < med * 0.6);
+    if (leaky.length) cards.push(h("div", { class: "card warn" }, h("h3", {}, "Pages that get seen but not subscribed"), h("div", { class: "big" }, pc(leaky[leaky.length - 1].v) + " lowest"), h("p", {}, `Your median page turns ${pc(med)} of views into subscribers. These sit well under it, so the thumbnail, first screenshot and opening lines are where to look.`),
+      list(leaky.map(r => [r.id, `${fmt(now(r.id).views)} views · ${pc(r.v)}`]))));
+    cards.push(h("div", { class: "card" }, h("h3", {}, "Best converting page"), h("div", { class: "big" }, pc(rated[0].v)), h("p", {}, [modLink(rated[0].id), ` turns views into subscribers best. Its page is the template for the others.`])));
+  }
+
+  const churn = pub.filter(id => kept(now(id)) != null).map(id => ({ id, v: kept(now(id)) })).sort((a, b) => a.v - b.v);
+  if (churn.length) cards.push(h("div", { class: "card info" }, h("h3", {}, "Subscribers who left"), h("div", { class: "big" }, pc(100 - churn[0].v, 0) + " at worst"), h("p", {}, "Share of everyone who ever subscribed that has since unsubscribed."), list(churn.slice(0, 4).map(c => [c.id, `${pc(100 - c.v, 0)} left`]))));
+
+  const shelf = ids.filter(id => !isPublic(id));
+  if (shelf.length) cards.push(h("div", { class: "card info" }, h("h3", {}, "Not in Workshop search"), h("div", { class: "big" }, `${shelf.length} mods`), h("p", {}, "Unlisted mods only reach people who have the link, so their numbers stay near zero until they go public."), list(shelf.slice(0, 6).map(id => [id, DATA.meta[id].visibility]))));
+
+  const stale = pub.filter(id => Date.now() / 1000 - DATA.meta[id].updated > 30 * 86400);
+  if (stale.length) cards.push(h("div", { class: "card warn" }, h("h3", {}, "No update in 30 days"), h("div", { class: "big" }, `${stale.length} mods`), h("p", {}, "An update puts a mod back in subscribers' feeds and resets the Last Updated date browsers sort by."), list(stale.map(id => [id, rel(DATA.meta[id].updated)]))));
+
+  const thin = pub.filter(id => DATA.meta[id].tags.length <= 2);
+  if (thin.length) cards.push(h("div", { class: "card info" }, h("h3", {}, "Two tags or fewer"), h("div", { class: "big" }, `${thin.length} mods`), h("p", {}, "Tags are the Workshop's browse filters. A mod missing one is invisible to anyone filtering by it."), list(thin.map(id => [id, DATA.meta[id].tags.join(", ") || "no tags"]))));
+
+  const namesakes = ((DATA.scan || {}).hits || []).filter(s => !isOwnServer(s)).flatMap(s => s.mods.filter(likelyNamesake).map(id => [id, s.name]));
+  if (namesakes.length) cards.push(h("div", { class: "card warn" }, h("h3", {}, "Mod ID shared with someone else"), h("div", { class: "big" }, DATA.meta[namesakes[0][0]].mod_ids[0]), h("p", {}, "A server is running a mod with this ID that is almost certainly not yours. Two mods with one ID cannot be loaded together, so rename before publishing."), list(namesakes)));
+
+  const maxViews = Math.max(...pub.map(id => now(id).views || 0), 1);
+  return h("div", {}, h("div", { class: "cards" }, cards.length ? cards : h("p", { class: "empty" }, "Nothing to flag right now.")),
+    h("section", { class: "panel" }, h("h2", {}, "Reach against conversion", h("small", {}, "public mods, bar is page views")),
+      pub.sort((a, b) => now(b).views - now(a).views).map(id => barRow(modLink(id), now(id).views || 0, maxViews, fmt(now(id).views), conv(now(id)) == null ? "too few views" : `${pc(conv(now(id)))} subscribe`, med != null && conv(now(id)) != null && conv(now(id)) < med * 0.6 ? "b3" : "b1")),
+      h("p", { class: "muted", style: "margin:10px 0 0" }, "Red bars convert at under 60% of your median page.")),
+    h("section", { class: "panel" }, h("h2", {}, "Tags in use", h("small", {}, "how many of your public mods carry each tag")), tagBars(pub)));
+}
+function tagBars(pub) {
+  const count = {}; for (const id of pub) for (const t of DATA.meta[id].tags) count[t] = (count[t] || 0) + 1;
+  const rows = Object.entries(count).sort((a, b) => b[1] - a[1]);
+  return rows.length ? rows.map(([t, n]) => barRow(t, n, pub.length, n, `of ${pub.length}`, "b2")) : h("p", { class: "empty" }, "No tags yet.");
+}
+
+/* ---------- Community (Discord) ---------- */
+S.dcFilter = "all"; S.dcChannel = "all";
+function discordLine(m) {
+  const g = (DATA.discord || {}).guild;
+  return h("div", { class: "line" + (m.waiting ? " flag" : "") }, h("span", { class: "tag " + (m.you ? "" : "comment") }, m.you ? "You" : m.waiting ? "Waiting" : "Discord"),
+    h("div", { class: "what" }, h("b", {}, m.author), h("span", { class: "muted" }, ` in #${m.channel}${m.reply ? " · reply" : ""}${m.files ? ` · ${m.files} file${m.files === 1 ? "" : "s"}` : ""}`), h("p", {}, m.text || (m.files ? "(attachment)" : ""))),
+    h("div", { style: "text-align:right" }, h("time", { title: new Date(m.ts * 1000).toLocaleString() }, rel(m.ts)), h("div", {}, ext(`https://discord.com/channels/${g}/${m.ch}/${m.id}`, m.you ? "Open ↗" : "Reply ↗"))));
+}
+function viewCommunity() {
+  const dc = DATA.discord;
+  if (!dc || !dc.available) return h("section", { class: "panel" }, h("h2", {}, "Community"), h("p", { class: "empty" }, "Discord monitoring is switched off. It starts when DISCORD_BOT_TOKEN is set in the dashboard's .env file." + (dc && dc.error ? " (" + dc.error + ")" : "")));
+  const hist = dc.history || [], prev = hist[hist.length - 2], pts = key => hist.map(x => ({ date: x.date, v: x[key] }));
+  const maxC = Math.max(...dc.channels.map(c => c.week), 1), msgs = (dc.messages || []).filter(m => (S.dcChannel === "all" || m.ch === S.dcChannel) && (S.dcFilter === "all" || (S.dcFilter === "waiting" ? m.waiting : !m.you)));
+  const sel = h("select", { "aria-label": "Channel", onchange: e => { S.dcChannel = e.target.value; render(); } }, h("option", { value: "all" }, "All channels"), dc.channels.map(c => h("option", { value: c.id }, "#" + c.name + (c.total ? ` (${c.total})` : ""))));
+  sel.value = S.dcChannel;
+  return h("div", {},
+    h("div", { class: "cards" },
+      h("div", { class: "card" }, h("h3", {}, "Members"), h("div", { class: "big" }, fmt(dc.members)), h("p", {}, prev ? `${signed(dc.members - prev.members) || "No change"} since ${shortDay(prev.date)}.` : `In ${dc.name}. Tracking started today.`)),
+      h("div", { class: "card info" }, h("h3", {}, "Online now"), h("div", { class: "big" }, fmt(dc.online)), h("p", {}, `Checked ${rel(dc.checked)}.`)),
+      h("div", { class: "card info" }, h("h3", {}, "Messages, 7 days"), h("div", { class: "big" }, fmt(dc.week_messages)), h("p", {}, `From ${fmt(dc.week_writers)} ${dc.week_writers === 1 ? "person" : "people"}, you included. Bots are not counted.`)),
+      h("div", { class: "card " + (dc.waiting ? "alert" : "") }, h("h3", {}, "Waiting on you"), h("div", { class: "big" }, fmt(dc.waiting)), h("p", {}, dc.waiting ? "Messages written after your last post in that channel." : "You have the last word everywhere."))),
+    h("div", { class: "grid2", style: "margin-top:14px" },
+      h("section", { class: "panel" }, h("h2", {}, "Members over time"), lineChart(pts("members"), "subs", "Discord members")),
+      h("section", { class: "panel" }, h("h2", {}, "Messages per day"), hist.length > 1 ? columns(hist.slice(-30).map(x => ({ date: x.date, v: x.messages })), "subs") : h("p", { class: "empty" }, "Daily counts start with the second day of tracking."))),
+    h("section", { class: "panel" }, h("h2", {}, "Channels", h("small", {}, "messages in the last 7 days")),
+      dc.channels.length ? dc.channels.map(c => barRow("#" + c.name, c.week, maxC, fmt(c.week), (c.waiting ? `${c.waiting} waiting · ` : "") + (c.last ? "last " + rel(c.last) : "silent"), c.waiting ? "b3" : "b2")) : h("p", { class: "empty" }, "The bot cannot see any channel yet.")),
+    h("section", { class: "panel" }, h("h2", {}, "People", h("small", {}, "most active this week first")),
+      h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, "Member"), h("th", { class: "r" }, "This week"), h("th", { class: "r" }, "All messages"), h("th", { class: "r" }, "Last wrote"), h("th", { class: "r" }, "Joined"))),
+        h("tbody", {}, dc.people.slice(0, 60).map(p => h("tr", {}, h("td", {}, h("b", {}, p.name), p.you ? h("span", { class: "muted" }, " (you)") : null, p.here ? null : h("span", { class: "status", style: "margin-left:8px" }, "Left")),
+          h("td", { class: "r num" }, fmt(p.week)), h("td", { class: "r num" }, fmt(p.messages)), h("td", { class: "r" }, p.last ? rel(p.last) : h("span", { class: "muted" }, "never")), h("td", { class: "r" }, p.joined ? dateOf(p.joined) : "–")))))),
+    h("section", { class: "panel" }, h("div", { class: "bar-top" }, pills([["all", "Everything"], ["waiting", `Waiting on you (${dc.waiting})`, dc.waiting > 0], ["others", "From members"]], S.dcFilter, k => { S.dcFilter = k; render(); }), sel),
+      msgs.length ? msgs.slice(0, 150).map(discordLine) : h("p", { class: "empty" }, (dc.messages || []).length ? "No messages match this filter." : "No messages yet.")));
+}
+
+/* ---------- Test server ---------- */
+function dur(s) { s = Math.max(0, Math.round(s)); if (s < 60) return s + " s"; const m = Math.floor(s / 60); return m < 60 ? `${m} min ${s % 60 ? (s % 60) + " s" : ""}`.trim() : `${Math.floor(m / 60)} h ${m % 60} min`; }
+const clock = s => `+${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const folderId = folder => ids.find(id => DATA.meta[id].folder === folder);
+const areaName = a => { const id = folderId(a.folder); return id ? modLink(id) : (a.folder || a.module); };
+const LABEL_TONE = { "Deep dive": "subs", "Tried tests": "comment", "Looked around": "favs", "Quick look": "", "Left while loading": "lost", "Kicked while joining": "lost" };
+function sessionKey(s) { return s.sid + ":" + s.start; }
+function sessionLine(s) {
+  const tried = s.modules.map(m => { const id = folderId(m.folder); return id ? DATA.meta[id].title : (m.folder || m.module); });
+  const detail = !s.joined ? (s.kick ? `kicked after ${dur(s.secs)}: ${s.kick}` : `disconnected after ${dur(s.secs)}, before reaching the game`)
+    : `in game ${dur(s.in_game_secs)} · active ${s.active_min} min · ${s.tests} test${s.tests === 1 ? "" : "s"}` + (tried.length ? " · " + tried.join(", ") : " · touched no mod");
+  return h("div", { class: "line" }, h("span", { class: "tag " + (LABEL_TONE[s.label] || "") }, s.joined ? "Visitor" : "No entry"),
+    h("div", { class: "what" }, h("button", { class: "link", onclick: () => { S.openSession = sessionKey(s); S.open = null; renderSheet(); } }, s.name), h("span", { class: "muted" }, ` · ${s.label}${s.open ? " · online now" : ""}${s.with_owner ? " · you were on" : ""}`), h("p", {}, detail)),
+    h("time", { title: new Date(s.start * 1000).toLocaleString() }, rel(s.start)));
+}
+function viewTestServer() {
+  const sv = DATA.server;
+  if (!sv || !sv.available) return h("section", { class: "panel" }, h("h2", {}, "Test server"), h("p", { class: "empty" }, "The test server's Logs folder is not connected to this dashboard yet."));
+  const ss = sv.sessions || [], got = ss.filter(s => s.joined), people = sv.visitors || [], areas = sv.tests || [];
+  const med = median(got.map(s => s.in_game_secs)), maxA = Math.max(...areas.map(a => a.actions), 1);
+  const out = h("div", {});
+  if (sv.paused) out.append(h("div", { class: "card alert", style: "margin-bottom:14px" }, h("h3", {}, "Reports paused"), h("div", { class: "big" }, "You are connected"),
+    h("p", {}, `No report is built while you are on the server. This is the last one, from ${rel(sv.generated)}. Reporting resumes within two minutes of you leaving.`)));
+  const feed = (DATA.status || {}).feed;
+  if (feed) out.append(h("p", { class: feed.error ? "bad" : "muted", style: "margin:0 4px 12px" }, feed.error ? "Live Discord feed: " + feed.error + " Posting to the alerts channel meanwhile."
+    : feed.paused ? "Live Discord feed is paused while you are connected." : "Live Discord feed is posting to " + (Object.keys(feed.channels).map(c => "#" + c).join(", ") || "the alerts channel") + "."));
+  out.append(h("div", { class: "cards" },
+    h("div", { class: "card" }, h("h3", {}, "Visitors"), h("div", { class: "big" }, fmt(people.length)), h("p", {}, `${fmt(ss.length)} connection${ss.length === 1 ? "" : "s"} since ${dateOf(sv.since)}. You are never counted.`)),
+    h("div", { class: "card " + (ss.length && !got.length ? "alert" : got.length < ss.length ? "warn" : "") }, h("h3", {}, "Reached the game"), h("div", { class: "big" }, `${got.length} of ${ss.length}`), h("p", {}, ss.length === got.length ? "Every connection made it in." : `${ss.length - got.length} dropped during loading or were kicked before spawning.`)),
+    h("div", { class: "card info" }, h("h3", {}, "Typical time in game"), h("div", { class: "big" }, med == null ? "–" : dur(med)), h("p", {}, got.length ? `Median across ${got.length} session${got.length === 1 ? "" : "s"}; ${fmt(got.reduce((t, s) => t + s.active_min, 0))} active minutes in total.` : "Nobody has spawned yet.")),
+    h("div", { class: "card info" }, h("h3", {}, "Online now"), h("div", { class: "big" }, sv.paused ? "–" : fmt((sv.online || []).length)), h("p", {}, (sv.online || []).length ? sv.online.join(", ") : `Logs checked ${rel(sv.checked || sv.generated)}.`))));
+  out.append(h("section", { class: "panel" }, h("h2", {}, "What visitors tried", h("small", {}, "tests run and mod features used, per mod")),
+    areas.length ? areas.map(a => barRow(areaName(a), a.actions, maxA, fmt(a.actions), `${a.users} visitor${a.users === 1 ? "" : "s"}` + (a.pass || a.fail || a.error ? ` · ${a.pass} pass, ${a.fail + a.error} fail` : ""), a.fail + a.error > a.pass ? "b3" : "b1"))
+      : h("p", { class: "empty" }, got.length ? "Visitors got in but did not run a test or use a mod feature." : "No visitor has got far enough to try anything yet.")));
+  out.append(h("section", { class: "panel" }, h("h2", {}, "Visitors"),
+    people.length ? h("table", {}, h("thead", {}, h("tr", {}, ["Player", "Visits", "Got in", "On server", "In game", "Active", "Tests", "Mods touched", "Furthest", "Last seen"].map((c, i) => h("th", { class: i && i !== 7 && i !== 8 ? "r" : "" }, c)))),
+      h("tbody", {}, people.map(p => h("tr", {}, h("td", {}, h("b", {}, p.name), h("small", { class: "mono" }, p.sid)), h("td", { class: "r num" }, fmt(p.visits)), h("td", { class: "r num" }, fmt(p.got_in)), h("td", { class: "r num" }, dur(p.secs)), h("td", { class: "r num" }, p.in_game_secs ? dur(p.in_game_secs) : "–"),
+        h("td", { class: "r num" }, p.active_min ? p.active_min + " min" : "–"), h("td", { class: "r num" }, fmt(p.tests)), h("td", {}, p.modules.length ? p.modules.map(f => { const id = folderId(f); return id ? DATA.meta[id].title : f; }).join(", ") : h("span", { class: "muted" }, "none")),
+        h("td", {}, h("span", { class: "status " + (p.got_in ? "public" : "alert") }, p.best)), h("td", { class: "r" }, rel(p.last))))))
+      : h("p", { class: "empty" }, "Nobody but you has connected yet.")));
+  out.append(h("section", { class: "panel" }, h("h2", {}, "Sessions", h("small", {}, "open one for its minute-by-minute timeline")), ss.length ? ss.slice(0, 100).map(sessionLine) : h("p", { class: "empty" }, "No sessions yet.")),
+    h("p", { class: "muted", style: "margin:12px 4px 0" }, "Active minutes are minutes with at least one logged action; background chatter that mods send on a timer is ignored. Engagement is active minutes over minutes in game."));
+  return out;
+}
+function renderSessionSheet(sheet, key) {
+  const s = ((DATA.server || {}).sessions || []).find(x => sessionKey(x) === key);
+  if (!s) { S.openSession = null; sheet.hidden = true; return; }
+  const close = () => { S.openSession = null; renderSheet(); };
+  const kv = (label, value) => h("div", {}, h("span", {}, label), h("b", { class: "num" }, value));
+  const maxA = Math.max(...s.modules.map(m => m.actions), 1);
+  sheet.replaceChildren(h("div", { class: "inner", onclick: e => e.stopPropagation() },
+    h("header", {}, h("h2", {}, s.name), h("button", { onclick: close }, "Close")),
+    h("p", {}, h("span", { class: "status " + (s.joined ? "public" : "alert") }, s.label), h("span", { class: "muted" }, `  ${new Date(s.start * 1000).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}${s.open ? " · still online" : ""}${s.with_owner ? " · you were on the server at the same time" : ""}`)),
+    !s.joined ? h("p", {}, s.kick ? `Kicked after ${dur(s.secs)}: ${s.kick}.` : `Disconnected ${dur(s.secs)} after connecting, before the game finished loading. The log gives no reason.`) : null,
+    h("h3", {}, "Numbers"),
+    h("div", { class: "kv" }, kv("Connected", dur(s.secs)), kv("In game", s.joined ? dur(s.in_game_secs) : "never"), kv("Active minutes", fmt(s.active_min)), kv("Engagement", s.joined ? s.engagement + "%" : "–"), kv("Tests tried", fmt(s.tests)), kv("Actions", fmt(s.actions)), kv("Tiles walked", fmt(s.walked)), kv("Chat lines", fmt(s.chat))),
+    h("h3", {}, "Mods touched"), s.modules.length ? s.modules.map(m => barRow(areaName(m), m.actions, maxA, fmt(m.actions), m.pass || m.fail || m.error ? `${m.pass} pass, ${m.fail + m.error} fail` : "", m.fail + m.error > m.pass ? "b3" : "b1")) : h("p", { class: "muted" }, "None."),
+    h("h3", {}, "Timeline"), s.timeline.length ? s.timeline.map(e => h("div", { class: "line" }, h("span", { class: "tag " + (e.status === "pass" ? "subs" : e.status ? "lost" : e.kind === "chat" ? "comment" : "") }, e.status || e.kind),
+      h("div", { class: "what" }, e.module ? h("b", {}, (folderId(e.folder) ? DATA.meta[folderId(e.folder)].title : e.module.split(".")[0]) + ": ") : null, e.text, e.n > 1 ? h("span", { class: "muted" }, ` ×${e.n}`) : null), h("time", { class: "num" }, clock(e.at)))) : h("p", { class: "muted" }, "Nothing was logged for this player.")));
+  sheet.hidden = false; sheet.onclick = close;
+}
+
+/* ---------- Servers ---------- */
+const isOwnServer = s => !!(DATA.owner && DATA.owner.name) && s.name.toLowerCase().includes(DATA.owner.name.toLowerCase());
+// A hit on a mod nobody else has subscribed to is far more likely another author's mod with the same ID.
+const likelyNamesake = id => !isPublic(id) && (now(id).life_subs || 0) <= 2;
+function viewServers() {
+  const sc = DATA.scan, st = DATA.status || {};
+  const btn = canWrite() ? h("button", { disabled: st.scanning, onclick: () => api("scan", "POST") }, st.scanning ? "Scanning, about 2 minutes…" : "Scan now (also runs daily)") : h("span", { class: "muted" }, "Scanning is available on the hosted dashboard");
+  if (!sc) return h("section", { class: "panel" }, h("div", { class: "bar-top" }, h("h2", { style: "margin:0" }, "Servers running your mods"), btn), h("p", { class: "empty" }, "No scan yet. A scan asks every public Project Zomboid server which mods it advertises."));
+  const others = sc.hits.filter(s => !isOwnServer(s) && s.mods.some(id => !likelyNamesake(id)));
+  const rows = sc.hits.map(s => h("tr", {}, h("td", {}, h("b", {}, s.name), h("small", {}, s.description || "")),
+    h("td", {}, isOwnServer(s) ? h("span", { class: "status public" }, "Yours") : s.mods.every(likelyNamesake) ? h("span", { class: "status warn" }, "Probably a namesake") : h("span", { class: "status" }, "Other server")),
+    h("td", {}, s.mods.filter(id => DATA.meta[id]).map((id, i) => [i ? ", " : "", modLink(id)])), h("td", { class: "r num" }, `${s.players ?? "?"} / ${s.max ?? "?"}`), h("td", { class: "r num" }, `${s.shown} of ${s.mod_count}`), h("td", { class: "r" }, s.first_seen ? [Date.now() / 1000 - s.first_seen < 7 * 86400 ? h("span", { class: "status warn" }, "New") : null, " ", rel(s.first_seen)] : "–"), h("td", { class: "r mono" }, `${s.ip}:${s.qport}`)));
+  return h("div", {},
+    h("div", { class: "cards" },
+      h("div", { class: "card" }, h("h3", {}, "Other servers confirmed"), h("div", { class: "big" }, fmt(others.length)), h("p", {}, "Servers that are not yours and advertise one of your mods.")),
+      h("div", { class: "card info" }, h("h3", {}, "Servers checked"), h("div", { class: "big" }, fmt(sc.answered)), h("p", {}, `of ${fmt(sc.listed)} listed by Steam, scanned ${rel(sc.scanned_at)}.`)),
+      h("div", { class: "card warn" }, h("h3", {}, "Blind spot"), h("div", { class: "big" }, pc(ratio(sc.partial, sc.answered), 0)), h("p", {}, "of servers advertise only the start of their mod list, so a mod further down cannot be seen. No match is not proof of no use."))),
+    h("section", { class: "panel" }, h("div", { class: "bar-top" }, h("h2", { style: "margin:0" }, "Matches"), btn),
+      st.scan_error ? h("p", { class: "bad" }, "Last scan failed: " + st.scan_error) : null,
+      rows.length ? h("table", {}, h("thead", {}, h("tr", {}, h("th", {}, "Server"), h("th", {}, "Whose"), h("th", {}, "Your mods"), h("th", { class: "r" }, "Players"), h("th", { class: "r" }, "Mods shown"), h("th", { class: "r" }, "First seen"), h("th", { class: "r" }, "Address"))), h("tbody", {}, rows)) : h("p", { class: "empty" }, "No server advertised any of your mod IDs.")));
+}
+
+/* ---------- mod sheet ---------- */
+function openSheet(id) { S.open = id; S.openSession = null; renderSheet(); }
+function renderSheet() {
+  const sheet = $("sheet"), id = S.open;
+  if (S.openSession) return renderSessionSheet(sheet, S.openSession);
+  if (!id || !DATA.meta[id]) { sheet.hidden = true; return; }
+  const m = DATA.meta[id], s = now(id), cs = DATA.comments[id] || [], subsPts = series(id, "subs");
+  const kv = (label, value, d) => h("div", {}, h("span", {}, label), h("b", { class: "num" }, value), d ? deltaChip(d) : null);
+  const evs = (DATA.events || []).filter(e => e.mod === id && e.kind !== "comment" && e.kind !== "views").slice(0, 12);
+  const top = Math.max(s.views || 0, 1);
+  sheet.replaceChildren(h("div", { class: "inner", onclick: e => e.stopPropagation() },
+    h("header", {}, h("h2", {}, m.title), h("button", { onclick: () => { S.open = null; renderSheet(); } }, "Close")),
+    h("div", { class: "hero" }, thumb(id), h("div", {}, h("span", { class: "status " + (isPublic(id) ? "public" : "") }, m.visibility), h("p", { class: "muted" }, `Uploaded ${dateOf(m.created)} · updated ${rel(m.updated)} · ${(m.size / 1048576).toFixed(1)} MB`),
+      h("p", {}, ext(url.item(id), "Workshop page ↗"), " · ", ext(url.comments(id), "Comments ↗"), " · ", ext(url.changes(id), "Change notes ↗")))),
+    h("h3", {}, "Numbers"),
+    h("div", { class: "kv" }, kv("Subscribers", fmt(s.subs), delta(id, "subs", 1)), kv("Lifetime subs", fmt(s.life_subs), delta(id, "life_subs", 1)), kv("Page views", fmt(s.views), delta(id, "views", 1)), kv("Favorites", fmt(s.favs), delta(id, "favs", 1)), kv("Votes", `${s.up || 0} ▲ ${s.down || 0} ▼`), kv("Subs, 7 days", delta(id, "subs", 7) == null ? "–" : signed(delta(id, "subs", 7)) || "0")),
+    h("h3", {}, "From view to subscriber"),
+    barRow("Page views", s.views || 0, top, fmt(s.views), "", "b2"), barRow("Ever subscribed", s.life_subs || 0, top, fmt(s.life_subs), s.views >= 20 ? pc(ratio(s.life_subs, s.views)) + " of views" : "", "b1"),
+    barRow("Still subscribed", s.subs || 0, top, fmt(s.subs), s.life_subs ? pc(ratio(s.subs, s.life_subs), 0) + " kept" : "", "b1"), barRow("Favorited", s.favs || 0, top, fmt(s.favs), s.life_subs ? pc(ratio(s.favs, s.life_subs), 0) + " of subs" : "", "b4"),
+    h("h3", {}, "Subscribers over time"), lineChart(subsPts, "subs", "Subscribers for " + m.title),
+    h("h3", {}, "New subscribers per day"), columns(dailyChange(series(id, "life_subs")).slice(-21), "life_subs"),
+    h("h3", {}, "Tags"), m.tags.length ? h("div", { class: "chips" }, m.tags.map(t => h("span", {}, t))) : h("p", { class: "muted" }, "No tags."),
+    h("h3", {}, "Mod ID and folder"), h("p", { class: "mono" }, `${m.mod_ids.join(", ")} · Workshop ${id} · ${m.folder}/`),
+    m.desc ? [h("h3", {}, "Page opening"), h("p", { class: "muted" }, m.desc)] : null,
+    h("h3", {}, `Comments (${cs.length})`), cs.length ? cs.map(c => commentLine(c, id)) : h("p", { class: "muted" }, "No comments yet."),
+    h("h3", {}, "Recent changes"), evs.length ? evs.map(e => { const d = describe(e); return h("div", { class: "line" }, h("span", { class: "tag " + d.tag }, d.label), h("div", { class: "what" }, d.what), h("time", {}, rel(e.ts))); }) : h("p", { class: "muted" }, "Nothing logged yet.")));
+  sheet.hidden = false; sheet.onclick = () => { S.open = null; renderSheet(); };
+}
+
+/* ---------- shell ---------- */
+const $ = id => document.getElementById(id);
+const VIEWS = { activity: viewActivity, mods: viewMods, comments: viewComments, trends: viewTrends, marketing: viewMarketing, community: viewCommunity, server: viewTestServer, servers: viewServers };
+function go(tab) { S.tab = tab; try { history.replaceState(null, "", "#" + tab); } catch (e) {} render(); }
+function render() {
+  if (!DATA || !DATA.history || !DATA.history.length) { $("view").replaceChildren(h("section", { class: "panel" }, h("p", { class: "empty" }, "No snapshot yet. Run collect.py or serve.py to take the first one."))); return; }
+  derive(); renderChrome(); renderAlerts(); $("view").replaceChildren(VIEWS[S.tab]()); if (S.open || S.openSession) renderSheet();
+}
+// The hosted page sits under a sub-path, so API calls are made relative to wherever it was opened.
+const API_BASE = location.pathname.replace(/[^/]*$/, "") + "api/";
+function getKey() { try { return localStorage.getItem("dashKey") || ""; } catch (e) { return S.key || ""; } }
+function setKey(k) { S.key = k; try { k ? localStorage.setItem("dashKey", k) : localStorage.removeItem("dashKey"); } catch (e) {} }
+const canWrite = () => S.live && !!(DATA && DATA.status && DATA.status.can_write);
+function showSignin(wrong) { document.querySelector(".dash").hidden = true; $("signin").hidden = false; $("signinWrong").hidden = !wrong; $("signinKey").focus(); }
+async function api(route, method) {
+  // Only serve.py answers this; a published or file copy stays a snapshot of the data baked into it.
+  if (location.protocol === "file:") return;
+  try {
+    const r = await fetch(API_BASE + route, { method: method || "GET", headers: { "X-Dash-Key": getKey() } });
+    if (r.status === 401) { const tried = !!getKey(); setKey(""); S.live = false; showSignin(tried); return; }
+    if (!r.ok || !(r.headers.get("content-type") || "").includes("json")) throw new Error("no api");
+    const d = await r.json();
+    document.querySelector(".dash").hidden = false; $("signin").hidden = true;
+    if (d.history) { DATA = d; S.live = true; render(); } else if (!DATA) { S.live = true; $("view").replaceChildren(h("section", { class: "panel" }, h("p", { class: "empty" }, "First snapshot is being taken. This page fills in within a minute."))); }
+  } catch (e) { if (S.live) { S.live = false; render(); } }
+}
+$("signinForm").onsubmit = e => { e.preventDefault(); setKey($("signinKey").value.trim()); $("signinKey").value = ""; api("data"); };
+$("signout").onclick = () => { setKey(""); DATA = null; S.live = false; showSignin(false); };
+$("refresh").onclick = async () => { $("refresh").disabled = true; $("refresh").textContent = "Checking Steam…"; await api("refresh", "POST"); $("refresh").disabled = false; $("refresh").textContent = "Refresh now"; };
+document.addEventListener("keydown", e => { if (e.key === "Escape" && (S.open || S.openSession)) { S.open = S.openSession = null; renderSheet(); } });
+const start = location.hash.slice(1); if (VIEWS[start]) S.tab = start;
+render(); api("data"); setInterval(() => { if ($("signin").hidden) api("data"); }, 20000); setInterval(() => { if (DATA) $("liveText").textContent = (S.live ? "Live · checked Steam " : "Snapshot · ") + rel(DATA.generated); }, 30000);
+</script>

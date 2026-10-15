@@ -1,0 +1,6 @@
+name=The Post Office
+id=ThePostOffice
+description=PO Box rentals, postal delivery, and marketplace / economy-adapter integration for Project Zomboid Build 42. Extracted from the KIP Network mod.
+author=KIPN Team
+require=KIPN
+versionMin=42.0

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fileGuidTable>
+	<files>
+		<path>media/clothing/clothingItems/Whisp_FaceMask.xml</path>
+		<guid>27544c70-4efa-4eb5-8cfe-6b6757cbf5eb</guid>
+	</files>
+	<files>
+		<path>media/clothing/clothingItems/Whisp_SkinSuit.xml</path>
+		<guid>74b88698-20db-4a5e-b1be-dabf016a59fe</guid>
+	</files>
+	<files>
+		<path>media/clothing/clothingItems/Whisp_NeckStump.xml</path>
+		<guid>70185247-9b60-46a2-82ad-ca5085ec1ff0</guid>
+	</files>
+	<files>
+		<path>media/clothing/clothingItems/Whisp_StakeStick.xml</path>
+		<guid>fa740a54-205c-4221-856e-df7e52b09d93</guid>
+	</files>
+	<files>
+		<path>media/clothing/clothingItems/Whisp_StakeFaceless.xml</path>
+		<guid>5e3f35cf-fa3e-4c93-9576-60a84d816d97</guid>
+	</files>
+</fileGuidTable>

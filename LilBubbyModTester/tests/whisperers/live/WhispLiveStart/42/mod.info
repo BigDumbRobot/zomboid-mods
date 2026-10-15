@@ -1,0 +1,4 @@
+name=Whisperers Live Start
+id=WhispLiveStart
+description=Throwaway: starts a debug world for an unattended tester run. Isolated test folders only.
+versionMin=42.15.0

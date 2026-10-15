@@ -1,0 +1,6 @@
+version=1
+id=3795176150
+title=Skylights
+description=Bring in some daylight by adding a skylight to your roof.
+tags=Build 42;Building;Items;Realistic;QoL
+visibility=unlisted

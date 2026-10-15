@@ -1,0 +1,6 @@
+version=1
+id=3806117191
+title=lilBubby's Big ol Mod Tester
+description=Standalone in-game test suites for other mods, in single-player and multiplayer. Open Mod Showcase from the right-click menu: it lists tests only for the mods you have enabled (Bonk Zone, Spy vs Spy Booby Traps and Signal Tracker, KIP Network Terminal services, The Post Office, Dead Man's Map, Skylights, The Whisperers, Satanic Temples), plus compatibility checks between them. No other mods, helper programs or admin rights are required. Some tests teleport, injure or kill your character; each test says so before it starts.
+tags=Build 42;Multiplayer;WIP
+visibility=unlisted

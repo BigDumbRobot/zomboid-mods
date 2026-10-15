@@ -1,0 +1,9 @@
+version=1
+title=ServerM8
+description=[h1]ServerM8[/h1]
+description=
+description=A cleaner server browser card, in-game Discord through the Steam overlay, and a server dashboard for players after they join.
+description=
+description=ServerM8 adds its own panels. It does not replace or edit any vanilla file.
+tags=Build 42;Multiplayer;Interface
+visibility=private

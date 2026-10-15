@@ -1,0 +1,328 @@
+VERSION = 1,
+
+/* COMPUTER Safehouse and Land Claims -- KIPN sandbox options. All live on the shared "KIPN" page. */
+
+option KIPN.SafehouseClaimsEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_SafehouseClaimsEnabled,
+}
+
+option KIPN.HouseMaxClaimsPerPlayer
+{
+    type = integer,
+    default = 1,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_HouseMaxClaimsPerPlayer,
+}
+
+option KIPN.HouseRegistrationExpiryDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_HouseRegistrationExpiryDays,
+}
+
+option KIPN.HouseClaimTokenExpiryDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_HouseClaimTokenExpiryDays,
+}
+
+option KIPN.HouseOwnershipExpiryDays
+{
+    type = integer,
+    default = 120,
+    min = 0,
+    max = 3650,
+    page = KIPN,
+    translation = KIPN_HouseOwnershipExpiryDays,
+}
+
+option KIPN.HouseClaimCraftSeconds
+{
+    type = integer,
+    default = 10,
+    min = 0,
+    max = 300,
+    page = KIPN,
+    translation = KIPN_HouseClaimCraftSeconds,
+}
+
+option KIPN.HouseAllowClaimsInKIPNZones
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_HouseAllowClaimsInKIPNZones,
+}
+
+option KIPN.SafehouseAllowTrepass
+{
+    type = enum,
+    numValues = 3,
+    default = 1,
+    page = KIPN,
+    translation = KIPN_SafehouseAllowTrepass,
+}
+
+option KIPN.SafehouseAllowFire
+{
+    type = enum,
+    numValues = 3,
+    default = 1,
+    page = KIPN,
+    translation = KIPN_SafehouseAllowFire,
+}
+
+option KIPN.SafehouseAllowLoot
+{
+    type = enum,
+    numValues = 3,
+    default = 1,
+    page = KIPN,
+    translation = KIPN_SafehouseAllowLoot,
+}
+
+option KIPN.SafehouseAllowRespawn
+{
+    type = enum,
+    numValues = 3,
+    default = 1,
+    page = KIPN,
+    translation = KIPN_SafehouseAllowRespawn,
+}
+
+option KIPN.DisableSafehouseWhenPlayerConnected
+{
+    type = enum,
+    numValues = 3,
+    default = 1,
+    page = KIPN,
+    translation = KIPN_DisableSafehouseWhenPlayerConnected,
+}
+
+option KIPN.ExcavationClaimsEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_ExcavationClaimsEnabled,
+}
+
+option KIPN.ExcavationMaxClaimsPerPlayer
+{
+    type = integer,
+    default = 2,
+    min = 0,
+    max = 100,
+    page = KIPN,
+    translation = KIPN_ExcavationMaxClaimsPerPlayer,
+}
+
+option KIPN.ExcavationRegistrationExpiryDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_ExcavationRegistrationExpiryDays,
+}
+
+option KIPN.ExcavationClaimTokenExpiryDays
+{
+    type = integer,
+    default = 14,
+    min = 0,
+    max = 365,
+    page = KIPN,
+    translation = KIPN_ExcavationClaimTokenExpiryDays,
+}
+
+option KIPN.ExcavationOwnershipExpiryDays
+{
+    type = integer,
+    default = 120,
+    min = 0,
+    max = 3650,
+    page = KIPN,
+    translation = KIPN_ExcavationOwnershipExpiryDays,
+}
+
+option KIPN.ExcavationClaimCraftSeconds
+{
+    type = integer,
+    default = 10,
+    min = 0,
+    max = 300,
+    page = KIPN,
+    translation = KIPN_ExcavationClaimCraftSeconds,
+}
+
+option KIPN.ExcavationAllowNonOwnerEnter
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_ExcavationAllowNonOwnerEnter,
+}
+
+option KIPN.ExcavationAllowNonOwnerBuild
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_ExcavationAllowNonOwnerBuild,
+}
+
+option KIPN.ExcavationAllowNonOwnerLoot
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_ExcavationAllowNonOwnerLoot,
+}
+
+option KIPN.ExcavationAllowNonOwnerExcavate
+{
+    type = boolean,
+    default = false,
+    page = KIPN,
+    translation = KIPN_ExcavationAllowNonOwnerExcavate,
+}
+
+option KIPN.ExcavationSmallWidthTiles
+{
+    type = integer,
+    default = 5,
+    min = 1,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_ExcavationSmallWidthTiles,
+}
+
+option KIPN.ExcavationSmallHeightTiles
+{
+    type = integer,
+    default = 5,
+    min = 1,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_ExcavationSmallHeightTiles,
+}
+
+option KIPN.ExcavationSmallPrice
+{
+    type = integer,
+    default = 200,
+    min = 0,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_ExcavationSmallPrice,
+}
+
+option KIPN.ExcavationMediumWidthTiles
+{
+    type = integer,
+    default = 10,
+    min = 1,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_ExcavationMediumWidthTiles,
+}
+
+option KIPN.ExcavationMediumHeightTiles
+{
+    type = integer,
+    default = 10,
+    min = 1,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_ExcavationMediumHeightTiles,
+}
+
+option KIPN.ExcavationMediumPrice
+{
+    type = integer,
+    default = 500,
+    min = 0,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_ExcavationMediumPrice,
+}
+
+option KIPN.ExcavationLargeWidthTiles
+{
+    type = integer,
+    default = 20,
+    min = 1,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_ExcavationLargeWidthTiles,
+}
+
+option KIPN.ExcavationLargeHeightTiles
+{
+    type = integer,
+    default = 20,
+    min = 1,
+    max = 50,
+    page = KIPN,
+    translation = KIPN_ExcavationLargeHeightTiles,
+}
+
+option KIPN.ExcavationLargePrice
+{
+    type = integer,
+    default = 1000,
+    min = 0,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_ExcavationLargePrice,
+}
+
+option KIPN.ClaimCurrencyItemType
+{
+    type = string,
+    default = "Base.Money",
+    page = KIPN,
+    translation = KIPN_ClaimCurrencyItemType,
+}
+
+option KIPN.ClaimCurrencyItemValue
+{
+    type = integer,
+    default = 1,
+    min = 1,
+    max = 1000000,
+    page = KIPN,
+    translation = KIPN_ClaimCurrencyItemValue,
+}
+
+option KIPN.PropertyRegistrationEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_PropertyRegistrationEnabled,
+}
+
+option KIPN.ExcavationRegistrationEnabled
+{
+    type = boolean,
+    default = true,
+    page = KIPN,
+    translation = KIPN_ExcavationRegistrationEnabled,
+}

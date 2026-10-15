@@ -1,0 +1,7 @@
+{
+    "Sandbox_Skylights": "Skylights",
+    "Sandbox_Skylights_IndoorBrightness": "Indoor Brightness",
+    "Sandbox_Skylights_IndoorBrightness_tooltip": "How bright a room gets under an intact skylight, as a percentage of the outdoor light. 100 = as bright as outside, 0 = completely dark. The light spreading to nearby tiles scales with it.",
+    "Sandbox_Skylights_BreakChance": "Break Chance",
+    "Sandbox_Skylights_BreakChance_tooltip": "Percent chance that the glass breaks each time a player or zombie steps onto a skylight. 100 = breaks on the first step, 0 = never breaks."
+}

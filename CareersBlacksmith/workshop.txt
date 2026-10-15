@@ -1,0 +1,17 @@
+version=1
+id=3806117635
+title=Careers: Blacksmith
+description=[h1]Careers: Blacksmith[/h1]
+description=A licensed Blacksmith career built on the [b]Careers Framework[/b].
+description=
+description=[list]
+description=[*]Buy a license at a Career Services terminal and claim a forge building
+description=[*]Private / Public / For Sale business containers
+description=[*]Self-refilling public Forge Order forms
+description=[*]Item + quality forge orders with Fast / Regular / Slow pricing -- higher quality costs more
+description=[*]Escrow, reputation, shop-to-customer messaging and dynamic flyers
+description=[/list]
+description=
+description=Requires KIPN and Careers Framework.
+tags=Build 42;Balance;Interface;Items;Multiplayer;Realistic;QoL;WIP
+visibility=unlisted

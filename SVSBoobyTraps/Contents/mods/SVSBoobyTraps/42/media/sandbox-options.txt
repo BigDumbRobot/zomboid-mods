@@ -1,0 +1,197 @@
+VERSION = 1,
+
+/* Master switches */
+option SVSBoobyTraps.Enabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_Enabled, }
+option SVSBoobyTraps.EntryTrapsEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_EntryTrapsEnabled, }
+option SVSBoobyTraps.AdvancedTrapsEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_AdvancedTrapsEnabled, }
+option SVSBoobyTraps.VehicleDevicesEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_VehicleDevicesEnabled, }
+option SVSBoobyTraps.WaterBucketEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_WaterBucketEnabled, }
+option SVSBoobyTraps.NailBoardEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardEnabled, }
+option SVSBoobyTraps.BearTrapEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapEnabled, }
+option SVSBoobyTraps.ShotgunDoorEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_ShotgunDoorEnabled, }
+option SVSBoobyTraps.TripWireEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TripWireEnabled, }
+option SVSBoobyTraps.ExplosiveMailboxEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveMailboxEnabled, }
+option SVSBoobyTraps.AnthraxEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxEnabled, }
+option SVSBoobyTraps.IgnitionChargeEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_IgnitionChargeEnabled, }
+option SVSBoobyTraps.DriverSeatDyeEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_DriverSeatDyeEnabled, }
+option SVSBoobyTraps.TamperAlarmEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TamperAlarmEnabled, }
+option SVSBoobyTraps.RemoteImmobilizerEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_RemoteImmobilizerEnabled, }
+
+/* Multiplayer protection and lifecycle */
+option SVSBoobyTraps.RespectSafehouses { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_RespectSafehouses, }
+option SVSBoobyTraps.OfflineTrapOperation { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_OfflineTrapOperation, }
+option SVSBoobyTraps.DisableExistingWhenFeatureOff { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisableExistingWhenFeatureOff, }
+option SVSBoobyTraps.RemoveTrapsOnOwnerDeath { type = boolean, default = false, page = SVSBoobyTraps, translation = SVSBoobyTraps_RemoveTrapsOnOwnerDeath, }
+option SVSBoobyTraps.MinimumOwnerSurvivalHours { type = integer, default = 6, min = 0, max = 720, page = SVSBoobyTraps, translation = SVSBoobyTraps_MinimumOwnerSurvivalHours, }
+option SVSBoobyTraps.TrapExpirationDays { type = integer, default = 60, min = 0, max = 3650, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapExpirationDays, }
+option SVSBoobyTraps.SpentTrapCleanupHours { type = integer, default = 24, min = 0, max = 720, page = SVSBoobyTraps, translation = SVSBoobyTraps_SpentTrapCleanupHours, }
+option SVSBoobyTraps.TargetPlayers { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TargetPlayers, }
+option SVSBoobyTraps.TargetZombies { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TargetZombies, }
+option SVSBoobyTraps.TargetAnimals { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TargetAnimals, }
+option SVSBoobyTraps.TargetVehicles { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TargetVehicles, }
+
+/* Deployment limits */
+option SVSBoobyTraps.MaxActiveTrapsPerPlayer { type = integer, default = 20, min = 0, max = 500, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxActiveTrapsPerPlayer, }
+option SVSBoobyTraps.MaxAdvancedTrapsPerPlayer { type = integer, default = 8, min = 0, max = 200, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxAdvancedTrapsPerPlayer, }
+option SVSBoobyTraps.MaxTrapsPerSquare { type = integer, default = 1, min = 1, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxTrapsPerSquare, }
+option SVSBoobyTraps.MaxDevicesPerVehicle { type = integer, default = 2, min = 1, max = 12, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxDevicesPerVehicle, }
+option SVSBoobyTraps.MaxTrapsPerMailbox { type = integer, default = 1, min = 1, max = 3, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxTrapsPerMailbox, }
+option SVSBoobyTraps.MaxTrapsPerSafehouse { type = integer, default = 8, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxTrapsPerSafehouse, }
+option SVSBoobyTraps.MinimumTrapSpacingTiles { type = integer, default = 1, min = 0, max = 20, page = SVSBoobyTraps, translation = SVSBoobyTraps_MinimumTrapSpacingTiles, }
+option SVSBoobyTraps.InteractionRangeTiles { type = double, default = 2.5, min = 1.0, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_InteractionRangeTiles, }
+
+/* Skill gates */
+option SVSBoobyTraps.WaterBucketCarpentryLevel { type = integer, default = 1, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_WaterBucketCarpentryLevel, }
+option SVSBoobyTraps.NailBoardCarpentryLevel { type = integer, default = 4, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardCarpentryLevel, }
+option SVSBoobyTraps.BearTrapTrappingLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapTrappingLevel, }
+option SVSBoobyTraps.BearTrapWeldingLevel { type = integer, default = 5, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapWeldingLevel, }
+option SVSBoobyTraps.ShotgunDoorCarpentryLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_ShotgunDoorCarpentryLevel, }
+option SVSBoobyTraps.ShotgunDoorAimingLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_ShotgunDoorAimingLevel, }
+option SVSBoobyTraps.AdvancedElectricalLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_AdvancedElectricalLevel, }
+option SVSBoobyTraps.AdvancedMechanicsLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_AdvancedMechanicsLevel, }
+option SVSBoobyTraps.AdvancedMaintenanceLevel { type = integer, default = 4, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_AdvancedMaintenanceLevel, }
+option SVSBoobyTraps.BiologicalFirstAidLevel { type = integer, default = 5, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_BiologicalFirstAidLevel, }
+option SVSBoobyTraps.InspectionElectricalLevel { type = integer, default = 2, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_InspectionElectricalLevel, }
+option SVSBoobyTraps.DisarmElectricalLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisarmElectricalLevel, }
+option SVSBoobyTraps.DisarmMechanicsLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisarmMechanicsLevel, }
+option SVSBoobyTraps.DisarmMaintenanceLevel { type = integer, default = 3, min = 0, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisarmMaintenanceLevel, }
+
+/* Time, success, and economy */
+option SVSBoobyTraps.CraftingTimeMultiplier { type = double, default = 1.0, min = 0.1, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_CraftingTimeMultiplier, }
+option SVSBoobyTraps.PlacementTimeSeconds { type = integer, default = 8, min = 1, max = 120, page = SVSBoobyTraps, translation = SVSBoobyTraps_PlacementTimeSeconds, }
+option SVSBoobyTraps.VehicleInstallTimeSeconds { type = integer, default = 16, min = 1, max = 300, page = SVSBoobyTraps, translation = SVSBoobyTraps_VehicleInstallTimeSeconds, }
+option SVSBoobyTraps.InspectionTimeSeconds { type = integer, default = 7, min = 1, max = 120, page = SVSBoobyTraps, translation = SVSBoobyTraps_InspectionTimeSeconds, }
+option SVSBoobyTraps.DisarmTimeSeconds { type = integer, default = 12, min = 1, max = 300, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisarmTimeSeconds, }
+option SVSBoobyTraps.ResetTimeSeconds { type = integer, default = 10, min = 1, max = 180, page = SVSBoobyTraps, translation = SVSBoobyTraps_ResetTimeSeconds, }
+option SVSBoobyTraps.FreeBearTrapTimeSeconds { type = integer, default = 4, min = 1, max = 180, page = SVSBoobyTraps, translation = SVSBoobyTraps_FreeBearTrapTimeSeconds, }
+option SVSBoobyTraps.RepairTimeSeconds { type = integer, default = 15, min = 1, max = 300, page = SVSBoobyTraps, translation = SVSBoobyTraps_RepairTimeSeconds, }
+option SVSBoobyTraps.DamageMultiplier { type = double, default = 1.0, min = 0.0, max = 5.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_DamageMultiplier, }
+option SVSBoobyTraps.ConditionLossMultiplier { type = double, default = 1.0, min = 0.0, max = 5.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ConditionLossMultiplier, }
+option SVSBoobyTraps.DetectionChanceMultiplier { type = double, default = 1.0, min = 0.0, max = 5.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_DetectionChanceMultiplier, }
+option SVSBoobyTraps.DisarmSuccessMultiplier { type = double, default = 1.0, min = 0.0, max = 5.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisarmSuccessMultiplier, }
+option SVSBoobyTraps.SalvageChance { type = double, default = 0.35, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_SalvageChance, }
+option SVSBoobyTraps.RarePartSalvageChance { type = double, default = 0.15, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_RarePartSalvageChance, }
+option SVSBoobyTraps.XPMultiplier { type = double, default = 1.0, min = 0.0, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_XPMultiplier, }
+option SVSBoobyTraps.DisarmFailureTriggersTrap { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_DisarmFailureTriggersTrap, }
+option SVSBoobyTraps.ReverseDisarmEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_ReverseDisarmEnabled, }
+
+/* Finished-trap loot */
+option SVSBoobyTraps.TrapLootMultiplier { type = double, default = 1.0, min = 0.0, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapLootMultiplier, }
+
+/* Trap set sound */
+option SVSBoobyTraps.TrapSetSoundEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapSetSoundEnabled, }
+option SVSBoobyTraps.TrapSetSoundRadiusTiles { type = integer, default = 15, min = 0, max = 200, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapSetSoundRadiusTiles, }
+option SVSBoobyTraps.TrapSetSoundVolume { type = integer, default = 30, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapSetSoundVolume, }
+option SVSBoobyTraps.TrapDetonationSoundEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapDetonationSoundEnabled, }
+option SVSBoobyTraps.TrapDetonationSoundRadiusTiles { type = integer, default = 20, min = 0, max = 200, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapDetonationSoundRadiusTiles, }
+option SVSBoobyTraps.TrapDetonationSoundVolume { type = integer, default = 40, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_TrapDetonationSoundVolume, }
+option SVSBoobyTraps.InspectionSoundsEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_InspectionSoundsEnabled, }
+option SVSBoobyTraps.InspectionSoundRadiusTiles { type = integer, default = 10, min = 0, max = 200, page = SVSBoobyTraps, translation = SVSBoobyTraps_InspectionSoundRadiusTiles, }
+option SVSBoobyTraps.InspectionSoundVolume { type = integer, default = 15, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_InspectionSoundVolume, }
+
+/* Detection and visible indicators */
+option SVSBoobyTraps.VisibleFloorTrapIcons { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_VisibleFloorTrapIcons, }
+option SVSBoobyTraps.FloorTrapIconRangeTiles { type = integer, default = 12, min = 1, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_FloorTrapIconRangeTiles, }
+option SVSBoobyTraps.FloorTrapIconScale { type = double, default = 1.0, min = 0.25, max = 3.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_FloorTrapIconScale, }
+option SVSBoobyTraps.VisibleIndicatorsRequireLOS { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_VisibleIndicatorsRequireLOS, }
+option SVSBoobyTraps.VisibleIndicatorsCurrentFloorOnly { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_VisibleIndicatorsCurrentFloorOnly, }
+option SVSBoobyTraps.TripWireVisible { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_TripWireVisible, }
+option SVSBoobyTraps.PassiveAdvancedDetection { type = boolean, default = false, page = SVSBoobyTraps, translation = SVSBoobyTraps_PassiveAdvancedDetection, }
+option SVSBoobyTraps.PassiveDetectionRangeTiles { type = integer, default = 2, min = 1, max = 20, page = SVSBoobyTraps, translation = SVSBoobyTraps_PassiveDetectionRangeTiles, }
+option SVSBoobyTraps.OwnerAlwaysKnowsTrap { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_OwnerAlwaysKnowsTrap, }
+option SVSBoobyTraps.ShareKnowledgeWithFaction { type = boolean, default = false, page = SVSBoobyTraps, translation = SVSBoobyTraps_ShareKnowledgeWithFaction, }
+
+/* Water bucket */
+option SVSBoobyTraps.WaterBucketWetness { type = integer, default = 100, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_WaterBucketWetness, }
+option SVSBoobyTraps.WaterBucketClothingWetness { type = integer, default = 100, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_WaterBucketClothingWetness, }
+option SVSBoobyTraps.WaterBucketDamage { type = double, default = 1.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_WaterBucketDamage, }
+
+/* Nail board */
+option SVSBoobyTraps.NailBoardBaseDamage { type = double, default = 18.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardBaseDamage, }
+option SVSBoobyTraps.NailBoardLacerationChance { type = double, default = 0.45, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardLacerationChance, }
+option SVSBoobyTraps.NailBoardFootwearProtection { type = double, default = 0.45, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardFootwearProtection, }
+option SVSBoobyTraps.NailBoardFootwearDamage { type = integer, default = 12, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardFootwearDamage, }
+option SVSBoobyTraps.NailBoardDamagesTires { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardDamagesTires, }
+option SVSBoobyTraps.NailBoardTireDamage { type = integer, default = 18, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_NailBoardTireDamage, }
+
+/* Bear trap */
+option SVSBoobyTraps.BearTrapBaseDamage { type = double, default = 42.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapBaseDamage, }
+option SVSBoobyTraps.ShotgunDoorDamage { type = double, default = 100.0, min = 0.0, max = 150.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ShotgunDoorDamage, }
+option SVSBoobyTraps.BearTrapEscapeDamage { type = double, default = 35.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapEscapeDamage, }
+option SVSBoobyTraps.BearTrapHoldDamagePerTick { type = double, default = 0.04, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapHoldDamagePerTick, }
+option SVSBoobyTraps.BearTrapFractureChance { type = double, default = 0.30, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapFractureChance, }
+option SVSBoobyTraps.BearTrapConditionLossChance { type = double, default = 0.35, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapConditionLossChance, }
+option SVSBoobyTraps.BearTrapActivationConditionLoss { type = integer, default = 35, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapActivationConditionLoss, }
+option SVSBoobyTraps.BearTrapFailedSetConditionLoss { type = integer, default = 15, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapFailedSetConditionLoss, }
+option SVSBoobyTraps.BearTrapSettingRiskMultiplier { type = double, default = 1.0, min = 0.0, max = 5.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapSettingRiskMultiplier, }
+option SVSBoobyTraps.BearTrapRepairAmountPerRod { type = integer, default = 20, min = 1, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapRepairAmountPerRod, }
+option SVSBoobyTraps.BearTrapMaxConditionLossPerRepair { type = integer, default = 5, min = 0, max = 50, page = SVSBoobyTraps, translation = SVSBoobyTraps_BearTrapMaxConditionLossPerRepair, }
+
+/* Explosive parcel */
+option SVSBoobyTraps.ExplosiveFuseSeconds { type = double, default = 0.9, min = 0.4, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveFuseSeconds, }
+option SVSBoobyTraps.ExplosiveInnerRadiusTiles { type = double, default = 1.25, min = 0.5, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveInnerRadiusTiles, }
+option SVSBoobyTraps.ExplosiveMiddleRadiusTiles { type = double, default = 2.5, min = 1.0, max = 20.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveMiddleRadiusTiles, }
+option SVSBoobyTraps.ExplosiveOuterRadiusTiles { type = double, default = 4.0, min = 1.0, max = 30.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveOuterRadiusTiles, }
+option SVSBoobyTraps.ExplosiveInnerDamage { type = double, default = 50.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveInnerDamage, }
+option SVSBoobyTraps.ExplosiveMiddleDamage { type = double, default = 24.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveMiddleDamage, }
+option SVSBoobyTraps.ExplosiveOuterDamage { type = double, default = 10.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveOuterDamage, }
+option SVSBoobyTraps.ExplosiveDeepWoundChance { type = double, default = 0.80, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveDeepWoundChance, }
+option SVSBoobyTraps.ExplosiveLacerationChance { type = double, default = 0.90, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveLacerationChance, }
+option SVSBoobyTraps.ExplosiveDestroysMailboxContents { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveDestroysMailboxContents, }
+option SVSBoobyTraps.ExplosiveFireChance { type = double, default = 0.0, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveFireChance, }
+option SVSBoobyTraps.ExplosiveSoundRadiusTiles { type = integer, default = 100, min = 0, max = 500, page = SVSBoobyTraps, translation = SVSBoobyTraps_ExplosiveSoundRadiusTiles, }
+
+/* Biological document */
+option SVSBoobyTraps.AnthraxTotalDamage { type = double, default = 50.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxTotalDamage, }
+option SVSBoobyTraps.AnthraxInitialDamage { type = double, default = 20.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxInitialDamage, }
+option SVSBoobyTraps.AnthraxNeverLethalFloor { type = double, default = 5.0, min = 1.0, max = 50.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxNeverLethalFloor, }
+option SVSBoobyTraps.AnthraxDurationHours { type = double, default = 12.0, min = 0.0, max = 168.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxDurationHours, }
+option SVSBoobyTraps.AnthraxTickSeconds { type = integer, default = 30, min = 5, max = 600, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxTickSeconds, }
+option SVSBoobyTraps.AnthraxSicknessPerTick { type = double, default = 0.035, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxSicknessPerTick, }
+option SVSBoobyTraps.AnthraxReminderSeconds { type = integer, default = 600, min = 30, max = 7200, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxReminderSeconds, }
+option SVSBoobyTraps.AnthraxMaskProtection { type = double, default = 0.50, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxMaskProtection, }
+option SVSBoobyTraps.AnthraxGloveProtection { type = double, default = 0.25, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxGloveProtection, }
+option SVSBoobyTraps.AnthraxAntibioticProtection { type = double, default = 0.50, min = 0.0, max = 1.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_AnthraxAntibioticProtection, }
+
+/* Sealed biological sample */
+option SVSBoobyTraps.BiologicalSampleDurationHours { type = double, default = 72.0, min = 1.0, max = 336.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_BiologicalSampleDurationHours, }
+option SVSBoobyTraps.BiologicalSampleRadiusTiles { type = integer, default = 2, min = 1, max = 10, page = SVSBoobyTraps, translation = SVSBoobyTraps_BiologicalSampleRadiusTiles, }
+option SVSBoobyTraps.NeutralizeBiologicalAgentSeconds { type = integer, default = 10, min = 1, max = 120, page = SVSBoobyTraps, translation = SVSBoobyTraps_NeutralizeBiologicalAgentSeconds, }
+
+/* Vehicle devices */
+option SVSBoobyTraps.IgnitionFuseSeconds { type = double, default = 0.75, min = 0.25, max = 10.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_IgnitionFuseSeconds, }
+option SVSBoobyTraps.IgnitionDriverDamage { type = double, default = 42.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_IgnitionDriverDamage, }
+option SVSBoobyTraps.IgnitionEngineDamage { type = integer, default = 55, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_IgnitionEngineDamage, }
+option SVSBoobyTraps.IgnitionBurnDurationSeconds { type = integer, default = 45, min = 0, max = 600, page = SVSBoobyTraps, translation = SVSBoobyTraps_IgnitionBurnDurationSeconds, }
+option SVSBoobyTraps.IgnitionReigniteSeconds { type = integer, default = 4, min = 1, max = 60, page = SVSBoobyTraps, translation = SVSBoobyTraps_IgnitionReigniteSeconds, }
+option SVSBoobyTraps.DyeDurationDays { type = integer, default = 7, min = 0, max = 365, page = SVSBoobyTraps, translation = SVSBoobyTraps_DyeDurationDays, }
+option SVSBoobyTraps.DyeClothingDirtiness { type = integer, default = 100, min = 0, max = 100, page = SVSBoobyTraps, translation = SVSBoobyTraps_DyeClothingDirtiness, }
+option SVSBoobyTraps.DyeDamageMin { type = double, default = 15.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_DyeDamageMin, }
+option SVSBoobyTraps.DyeDamageMax { type = double, default = 30.0, min = 0.0, max = 100.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_DyeDamageMax, }
+option SVSBoobyTraps.TamperAlarmSoundRadiusTiles { type = integer, default = 120, min = 0, max = 500, page = SVSBoobyTraps, translation = SVSBoobyTraps_TamperAlarmSoundRadiusTiles, }
+option SVSBoobyTraps.TripWireMaxLengthTiles { type = integer, default = 8, min = 1, max = 30, page = SVSBoobyTraps, translation = SVSBoobyTraps_TripWireMaxLengthTiles, }
+option SVSBoobyTraps.TripWireSoundRadiusTiles { type = integer, default = 60, min = 0, max = 500, page = SVSBoobyTraps, translation = SVSBoobyTraps_TripWireSoundRadiusTiles, }
+option SVSBoobyTraps.TripWireCooldownHours { type = double, default = 2.0, min = 0.0, max = 24.0, page = SVSBoobyTraps, translation = SVSBoobyTraps_TripWireCooldownHours, }
+option SVSBoobyTraps.TripWireMaxTriggers { type = integer, default = 3, min = 1, max = 20, page = SVSBoobyTraps, translation = SVSBoobyTraps_TripWireMaxTriggers, }
+option SVSBoobyTraps.TamperAlarmDurationSeconds { type = integer, default = 8, min = 1, max = 300, page = SVSBoobyTraps, translation = SVSBoobyTraps_TamperAlarmDurationSeconds, }
+option SVSBoobyTraps.WirelessRangeTiles { type = integer, default = 1000, min = 10, max = 50000, page = SVSBoobyTraps, translation = SVSBoobyTraps_WirelessRangeTiles, }
+option SVSBoobyTraps.WirelessHeartbeatEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_WirelessHeartbeatEnabled, }
+option SVSBoobyTraps.WirelessHeartbeatSeconds { type = integer, default = 15, min = 2, max = 300, page = SVSBoobyTraps, translation = SVSBoobyTraps_WirelessHeartbeatSeconds, }
+
+/* Spy vs Spy: Signals integration */
+option SVSBoobyTraps.SignalsIntegrationEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_SignalsIntegrationEnabled, }
+option SVSBoobyTraps.SignalsJammersBlockAlerts { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_SignalsJammersBlockAlerts, }
+option SVSBoobyTraps.SignalsJammersBlockCommands { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_SignalsJammersBlockCommands, }
+option SVSBoobyTraps.SignalsDetectorFindsWirelessTraps { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_SignalsDetectorFindsWirelessTraps, }
+option SVSBoobyTraps.WirelessDetectionRangeTiles { type = integer, default = 40, min = 1, max = 500, page = SVSBoobyTraps, translation = SVSBoobyTraps_WirelessDetectionRangeTiles, }
+
+/* Administration and performance */
+option SVSBoobyTraps.AdminOverlayEnabled { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_AdminOverlayEnabled, }
+option SVSBoobyTraps.AdminRemovalRadiusTiles { type = integer, default = 20, min = 1, max = 500, page = SVSBoobyTraps, translation = SVSBoobyTraps_AdminRemovalRadiusTiles, }
+option SVSBoobyTraps.AuditLogging { type = boolean, default = true, page = SVSBoobyTraps, translation = SVSBoobyTraps_AuditLogging, }
+option SVSBoobyTraps.VerboseLogging { type = boolean, default = false, page = SVSBoobyTraps, translation = SVSBoobyTraps_VerboseLogging, }
+option SVSBoobyTraps.MetaTimeRunLogEntries { type = integer, default = 1000, min = 100, max = 10000, page = SVSBoobyTraps, translation = SVSBoobyTraps_MetaTimeRunLogEntries, }
+option SVSBoobyTraps.VisibleSyncSeconds { type = integer, default = 2, min = 1, max = 30, page = SVSBoobyTraps, translation = SVSBoobyTraps_VisibleSyncSeconds, }
+option SVSBoobyTraps.ServerTickMilliseconds { type = integer, default = 500, min = 100, max = 5000, page = SVSBoobyTraps, translation = SVSBoobyTraps_ServerTickMilliseconds, }
+option SVSBoobyTraps.MaxTrapsProcessedPerTick { type = integer, default = 200, min = 10, max = 5000, page = SVSBoobyTraps, translation = SVSBoobyTraps_MaxTrapsProcessedPerTick, }
+option SVSBoobyTraps.PersistenceIntervalSeconds { type = integer, default = 10, min = 1, max = 300, page = SVSBoobyTraps, translation = SVSBoobyTraps_PersistenceIntervalSeconds, }

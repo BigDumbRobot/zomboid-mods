@@ -1,0 +1,50 @@
+module Base
+{
+    xuiSkin default
+    {
+        entity ES_Skylight
+        {
+            LuaWindowClass = ISEntityWindow,
+            DisplayName = Skylight,
+            Icon = media/textures/Build_Skylight.png,
+        }
+    }
+
+    entity Skylight
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Skylight,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            isThumpable = false,
+            OnIsValid = BuildRecipeCode.skylights.OnIsValid,
+            OnCreate = BuildRecipeCode.skylights.OnCreate,
+            face W
+            {
+                layer
+                {
+                    row = skylights_01_0,
+                }
+            }
+        }
+        component CraftRecipe
+        {
+            timedAction = BuildLowNoTool,
+            time = 150,
+            category = Carpentry,
+            xpAward = Woodwork:5,
+            Tooltip = Tooltip_craft_SkylightDesc,
+            inputs
+            {
+                item 1 tags[base:screwdriver] mode:keep flags[Prop1;MayDegradeVeryLight],
+                item 4 [Base.Screws],
+                item 4 [Base.Plank],
+                item 1 [Base.Mov_WindowChrome;Base.Mov_WindowSlider;Base.Mov_WindowTiled;Base.Mov_WindowWhite;Base.Mov_WindowWhiteTiled;Base.Mov_WindowWooden;Base.FrontWindow1;Base.FrontWindow2;Base.FrontWindow3;Base.RearWindow1;Base.RearWindow2;Base.RearWindow3;Base.Windshield1;Base.Windshield2;Base.Windshield3;Base.RearWindshield1;Base.RearWindshield2;Base.RearWindshield3],
+            }
+        }
+    }
+}

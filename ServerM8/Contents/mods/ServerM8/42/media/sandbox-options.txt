@@ -1,0 +1,65 @@
+VERSION = 1,
+
+option ServerM8.DisplayName
+{
+    type = string,
+    default = "",
+    page = ServerM8,
+    translation = ServerM8_DisplayName,
+}
+
+option ServerM8.Tagline
+{
+    type = string,
+    default = "",
+    page = ServerM8,
+    translation = ServerM8_Tagline,
+}
+
+option ServerM8.Welcome
+{
+    type = string,
+    default = "",
+    page = ServerM8,
+    translation = ServerM8_Welcome,
+}
+
+option ServerM8.DiscordInvite
+{
+    type = string,
+    default = "",
+    page = ServerM8,
+    translation = ServerM8_DiscordInvite,
+}
+
+option ServerM8.DiscordServerID
+{
+    type = string,
+    default = "",
+    page = ServerM8,
+    translation = ServerM8_DiscordServerID,
+}
+
+option ServerM8.Website
+{
+    type = string,
+    default = "",
+    page = ServerM8,
+    translation = ServerM8_Website,
+}
+
+option ServerM8.ShowOnJoin
+{
+    type = boolean,
+    default = true,
+    page = ServerM8,
+    translation = ServerM8_ShowOnJoin,
+}
+
+option ServerM8.ShowActivity
+{
+    type = boolean,
+    default = true,
+    page = ServerM8,
+    translation = ServerM8_ShowActivity,
+}

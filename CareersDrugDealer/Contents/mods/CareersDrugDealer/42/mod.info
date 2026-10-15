@@ -1,0 +1,7 @@
+name=Careers: Drug Dealer
+id=CareersDrugDealer
+description=A Drug Dealer career built on the Careers Framework. Right-click storefront establishment, N&C's Narcotics purchase orders with reputation-scaled tiers, player-funded work orders with escrow, map-wide mailbox/container deliveries, physical sealed parcels, a private career inbox, and dynamic flyers.
+require=CareersFramework
+modversion=1.3.0
+versionMin=42.0.0
+author=lilBubby

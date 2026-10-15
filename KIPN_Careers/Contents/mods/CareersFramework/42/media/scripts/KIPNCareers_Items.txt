@@ -1,0 +1,14 @@
+module KIPNCareers
+{
+    /* Shared flyer item every career's flyer queue re-uses. Career-specific
+       fields (business/shop name, description, etc.) live in server-authored
+       ModData rather than separate item types. */
+    item BusinessFlyer
+    {
+        DisplayCategory = Literature,
+        ItemType = base:normal,
+        Icon = Paper,
+        Weight = 0.02,
+        CanBeWrite = false,
+    }
+}

@@ -1,0 +1,15 @@
+module BassMasters
+{
+    /* Earned, never picked: a profession trait so it stays out of character creation. */
+    character_trait_definition BassMasters:BassMaster
+    {
+        IsProfessionTrait = true,
+        DisabledInMultiplayer = false,
+        CharacterTrait = BassMasters:BassMaster,
+        Cost = 0,
+        UIName = UI_trait_BassMaster,
+        UIDescription = UI_trait_BassMasterDesc,
+        XPBoosts = Fishing=3,
+        GrantedRecipes = MakeFishingRod;FixFishingRod;MakeChum,
+    }
+}

@@ -1,0 +1,26 @@
+module KIPNCareers
+{
+    /* Mechanic profession: tokenized bearer license, redeemed to claim a shop. */
+    item MechanicBusinessLicense
+    {
+        DisplayCategory = Literature,
+        ItemType = base:normal,
+        Icon = Paper,
+        Weight = 0.05,
+        CanBeWrite = false,
+    }
+
+    /* Mechanic Work Order form. Crafted by a player, or server-crafted and
+       self-perpetuated inside a shop's Public business container. All request
+       data lives in server-authored ModData; the paper carries only a token. */
+    item MechanicWorkOrder
+    {
+        DisplayCategory = Literature,
+        DisplayName = Mechanic Work Order,
+        ItemType = base:normal,
+        Icon = Paper,
+        Weight = 0.05,
+        CanBeWrite = false,
+        Tags = kipn:mechanic_work_order,
+    }
+}

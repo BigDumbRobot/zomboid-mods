@@ -1,0 +1,39 @@
+/************************************************************
+ * KIPN Computer Repair Kit
+ *
+ * A single-use kit crafted by the player and applied to a KIPN
+ * computer to restore Hardware Condition.
+ *
+ * IMPORTANT:
+ *   This item is NOT authoritative -- the server only checks
+ *   that the repairing player is carrying one before applying
+ *   any condition change.
+ *
+ *   The kit IS consumed on a successful repair. A screwdriver
+ *   (or other configured repair tool -- see
+ *   KIPN_CraftingRequirementsConfig.lua's COMPUTER_REPAIR_TOOL)
+ *   is also required in the player's inventory, but is kept,
+ *   not consumed -- same as the screwdriver required to
+ *   disassemble a computer.
+ *
+ *   The server-side KIPN_Server.lua handleRepairComputer command
+ *   determines whether repair is currently enabled (sandbox
+ *   "Computer Condition Repair Percentage" = 0 disables it) and
+ *   how much Hardware Condition is actually restored.
+ ************************************************************/
+
+
+module Base
+{
+
+    item KIPNComputerRepairKit
+    {
+        DisplayCategory = KIPN,
+        DisplayName = KIPN Computer Repair Kit,
+        Weight = 1.0,
+        ItemType = base:normal,
+        Icon = KIPNCompRprKt,
+        Tags = kipn:computer_repair_kit,
+    }
+
+}

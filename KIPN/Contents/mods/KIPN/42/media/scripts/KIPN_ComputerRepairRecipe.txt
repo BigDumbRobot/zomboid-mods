@@ -1,0 +1,48 @@
+/************************************************************
+ * KIPN Computer Repair Kit Crafting Recipe
+ *
+ * Creates the single-use Computer Repair Kit a player applies to
+ * a KIPN computer (via the "Repair Computer" right-click
+ * option) to restore its Hardware Condition.
+ *
+ * These ingredients are the DEFAULT recipe and are mirrored in
+ * KIPN.Server.CraftingRequirementsConfig.Defaults.computerRepairKit
+ * (media/lua/server/config/KIPN_CraftingRequirementsConfig.lua),
+ * which an admin can override via "KIPN Admin Settings ->
+ * Crafting -> Computer Repair Kit" in-game. Saved changes become
+ * active after the next server restart.
+ ************************************************************/
+
+
+module Base
+{
+
+    /********************************************************
+     * COMPUTER REPAIR KIT
+     *
+     * Requires salvaged electronics and wire, plus a
+     * screwdriver kept in hand (not consumed) -- the same
+     * tool already required to disassemble a computer.
+     ********************************************************/
+
+    craftRecipe KIPN.CraftComputerRepairKit
+    {
+        timedAction = Making,
+        time = 60,
+        Tags = InHandCraft,
+        category = Miscellaneous,
+
+        inputs
+        {
+            item 2 [Base.ElectronicsScrap] flags[ItemCount],
+            item 1 tags[base:wire],
+            item 1 tags[base:screwdriver] mode:keep flags[Prop1;MayDegradeLight],
+        }
+
+        outputs
+        {
+            item 1 Base.KIPNComputerRepairKit,
+        }
+    }
+
+}

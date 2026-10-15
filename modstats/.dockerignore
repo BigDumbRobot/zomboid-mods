@@ -1,0 +1,5 @@
+data
+.env
+*.md
+__pycache__
+compose.yaml

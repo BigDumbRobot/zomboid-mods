@@ -1,0 +1,180 @@
+/************************************************************
+ * The Whisperers: crafting.
+ *
+ * Face mask: Tailoring 3 and Butchering 3, a cut face, something
+ * to clasp it with, and something to sew it with. A needle leaves the face intact;
+ * a nail tears it (NailDamage, applied in OnCreate).
+ *
+ * Head stake: any corpse head on a long stick. The finished
+ * Head Stake item is placed like furniture (Place) and picks
+ * back up as the same item, head and all.
+ ************************************************************/
+
+module Whisperers
+{
+    craftRecipe Whisp_SewFaceMask
+    {
+        timedAction = SewingCloth,
+        time = 150,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = Tailoring,
+        AllowBatchCraft = false,
+        SkillRequired = Tailoring:3;Butchering:3,
+        xpAward = Tailoring:5,
+        OnCreate = Whisperers.Recipes.OnCreateFaceMask,
+
+        inputs
+        {
+            item 1 [Whisperers.CorpseFace] mode:destroy flags[AllowFavorite],
+            item 2 [Base.Thread;Base.Twine;Base.FishingLine;4:Base.DentalFloss;1:Base.Wire],
+            item 1 [Base.Needle;Base.SutureNeedle;Base.Nails] mode:keep,
+        }
+
+        outputs
+        {
+            item 1 Whisperers.FaceMask,
+        }
+    }
+
+    craftRecipe Whisp_MakeHeadStake
+    {
+        timedAction = Making,
+        time = 120,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = Miscellaneous,
+        AllowBatchCraft = false,
+        OnCreate = Whisperers.Recipes.OnCreateHeadStake,
+
+        inputs
+        {
+            item 1 [Whisperers.CorpseHead;Whisperers.CorpseHeadFaceless] mode:destroy flags[AllowFavorite],
+            item 1 [Base.LongStick] mode:destroy,
+        }
+
+        outputs
+        {
+            item 1 Whisperers.HeadStake,
+        }
+    }
+
+    /* Crack either head open for its brain, like slicing an animal head.
+       The head is used up. */
+    craftRecipe Whisp_RemoveBrain
+    {
+        timedAction = SliceMeat,
+        time = 60,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = Cooking,
+        AllowBatchCraft = false,
+        xpAward = Butchering:3,
+        OnCreate = Whisperers.Recipes.OnCreateBrain,
+
+        inputs
+        {
+            item 1 tags[base:dullknife;base:sharpknife;base:meatcleaver] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Whisperers.CorpseHead;Whisperers.CorpseHeadFaceless] mode:destroy flags[AllowFavorite],
+        }
+
+        outputs
+        {
+            item 1 Whisperers.CorpseBrain,
+        }
+    }
+
+    /* Work brain tan into a face mask or skin suit so it stops drying out
+       for GearTreatHours. The bowl comes back, as in vanilla tanning. */
+    craftRecipe Whisp_TreatSkinGear
+    {
+        timedAction = Making,
+        time = 150,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = Tailoring,
+        AllowBatchCraft = false,
+        xpAward = Tailoring:3,
+        OnCreate = Whisperers.Recipes.OnCreateTreatGear,
+
+        inputs
+        {
+            item 1 [Whisperers.FaceMask;Whisperers.SkinSuit] mode:keep flags[AllowFavorite;IsNotWorn;NoBrokenItems],
+            item 1 tags[base:braintan] mode:destroy,
+        }
+
+        outputs
+        {
+            item 1 Base.Bowl,
+        }
+    }
+
+    /* No fixed outputs: the head and the stick each break at
+       HeadStakeBreakChance percent (see OnCreate). */
+    craftRecipe Whisp_DisassembleHeadStake
+    {
+        timedAction = Making,
+        time = 80,
+        Tags = InHandCraft;CanBeDoneFromFloor,
+        category = Miscellaneous,
+        AllowBatchCraft = false,
+        OnCreate = Whisperers.Recipes.OnCreateDisassembleHeadStake,
+
+        inputs
+        {
+            item 1 [Whisperers.HeadStake] mode:destroy flags[AllowFavorite],
+        }
+    }
+
+
+    /* The old flat head-on-stake tiles, kept so stakes built from the Build
+       menu before the 3D stakes still load. No longer buildable: a stake is
+       now a mannequin, which only Place can create (Whisperers_Stake.lua).
+       Tile _0 (the old south face) is now the mannequin tile, so it is left
+       out here: a sprite may belong to one entity only. */
+    entity Whisp_HeadStake
+    {
+        component UiConfig
+        {
+            xuiSkin = default,
+            entityStyle = ES_Whisp_HeadStake,
+            uiEnabled = false,
+        }
+        component SpriteConfig
+        {
+            health = 50,
+            skillBaseHealth = 10,
+            face W
+            {
+                layer
+                {
+                    row = whisperers_headstake_01_2,
+                }
+            }
+            face N
+            {
+                layer
+                {
+                    row = whisperers_headstake_01_1,
+                }
+            }
+            face E
+            {
+                layer
+                {
+                    row = whisperers_headstake_01_3,
+                }
+            }
+        }
+    }
+}
+
+/* Entity styles must be in module Base to be picked up. */
+module Base
+{
+    xuiSkin default
+    {
+        entity ES_Whisp_HeadStake
+        {
+            LuaWindowClass = ISEntityWindow,
+            DisplayName = Head Stake,
+            Icon = Whisp_HeadStake,
+        }
+    }
+}

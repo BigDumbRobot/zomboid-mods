@@ -1,0 +1,16 @@
+version = 1
+tileset
+{
+    file = skylights_01
+    size = 1,1
+    id = 1
+    // skylights_01_0
+    tile
+    {
+        xy = 0,0
+        BlockRain = 
+        CustomName = Skylight
+        RenderLayer = Floor
+        attachedFloor = 
+    }
+}

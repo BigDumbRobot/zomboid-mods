@@ -1,0 +1,7 @@
+VERSION = 1,
+
+option DeadMansMap.DebugLogging
+{
+    type = boolean, default = false,
+    page = DeadMansMap, translation = DeadMansMap_DebugLogging,
+}

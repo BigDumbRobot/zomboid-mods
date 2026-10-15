@@ -1,0 +1,11 @@
+{
+  "Tooltip_Whisp_Guts": "Heavy, slick and rotting. Smear them on to hide among the dead.",
+  "Tooltip_Whisp_CorpseHead": "Cut off the face with a short blade, take out the brain with a knife, or put it on a stake.",
+  "Tooltip_Whisp_CorpseHeadFaceless": "The face is gone. Take out the brain with a knife, or put it on a stake as a warning to the living.",
+  "Tooltip_Whisp_CorpseFace": "Sew it into a mask with a needle (or a nail) and thread, twine, fishing line, dental floss or wire.",
+  "Tooltip_Whisp_FaceMask": "Wearing a dead face makes your gore count five times over, but everything past arm's reach goes blurry through the eye holes. Tears with wear and dries out over time; treat it with brain tan to stop the drying. Repair with Tailoring 5.",
+  "Tooltip_Whisp_SkinSuit": "Wearing dead skin makes your gore count ten times over. Nothing but head gear, shoes and socks goes on with it. Wears down and dries out over time; treat it with brain tan to stop the drying. A hard hit can tear it apart.",
+  "Tooltip_Whisp_CorpseBrain": "Works like an animal brain for making brain tan. A zombie's brain is infected; a player's holds some of what they knew.",
+  "Tooltip_Whisp_HeadStake": "Right-click it and choose Place. A hat or mask can go on the head. Disassembling it will likely break the head or the stick.",
+  "Tooltip_Whisp_HeadStakeBuild": "A warning to the living."
+}

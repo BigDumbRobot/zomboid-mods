@@ -1,0 +1,29 @@
+{
+  "Sandbox_KIPN_LORDEnabled": "LORD: Enable Legend of the Red Dragon",
+  "Sandbox_KIPN_LORDEnabled_tooltip": "Master switch for the Play LORD door game. When off, the menu entry is hidden and the commands are refused.",
+  "Sandbox_KIPN_LORDEnabled_help": "Master switch for the Play LORD door game. When off, the menu entry is hidden and the commands are refused.",
+
+  "Sandbox_KIPN_LORDForestFightsPerDay": "LORD: Forest Turns Per Day",
+  "Sandbox_KIPN_LORDForestFightsPerDay_tooltip": "How many forest encounters each adventurer gets per in-game day. Also restored by 'Rest Until Dawn'.",
+  "Sandbox_KIPN_LORDForestFightsPerDay_help": "How many forest encounters each adventurer gets per in-game day. Also restored by 'Rest Until Dawn'.",
+
+  "Sandbox_KIPN_LORDExpMultiplier": "LORD: Experience Multiplier",
+  "Sandbox_KIPN_LORDExpMultiplier_tooltip": "Scales all experience gained. 1.0 is a slow classic grind; the 1.5 default lets a casual player reach the Red Dragon in a handful of in-game days. Raise it for a faster server.",
+  "Sandbox_KIPN_LORDExpMultiplier_help": "Scales all experience gained. 1.0 is a slow classic grind; the 1.5 default lets a casual player reach the Red Dragon in a handful of in-game days. Raise it for a faster server.",
+
+  "Sandbox_KIPN_LORDGoldMultiplier": "LORD: Gold Multiplier",
+  "Sandbox_KIPN_LORDGoldMultiplier_tooltip": "Scales all gold earned from the forest. Higher values let players buy the weapon and armour tiers faster.",
+  "Sandbox_KIPN_LORDGoldMultiplier_help": "Scales all gold earned from the forest. Higher values let players buy the weapon and armour tiers faster.",
+
+  "Sandbox_KIPN_LORDDeathGoldPenalty": "LORD: Death Gold Penalty (%)",
+  "Sandbox_KIPN_LORDDeathGoldPenalty_tooltip": "Percent of ON-HAND gold lost when you are killed. Banked gold, gems and gear are always safe. 0 makes death cost nothing but a day.",
+  "Sandbox_KIPN_LORDDeathGoldPenalty_help": "Percent of ON-HAND gold lost when you are killed. Banked gold, gems and gear are always safe. 0 makes death cost nothing but a day.",
+
+  "Sandbox_KIPN_LORDRestCooldownMinutes": "LORD: Rest Until Dawn Cooldown (real minutes)",
+  "Sandbox_KIPN_LORDRestCooldownMinutes_tooltip": "Real-time minutes a player must wait between 'Rest Until Dawn' uses. 0 (default) lets players start a new game-day whenever they run out of forest turns -- best for casual drop-in play.",
+  "Sandbox_KIPN_LORDRestCooldownMinutes_help": "Real-time minutes a player must wait between 'Rest Until Dawn' uses. 0 (default) lets players start a new game-day whenever they run out of forest turns -- best for casual drop-in play.",
+
+  "Sandbox_KIPN_LORDPvPEnabled": "LORD: Enable Player-vs-Player (reserved)",
+  "Sandbox_KIPN_LORDPvPEnabled_tooltip": "Reserved for a future release. Has no effect yet.",
+  "Sandbox_KIPN_LORDPvPEnabled_help": "Reserved for a future release. Has no effect yet."
+}

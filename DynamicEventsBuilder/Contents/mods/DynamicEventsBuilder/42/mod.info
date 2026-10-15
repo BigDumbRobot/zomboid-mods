@@ -1,0 +1,6 @@
+name=Dynamic Events
+id=DynamicEventsBuilder
+description=Staff-directed multiplayer event framework for Project Zomboid Build 42 (scenarios, objectives, zombie director, event zones). Extracted from the KIP Network mod.
+author=lilBubby
+versionMin=42.0
+require=\KIPN

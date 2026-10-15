@@ -1,0 +1,224 @@
+/************************************************************
+ * Spy vs Spy: Booby Traps — Build 42 sounds
+ *
+ * Every clip here is played by the SERVER, through
+ * Effects.PlayRandomSound: one of the family is picked server-side
+ * so that every client in earshot hears the SAME clip for the same
+ * event instead of each rolling its own, and each play also adds a
+ * world sound, so nearby zombies come looking.
+ *
+ *  - SVSBT_Success1..5 -- a trap was successfully set, and a trap
+ *    detonated. Detonations sound from the trap's own tile.
+ *  - SVSBT_TrapSearch1..3 -- somebody is searching for traps.
+ *  - SVSBT_TrapFound1..3 / SVSBT_TrapNotFound1..3 -- how that
+ *    search ended.
+ *
+ * Sound names are registered globally by name (GameSounds
+ * keys its table on the bare name, not module.name), so the
+ * module wrapper below is structural only and the SVSBT_
+ * prefix is what keeps these from colliding with vanilla or
+ * other mods.
+ ************************************************************/
+
+module Base
+{
+    /* Trap set, and trap detonated */
+    sound SVSBT_Success1
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/success1.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_Success2
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/success2.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_Success3
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/success3.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_Success4
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/success4.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_Success5
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/success5.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    /* Inspection under way */
+    sound SVSBT_TrapSearch1
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/search1.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_TrapSearch2
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/search2.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_TrapSearch3
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/search3.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    /* Inspection finished, nothing turned up */
+    sound SVSBT_TrapNotFound1
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/notfound1.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_TrapNotFound2
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/notfound2.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_TrapNotFound3
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/notfound3.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    /* Inspection finished, a device was discovered */
+    sound SVSBT_TrapFound1
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/found1.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_TrapFound2
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/found2.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+
+    sound SVSBT_TrapFound3
+    {
+        category = Item,
+        is3D = true,
+        loop = false,
+        clip
+        {
+            file = media/sound/found3.ogg,
+            distanceMin = 1,
+            distanceMax = 20,
+            volume = 1.0,
+        }
+    }
+}
